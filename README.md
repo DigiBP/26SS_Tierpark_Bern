@@ -57,6 +57,8 @@
 
 ## Process Overview
 
+![image alt](https://github.com/DigiBP/26SS_Tierpark_Bern/blob/053719d3e69841d64c0b4f05bb7848ce25a40b72/Case%20Allocation%20ToBe%20Process.png)
+
 The TO-BE process is modeled as one main Camunda BPMN process called **CaseAllocation66**. The process starts when a new client case is created and ends when the case has been assigned and the client has been informed.
 
 The process contains the following main stages:
