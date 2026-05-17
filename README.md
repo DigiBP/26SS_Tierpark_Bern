@@ -55,7 +55,6 @@
 
 # TO-BE Process
 
-## Process Overview
 
 ![image alt](https://github.com/DigiBP/26SS_Tierpark_Bern/blob/053719d3e69841d64c0b4f05bb7848ce25a40b72/Case%20Allocation%20ToBe%20Process.png)
 
