@@ -20,31 +20,15 @@
 
 # Introduction
 
-This document describes the TO-BE BPMN model for the Case allocation process. The model was created as part of the Digitalization of Business Processes project and is designed for implementation in Camunda.
 
-The purpose of the TO-BE model is to digitalize and standardize the way incoming client cases are captured, checked, evaluated, and assigned to a suitable family coach. The process supports automated pre-selection of coaches based on distance and scoring, while still keeping human review steps for final decision-making and quality control.
 
 # Description of the Use Case
 
-The use case focuses on the allocation of a new client case to an appropriate family coach. In the current manual way of working, the case coach or responsible person needs to collect client information, compare coach availability, consider distance, evaluate personal or soft factors, and finally inform the client after a suitable coach has been selected.
 
-The TO-BE process improves this by using Camunda as the process orchestration platform. Client data is entered through a form, automated service tasks calculate distance and scoring, assignments are extracted from the system, and user tasks allow the responsible person to review the recommended coach before the client is informed.
-
-The goal of this process is to ensure that each case is assigned in a structured, transparent, and timely way. The model also includes error handling for situations where automatic distance calculation or scoring fails.
 
 # Current Situation
 
-In the manual AS-IS situation, case allocation depends heavily on individual coordination and manual checking.
 
-* Client information is collected manually.
-* The responsible person checks available family coaches manually.
-* Distance and suitability are not automatically calculated.
-* Soft factors, such as language, experience, specialization, and client needs, may be evaluated informally.
-* If the first coach is not suitable, the responsible person needs to search again manually.
-* There is no clear automated error handling when data is missing or system checks fail.
-* The client is informed only after the internal assignment decision has been completed.
-
-Because of these manual steps, the process can become slow, inconsistent, and difficult to monitor. This is especially problematic when the case should be assigned or delayed within a limited time frame.
 
 # AS-IS Pain Points
 
