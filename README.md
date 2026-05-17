@@ -19,10 +19,19 @@
 2. Devid Montecchiari
 
 # Introduction
+The to-be process describes an automated case allocation process for assigning a suitable Family Coach to a client case. The purpose of this process is to reduce manual effort, improve transparency, and support better decision-making during coach allocation.
+In the improved process, client data is first entered and stored in the system. The system then automatically calculates distances and scores for possible coach assignments. Based on this information, the case coach can review the suggested assignment, evaluate additional soft factors, and decide whether the recommended Family Coach is suitable. If the recommendation is accepted, the client is informed and the case is assigned. If the recommendation is not suitable, the process allows the case coach to return and evaluate another option.
+This to-be process combines automation, data-based scoring, and human review. This is important because coach allocation should not depend solely on technical matching criteria, such as distance or workload, but also on human judgement, soft factors, and the client's specific needs.
+
 
 
 
 # Description of the Use Case
+Automated Case Allocation
+The use case focuses on allocating a client case to the most suitable Family Coach. The process begins when the admin enters the client data through a form. This information is saved in the unassigned cases database. After the client data is submitted, the system automatically calculates the distance and score for potential Family Coaches by using assignment data.
+The calculated results are then stored and extracted from the assignments database. The Administration reviews the generated assignments before the process moves to the Case Coach. If there is an error in the automated calculation or assignment generation, the process is routed to a manual step- Select alternative coach, where the Case Coach reviews the error and manually selects an alternative coach, and for that coach, the soft factors are evaluated, and the process continues.
+Once an assignment is available, the Case Coach evaluates the soft factors. These soft factors include case complexity, coach experience, and coach type. After this evaluation, the Case Coach reviews the Family Coach profile and decides whether the recommended coach is appropriate.
+If the coach is recommended and accepted, the client is informed about the allocation, and the case is marked as assigned. If the coach is not recommended, the process returns to the soft factor evaluation step so that another assignment can be reviewed.
 
 
 
