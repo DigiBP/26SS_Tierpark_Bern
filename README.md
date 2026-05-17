@@ -119,9 +119,13 @@ If a technical error occurs during distance and score calculation, the process u
 # Value of the TO-BE Process
 
 •	Reduces manual searching and informal decision-making.
+
 •	Improves transparency by using scoring and stored assignment data.
+
 •	Keeps human judgement in the process through Case Coach review.
+
 •	Provides an error-handling path if automation does not work correctly.
+
 •	Makes the final allocation process more reliable, structured, and auditable
 
 # Conclusion
