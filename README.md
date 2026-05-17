@@ -1,6 +1,6 @@
 # TO-BE BPMN Camunda Model: Case Allocation Process
 
-![BPMN Model Screenshot](add-your-camunda-model-screenshot-here)
+
 
 # Team Members
 
