@@ -24,8 +24,6 @@ In the improved process, client data is first entered and stored in the system. 
 This to-be process combines automation, data-based scoring, and human review. This is important because coach allocation should not depend solely on technical matching criteria, such as distance or workload, but also on human judgement, soft factors, and the client's specific needs.
 
 
-
-
 # Description of the Use Case
 Automated Case Allocation
 The use case focuses on allocating a client case to the most suitable Family Coach. The process begins when the admin enters the client data through a form. This information is saved in the unassigned cases database. After the client data is submitted, the system automatically calculates the distance and score for potential Family Coaches by using assignment data.
@@ -118,6 +116,13 @@ If a technical error occurs during distance and score calculation, the process u
 | 12 | User Task | Inform client | The client is informed about the selected family coach or assignment outcome. | This is the final communication step before process completion. |
 | 13 | End Event | Case assigned | The process ends after the case has been successfully assigned. | Marks successful completion of the TO-BE process. |
 
+# Value of the TO-BE Process
+
+•	Reduces manual searching and informal decision-making.
+•	Improves transparency by using scoring and stored assignment data.
+•	Keeps human judgement in the process through Case Coach review.
+•	Provides an error-handling path if automation does not work correctly.
+•	Makes the final allocation process more reliable, structured, and auditable
 
 # Conclusion
 
