@@ -1009,34 +1009,6 @@ The process combines structured data capture, automated hard-factor matching, ex
 | 12 | **Service Task / User Task – Inform client** | The client is informed about the allocation result. | This is the final communication step before process completion. |
 | 13 | **End Event – Case assigned** | The process ends once the case has been successfully allocated and the client has been informed. | This marks the successful completion of the TO-BE allocation process. |
 
-## Process Logic in Structured Form
-
-### 1. Case intake and data capture
-The process begins when a new case is received. The administrator records the client’s details in a structured digital form so that the information is available in a consistent format for later automated and human-driven processing.
-
-### 2. Automated hard-factor allocation
-The system automatically compares the client’s case with available coach data using hard factors such as distance, language compatibility, and other measurable criteria. Based on this comparison, it generates an initial ranking or shortlist of possible coaches.
-
-### 3. Exception handling
-If the automated allocation fails because of technical or data-related problems, the process does not stop. Instead, a boundary error event triggers an exception path in which the responsible person reviews the problem and manually prepares or assigns a coach candidate.
-
-### 4. Human review of assignments
-The automatically generated shortlist is reviewed by the responsible person to ensure that the proposed assignments are reasonable and operationally acceptable before moving to the next decision stage.
-
-### 5. Soft-factor evaluation
-After the hard-factor shortlist has been reviewed, the process evaluates qualitative suitability using a DMN-based business rule task. This includes factors such as case complexity, coach experience, and coach type. The result is a recommendation that supports further decision-making.
-
-### 6. Case Coach validation
-The Case Coach reviews the selected family coach profile together with the soft-factor evaluation result. This ensures that the proposed coach is appropriate for the specific case and that the final recommendation is not made solely by automation.
-
-### 7. Recommendation decision
-The process then checks whether the coach is recommended. If the recommendation is positive, the workflow continues to client communication. If the recommendation is negative, the process loops back so that another coach option can be assessed.
-
-### 8. Client communication and process completion
-Once a suitable coach has been confirmed, the client is informed about the allocation result. After this communication step, the process ends successfully with the case assigned.
-
-
-
 
 
 # Value of the TO-BE Process
