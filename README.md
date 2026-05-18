@@ -68,6 +68,9 @@ There is no way to identify a suitable coach for a given case. Suitability decis
 # To-Be Process: Case Allocation
 
 ## BPMN To-Be Process
+
+<img width="1562" height="591" alt="image" src="https://github.com/user-attachments/assets/542ad31d-094e-4e19-9e8f-166ea6cb818a" />
+
 <img width="6219" height="2472" alt="To-Be_Case_Allocation_66_Backup_final" src="https://github.com/user-attachments/assets/5dcdec43-46ad-418b-8c16-bb58956b5932" />
 
 
@@ -569,6 +572,11 @@ This task is implemented in Camunda using DMN-based decision logic. The DMN tabl
 
 The purpose of this step is to provide structured and transparent decision support for more qualitative criteria. It improves consistency in the evaluation process while still leaving the final judgment to the responsible Case Coach. 
 
+<img width="684" height="350" alt="image" src="https://github.com/user-attachments/assets/f6b4663f-7967-4382-aa5e-880f47ed5ebc" />
+
+<img width="929" height="445" alt="image" src="https://github.com/user-attachments/assets/42838f82-da61-42f7-8c64-6856f65fdfbf" />
+
+
 ## Step 8: Review Family Coach Profile 
 
 The task **Review Family Coach profile** is modeled as a User Task. 
@@ -579,6 +587,9 @@ The Case Coach assesses whether the proposed coach is appropriate for the specif
 
 The purpose of this step is to ensure that the final allocation decision is not made solely by the system. Instead, the recommendation is validated by a human expert, which preserves professional judgment and reflects the actual practice of coach allocation in the organisation. 
 
+<img width="268" height="647" alt="image" src="https://github.com/user-attachments/assets/c0bcfb08-9f92-4df1-8b0a-630ca9ac1c99" />
+
+
 ## Step 9: Recommended? 
 
 The element **Recommended?** is an Exclusive Gateway. 
@@ -588,6 +599,11 @@ At this point, the process checks whether the Reviewed Family Coach is recommend
 If the coach is suitable, the process continues to the next step, where the client is informed about the allocation. If the coach is not suitable, the process loops back to Evaluate soft factors, so that another coach option can be assessed. 
 
 The purpose of this gateway is to create a clear decision point in the process. It ensures that only suitable coach recommendations move forward to final communication with the client. 
+
+<img width="512" height="542" alt="image" src="https://github.com/user-attachments/assets/7d572a88-fdce-4d85-9097-439ead3458ec" />
+
+<img width="851" height="538" alt="image" src="https://github.com/user-attachments/assets/b98a7610-c0e2-447d-90b7-507124967159" />
+
 
 ## Step 10: Inform Client 
 
@@ -1078,19 +1094,19 @@ The process combines structured data capture, automated hard-factor matching, ex
 
 | Row | BPMN Element | Description | Comment |
 |---|---|---|---|
-| 1 | **Start Event – Case Enquired** | The process starts when a new case is received, and the administrator initiates the allocation workflow. | This represents the formal beginning of the case allocation process. |
+| 1 | <img width="80" height="87" alt="image" src="https://github.com/user-attachments/assets/7099b190-707d-4b91-87e6-878dd571a611" /> | The process starts when a new case is received, and the administrator initiates the allocation workflow. | This represents the formal beginning of the case allocation process. |
 | 2 | <img width="134" height="106" alt="image" src="https://github.com/user-attachments/assets/27c5da3d-4404-4b73-a65c-ed7f3b91fa9d" /> | The administrator enters the client’s case information into a structured digital form. This includes relevant details such as name, address, language, case type, and other related attributes. | This replaces unstructured manual data collection and ensures standardized and reusable client data. |
-| 3 | **Service Task – Calculate distances and score** | The system automatically retrieves available coach data and calculates objective matching criteria, such as travel distance, language compatibility, and other hard factors. It then generates an initial ranking or score for possible coaches. | This is the main automation step and supports efficient, data-driven preselection of suitable family coaches. |
-| 4 | **Boundary Error Event** | The boundary error event captures technical or data-related failures occurring during the automated allocation step, such as API errors, missing data, or unsuccessful service execution. | This ensures that automation failure does not terminate the entire process and that exception handling is explicitly modeled. |
-| 5 | **User Task – Review error** | If the automated allocation fails, the responsible person reviews the error and decides how to proceed. | This introduces human oversight in exception scenarios and prevents unresolved technical failures from blocking the case. |
-| 6 | **User Task / Manual Task – Assign manually** | In case automation is unsuccessful, the responsible person manually selects or prepares a suitable coach candidate based on available information and professional judgment. | This represents the fallback path for exceptional cases and ensures process continuity even when automation cannot deliver a result. |
-| 7 | **Service Task – Extract assignments** | The system consolidates the automated calculation results and prepares a shortlist of candidate coaches for further review. | This structures the output of the automated scoring step and makes it usable for further decision-making. |
-| 8 | **User Task – Review assignments** | The responsible person reviews the automatically generated shortlist and checks whether the proposed assignments are plausible and operationally acceptable. | This keeps human control in the process before moving to the qualitative evaluation stage. |
-| 9 | **Business Rule Task – Evaluate soft factors** | The system evaluates qualitative suitability criteria using decision logic, such as case complexity, coach experience, and coach type. This produces a recommendation result for the shortlisted coach. | This step introduces decision automation through DMN while still supporting human judgment. |
-| 10 | **User Task – Review Family Coach profile** | The Case Coach reviews the selected coach profile and the soft-factor evaluation result to assess whether the proposed match is appropriate. | This ensures that the final recommendation is validated by a human expert and reflects the real practice of coach allocation, ensuring that the coach is suitable for a specific case. |
-| 11 | **Exclusive Gateway – Recommended?** | This decision point checks whether the selected coach is considered suitable based on the preceding evaluation and human review. | If the coach is recommended, the process continues to client communication. If not, the process loops back to evaluate another option. |
-| 12 | **Service Task / User Task – Inform client** | The client is informed about the allocation result. | This is the final communication step before process completion. |
-| 13 | **End Event – Case assigned** | The process ends once the case has been successfully allocated and the client has been informed. | This marks the successful completion of the TO-BE allocation process. |
+| 3 | <img width="131" height="121" alt="image" src="https://github.com/user-attachments/assets/b4829713-4c6b-4dec-a3fc-6b2a32e5af94" />| The system automatically retrieves available coach data and calculates objective matching criteria, such as travel distance, language compatibility, and other hard factors. It then generates an initial ranking or score for possible coaches. | This is the main automation step and supports efficient, data-driven preselection of suitable family coaches. |
+| 4 | <img width="50" height="45" alt="image" src="https://github.com/user-attachments/assets/dee72df9-e726-4806-a486-0ce3026dbb52" />| The boundary error event captures technical or data-related failures occurring during the automated allocation step, such as API errors, missing data, or unsuccessful service execution. | This ensures that automation failure does not terminate the entire process and that exception handling is explicitly modeled. |
+| 5 | <img width="126" height="114" alt="image" src="https://github.com/user-attachments/assets/e1a6d945-e664-4a2a-894d-c05ea66001ff" /> | If the automated allocation fails, the responsible person reviews the error and decides how to proceed. | This introduces human oversight in exception scenarios and prevents unresolved technical failures from blocking the case. |
+| 6 | <img width="138" height="101" alt="image" src="https://github.com/user-attachments/assets/92052f30-0aa1-419f-b06d-c9d3b75b4d5e" /> | In case automation is unsuccessful, the responsible person manually selects or prepares a suitable coach candidate based on available information and professional judgment. | This represents the fallback path for exceptional cases and ensures process continuity even when automation cannot deliver a result. |
+| 7 | <img width="125" height="104" alt="image" src="https://github.com/user-attachments/assets/f1f8b613-67a1-4f5c-ba0c-acb4db9b5a2b" /> | The system consolidates the automated calculation results and prepares a shortlist of candidate coaches for further review. | This structures the output of the automated scoring step and makes it usable for further decision-making. |
+| 8 | <img width="130" height="102" alt="image" src="https://github.com/user-attachments/assets/1db90d78-7b89-42ee-aef6-41ef50239ec4" /> | The responsible person reviews the automatically generated shortlist and checks whether the proposed assignments are plausible and operationally acceptable. | This keeps human control in the process before moving to the qualitative evaluation stage. |
+| 9 | <img width="138" height="111" alt="image" src="https://github.com/user-attachments/assets/073f1d5e-dc67-4c4c-ae58-da9867c20a9e" /> | The system evaluates qualitative suitability criteria using decision logic, such as case complexity, coach experience, and coach type. This produces a recommendation result for the shortlisted coach. | This step introduces decision automation through DMN while still supporting human judgment. |
+| 10 | <img width="128" height="103" alt="image" src="https://github.com/user-attachments/assets/4fee0860-1765-4b0d-8d61-e008789f1958" /> | The Case Coach reviews the selected coach profile and the soft-factor evaluation result to assess whether the proposed match is appropriate. | This ensures that the final recommendation is validated by a human expert and reflects the real practice of coach allocation, ensuring that the coach is suitable for a specific case. |
+| 11 | <img width="93" height="94" alt="image" src="https://github.com/user-attachments/assets/483498ca-67cb-413f-941a-c9289a7e21d0" /> | This decision point checks whether the selected coach is considered suitable based on the preceding evaluation and human review. | If the coach is recommended, the process continues to client communication. If not, the process loops back to evaluate another option. |
+| 12 | <img width="128" height="113" alt="image" src="https://github.com/user-attachments/assets/79702a33-48d6-4b21-aec7-ae3d8907db5c" /> | The client is informed about the allocation result. | This is the final communication step before process completion. |
+| 13 | <img width="89" height="85" alt="image" src="https://github.com/user-attachments/assets/a857950a-bb2a-4294-9753-86d439eefff4" /> | The process ends once the case has been successfully allocated and the client has been informed. | This marks the successful completion of the TO-BE allocation process. |
 
 <img width="693" height="337" alt="image" src="https://github.com/user-attachments/assets/636f6469-4698-476e-af7e-1d9f5aaff42a" />
 <img width="925" height="439" alt="image" src="https://github.com/user-attachments/assets/fea9df63-b9ac-4d34-8bef-bbeb0b80d801" />
