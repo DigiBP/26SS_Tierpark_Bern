@@ -1021,21 +1021,154 @@ If a technical error occurs during distance and score calculation, the process u
 
 # Description of the TO-BE Process Elements
 
-| Row | BPMN Element | Element Name | Description | Comment |
-|-----|-------------|--------------|-------------|---------|
-| 1 | Start Event | Start | The process starts when a new client case needs to be allocated. | This represents the beginning of the case allocation workflow. |
-| 2 | User Task | Enter client data (Forms) | The responsible person enters client details into a digital form. | This replaces manual collection of client data and ensures structured input. |
-| 3 | Service Task | Calculate Distances and Score | The system calculates distance and scoring for possible family coaches. | This supports objective pre-selection of suitable coaches. |
-| 4 | Boundary Error Event | Error on distance/score calculation | Captures technical or data-related errors during the calculation step. | If the service task fails, the process moves to error handling. |
-| 5 | User Task | Review error | The responsible person reviews the error and decides how to correct it. | This ensures that failed automated checks do not stop the complete process without action. |
-| 6 | Manual Task | Assign manually | The responsible person manually assigns or prepares the case when automation fails. | This is a fallback path for exceptional cases. |
-| 7 | Service Task | Extract assignments | The system extracts possible coach assignments from the calculated results. | This prepares the candidate list for human review. |
-| 8 | User Task | Review assignments | The responsible person reviews the proposed coach assignments. | This keeps human control in the process before final recommendation. |
-| 9 | Business Rule Task | Evaluate soft factors | The system evaluates qualitative rules for suitability. | This can be implemented using DMN decision logic in Camunda. |
-| 10 | User Task | Review Family Coach profile | The responsible person checks the selected family coach profile. | Ensures that the coach is suitable for the specific case. |
-| 11 | Exclusive Gateway | Recommended? | Decision point to check whether the family coach is recommended. | If yes, the process continues to client notification. If no, the process loops back to evaluate another option. |
-| 12 | User Task | Inform client | The client is informed about the selected family coach or assignment outcome. | This is the final communication step before process completion. |
-| 13 | End Event | Case assigned | The process ends after the case has been successfully assigned. | Marks successful completion of the TO-BE process. |
+
+Row 
+
+BPMN Element 
+
+Description 
+
+Comment 
+
+1 
+
+ 
+
+The process starts when a new case is received, and the admin initiates the allocation workflow. 
+
+This represents the beginning of the case allocation workflow. 
+
+2 
+
+ 
+
+ 
+
+The administrator enters the client’s case information into a structured digital form. This includes relevant details such as name, address, language, case type, and other related attributes.  
+
+This replaces unstructured manual data collection and ensures standardized and reusable client data. 
+
+3 
+
+ 
+
+The system automatically retrieves available coach data and calculates objective matching criteria, such as travel distance, language compatibility, and other hard factors. It then generates an initial ranking or score for possible coaches.  
+
+This is the main automation step and supports efficient, data-driven preselection of suitable family coaches.  
+
+ 
+
+4 
+
+ 
+
+Boundary Error Event 
+
+The boundary error event captures technical or data-related failures occurring during the automated allocation step, such as API errors, missing data, or unsuccessful service execution.  
+
+ 
+
+This ensures that automation failure does not terminate the entire process and that exception handling is explicitly modeled. 
+
+ 
+
+ 
+
+5 
+
+ 
+
+ 
+
+If the automated allocation fails, the responsible person reviews the error and decides how to proceed. 
+
+This introduces human oversight in exception scenarios and prevents unresolved technical failures from blocking the case. 
+
+ 
+
+6 
+
+ 
+
+In case automation is unsuccessful, the responsible person manually selects or prepares a suitable coach candidate based on available information and professional judgment. 
+
+This represents the fallback path for exceptional cases and ensures process continuity even when automation cannot deliver a result. 
+
+ 
+
+7 
+
+ 
+
+The system consolidates the automated calculation results and prepares a shortlist of candidate coaches for further review. 
+
+This structures the output of the automated scoring step and makes it usable for further decision-making. 
+
+8 
+
+ 
+
+The responsible person reviews the automatically generated shortlist and checks whether the proposed assignments are plausible and operationally acceptable. 
+
+This keeps human control in the process before moving to the qualitative evaluation stage. 
+
+ 
+
+9 
+
+ 
+
+The system evaluates qualitative suitability criteria using decision logic, such as case complexity, coach experience, and coach type. This produces a recommendation result for the shortlisted coach. 
+
+This step introduces decision automation through DMN while still supporting human judgment. 
+
+ 
+
+ 
+
+10 
+
+ 
+
+The Case Coach reviews the selected coach profile and the soft-factor evaluation result to assess whether the proposed match is appropriate. 
+
+This ensures that the final recommendation is validated by a human expert and reflects the real practice of coach allocation, ensuring that the coach is suitable for a specific case. 
+
+11 
+
+ 
+
+This decision point checks whether the selected coach is considered suitable based on the preceding evaluation and human review. 
+
+ 
+
+If the coach is recommended, the process continues to client communication. If not, the process loops back to evaluate another option. 
+
+ 
+
+12 
+
+ 
+
+The client is informed about the allocation result. 
+
+ 
+
+This is the final communication step before process completion. 
+
+ 
+
+13 
+
+ 
+
+The process ends once the case has been successfully allocated and the client has been informed. 
+
+This marks the successful completion of the TO-BE allocation process. 
+
+ 
+
+
 
 # Value of the TO-BE Process
 
@@ -1048,6 +1181,7 @@ If a technical error occurs during distance and score calculation, the process u
 •	Provides an error-handling path if automation does not work correctly.
 
 •	Makes the final allocation process more reliable, structured, and auditable
+
 
 # Conclusion
 
