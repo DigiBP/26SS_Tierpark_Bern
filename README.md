@@ -123,7 +123,7 @@ The first four main tasks are:
 
 ---
 
-## 4. High-Level Architecture
+## 4. Overview involved systems: Make, Camnunda, Google Form, Google Sheet, Flask API
 
 <img width="1807" height="1114" alt="To-Be Process Export drawio" src="https://github.com/user-attachments/assets/1cc6fe29-a093-4bb6-8b89-07cfbbf6a0b5" />
 
