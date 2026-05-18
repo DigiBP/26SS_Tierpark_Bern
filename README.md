@@ -299,7 +299,7 @@ The entered data can then be submitted and the data is directly stored in the `u
 
 
 
-### Related Make Scenario: Get Onboarding Data
+#### Related Make Scenario: Get Onboarding Data
 
 The Make scenario **Get Onboarding Data** reads new cases from `unassigned_cases`.
 <img width="748" height="294" alt="Make Get Onboarding Data" src="https://github.com/user-attachments/assets/fe4a38e4-f045-4015-9769-6225a276fe75" />
@@ -342,7 +342,7 @@ Its purpose is to generate possible coach assignments for an unassigned case. Fo
 
 The output of this step is a set of assignment rows in the `assignments` table.
 
-### Related Make Scenario: Calculate Distances and Score
+#### Related Make Scenario: Calculate Distances and Score
 
 <img width="1490" height="287" alt="Make Calculate Distances and Score" src="https://github.com/user-attachments/assets/9e5ec88b-8255-4ca7-a6df-89692cff43d2" />
 
@@ -360,7 +360,7 @@ This scenario is triggered by a Make webhook from Camunda. It performs the follo
 8. Write the returned scoring result back to the assignment row.
 9. Return a response to Camunda.
 
-### Google Maps Calculation
+#### Google Maps Calculation
 
 For each coach, Google Maps calculates:
 
@@ -374,7 +374,7 @@ For each coach, Google Maps calculates:
 
 These values are stored in the `assignments` table.
 
-### Assignment Row Creation
+#### Assignment Row Creation
 
 The scenario creates one assignment row per case-coach combination.
 
@@ -410,7 +410,7 @@ case_complexity
 coach_type
 ```
 
-### Flask API Scoring
+#### Flask API Scoring
 
 After the assignment row has been created, Make calls the Flask API:
 
@@ -464,7 +464,7 @@ The task **Extract assignments** retrieves the calculated assignment suggestions
 
 This step is necessary because the calculated assignments are stored externally in Google Sheets. Camunda therefore needs a service step to fetch the prepared assignment data before a human user can review it.
 
-### Related Make Scenario: Extract Assignments
+#### Related Make Scenario: Extract Assignments
 
 <img width="1526" height="438" alt="Make Extract assignments" src="https://github.com/user-attachments/assets/d57e33c6-a02b-4b39-9bc7-bd2aa3e2a394" />
 
@@ -517,7 +517,7 @@ The purpose of this step is not to fully automate the final decision. Instead, t
 
 ---
 
-## 9. Scoring Logic
+## 8. Scoring Logic
 
 The Python scoring script evaluates each possible case-coach combination. The goal of the scoring logic is to identify whether a coach is eligible for a case and, if eligible, how suitable the coach is based on predefined business rules.
 
@@ -531,7 +531,7 @@ The scoring model consists of two parts:
 
 ---
 
-### 9.1 Hard Criteria
+### 8.1 Hard Criteria
 
 A coach is not eligible if at least one hard criterion is violated.
 
@@ -564,7 +564,7 @@ Example:
 
 ---
 
-### 9.2 Scoring Model
+### 8.2 Scoring Model
 
 If all hard criteria are fulfilled, the total score is calculated based on three score components.
 
@@ -583,7 +583,7 @@ total_score = language_score + duration_score + skill_score
 
 ---
 
-### 9.3 Language Score
+### 8.3 Language Score
 
 The language score evaluates whether the case languages match the coach languages. A main language match receives the highest score. Matches involving secondary languages receive fewer points.
 
@@ -607,7 +607,7 @@ language_score = 30
 
 ---
 
-### 9.4 Duration Score
+### 8.4 Duration Score
 
 The duration score evaluates the travel duration between the coach address and the client address. The value `duration_value` is provided by the Google Maps API in seconds.
 
@@ -633,7 +633,7 @@ duration_score = 25
 
 ---
 
-### 9.5 Skill Score
+### 8.5 Skill Score
 
 The skill score evaluates whether the case type matches the skills of the coach.
 
@@ -655,7 +655,7 @@ skill_score = 40
 
 ---
 
-### 9.6 Example Calculation
+### 8.6 Example Calculation
 
 Example input:
 
@@ -716,7 +716,7 @@ Example output:
 
 ---
 
-### 9.7 Summary of the Scoring Logic
+### 8.7 Summary of the Scoring Logic
 
 The scoring model ensures that unsuitable coaches are excluded before a score is calculated. This is done through hard criteria for language match, capacity and travel duration.
 
@@ -726,9 +726,9 @@ The final decision is still made by a human user in the review step. The scoring
 
 ---
 
-## 10. Make Scenarios
+## 9. Make Scenarios
 
-### 10.1 Get Onboarding Data
+### 9.1 Get Onboarding Data
 
 Purpose:
 
@@ -746,7 +746,7 @@ Main modules:
 
 ---
 
-### 10.2 Calculate Distances and Score
+### 9.2 Calculate Distances and Score
 
 Purpose:
 
@@ -770,7 +770,7 @@ Main modules:
 
 ---
 
-### 10.3 Extract Assignments
+### 9.3 Extract Assignments
 
 Purpose:
 
@@ -789,7 +789,7 @@ Main modules:
 
 ---
 
-## 11. Important Mapping Rules
+## 10. Important Mapping Rules
 
 The following mappings are important for the process to work correctly.
 
@@ -835,11 +835,11 @@ coach_type = {{5.`14`}}
 ---
 
 
-## 12. Flask API Endpoint
+## 11. Flask API Endpoint
 
 The Flask API exposes the scoring function.
 
-### 12.1 Healthcheck
+### 11.1 Healthcheck
 
 ```http
 GET /
@@ -856,7 +856,7 @@ Expected response:
 
 ---
 
-### 12.2 Score Assignment
+### 11.2 Score Assignment
 
 ```http
 POST /score-assignment
@@ -867,9 +867,9 @@ The endpoint receives one assignment candidate and returns the calculated eligib
 
 ---
 
-## 13. Testing
+## 12. Testing
 
-### 13.1 Test Flask API Locally
+### 12.1 Test Flask API Locally
 
 Start Flask:
 
@@ -906,7 +906,7 @@ curl -X POST http://127.0.0.1:5000/score-assignment \
 
 ---
 
-### 13.2 Test with Postman
+### 12.2 Test with Postman
 
 Use the following configuration:
 
@@ -919,7 +919,7 @@ Body: raw JSON
 
 ---
 
-### 13.3 Test Make Scenario
+### 12.3 Test Make Scenario
 
 Recommended test sequence:
 
@@ -933,7 +933,7 @@ Recommended test sequence:
 
 ---
 
-## 14. Resulting Benefits
+## 13. Resulting Benefits
 
 The To-Be process provides several improvements compared to the As-Is process.
 
@@ -948,7 +948,7 @@ The To-Be process provides several improvements compared to the As-Is process.
 
 ---
 
-## 16. Known Limitations
+## 14. Known Limitations
 
 This implementation is a prototype and uses Google Sheets as a lightweight database. For a production-ready solution, a relational database should be considered.
 
@@ -959,7 +959,7 @@ The scoring model is rule-based. Future versions could include more sophisticate
 ---
 
 
-## 17. Summary
+## 15. Summary
 
 The To-Be Case Allocation process combines structured data collection, automated distance calculation, rule-based scoring and human review.
 
