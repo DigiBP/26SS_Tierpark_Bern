@@ -208,6 +208,11 @@ The result is returned to Make and written back into the `assignments` table.
 
 ## 6. Data Model
 
+### Entity Relationship Diagramm / ERD
+<img width="801" height="1031" alt="Datenmodel DigiBP drawio" src="https://github.com/user-attachments/assets/65f22ec8-8f28-44b2-bc57-9a1939c744f2" />
+
+Since the prototype uses Google Sheets as a lightweight database, some case and coach attributes are stored redundantly in the `assignments` table. In a fully normalized relational database, these attributes would normally be retrieved through the foreign keys `case_id` and `coach_id`. However, for the Google Sheets and Make-based prototype, storing these values as snapshot data makes the assignment results easier to review, export and process in subsequent automation steps.
+
 ### 6.1 Table: `unassigned_cases`
 
 The `unassigned_cases` table stores client cases that have not yet been fully allocated.
