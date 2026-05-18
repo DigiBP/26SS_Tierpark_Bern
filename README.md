@@ -986,49 +986,12 @@ This approach ensures that automation is applied where it creates value, while h
 
 ![image alt](https://github.com/DigiBP/26SS_Tierpark_Bern/blob/053719d3e69841d64c0b4f05bb7848ce25a40b72/Case%20Allocation%20ToBe%20Process.png)
 
-The TO-BE process is modeled as one main Camunda BPMN process called **CaseAllocation66**. The process starts when a new client case is created and ends when the case has been assigned and the client has been informed.
-
-The process contains the following main stages:
-
-1. **Client data entry**  
-   The responsible user enters the client data through a form.
-
-2. **Automated distance and score calculation**  
-   The system calculates distance and scoring values for potential family coaches.
-
-3. **Assignment extraction**  
-   The system extracts possible assignments based on the calculated results.
-
-4. **Assignment review**  
-   A responsible user reviews the proposed assignments.
-
-5. **Soft factor evaluation**  
-   A business rule task evaluates qualitative criteria such as suitability, preferences, or case-specific factors.
-
-6. **Family coach profile review**  
-   The responsible user reviews the selected family coach profile.
-
-7. **Recommendation decision**  
-   An exclusive gateway checks whether the family coach is recommended.
-
-8. **Client notification**  
-   If the coach is recommended, the client is informed.
-
-9. **Case assigned**  
-   The process ends after the client has been informed and the case is assigned.
-
-If a technical error occurs during distance and score calculation, the process uses a boundary error event and moves to an error review task.
 
 # Description of the TO-BE Process Elements
-
-
- # TO-BE Process Elements
 
 ## Overview
 This document describes the main BPMN elements of the TO-BE case allocation process for the Changekultur project.  
 The process combines structured data capture, automated hard-factor matching, exception handling, human review, and decision automation.
-
-## Description of the TO-BE Process Elements
 
 | Row | BPMN Element | Description | Comment |
 |---|---|---|---|
@@ -1072,16 +1035,7 @@ The process then checks whether the coach is recommended. If the recommendation 
 ### 8. Client communication and process completion
 Once a suitable coach has been confirmed, the client is informed about the allocation result. After this communication step, the process ends successfully with the case assigned.
 
-## Summary
-The TO-BE process combines:
-- structured digital data capture
-- automated hard-factor matching
-- explicit exception handling
-- human review and oversight
-- DMN-based soft-factor decision support
-- final communication and case completion
 
-This design ensures that the allocation process is both efficient and human-centered.
 
 
 
