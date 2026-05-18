@@ -1009,6 +1009,7 @@ The process combines structured data capture, automated hard-factor matching, ex
 | 12 | **Service Task / User Task – Inform client** | The client is informed about the allocation result. | This is the final communication step before process completion. |
 | 13 | **End Event – Case assigned** | The process ends once the case has been successfully allocated and the client has been informed. | This marks the successful completion of the TO-BE allocation process. |
 
+<img width="693" height="337" alt="image" src="https://github.com/user-attachments/assets/636f6469-4698-476e-af7e-1d9f5aaff42a" />
 
 
 # Value of the TO-BE Process
