@@ -475,8 +475,33 @@ Example response:
 The returned values are written back into the score columns of the same assignment row.
 
 ---
+## Step 3: Review Error 
 
-## Step 3: Extract Assignments
+The task **Review error** is a User Task. 
+
+It is triggered when the automated allocation step fails, for example because of: 
+
+missing or inconsistent data,  
+
+an API or integration problem (Google Maps API failure, Google Sheets access or data issue, Make scenario execution failure, HTTP/API request errors) 
+
+or an unsuccessful system calculation.  
+
+At this stage, the responsible person reviews the problem and identifies why the automated allocation could not be completed successfully. The person then decides how to proceed so that the case can continue in the process. 
+
+The purpose of this step is to make sure that technical or data-related problems are not ignored. A human user can understand the issue and decide how to continue the case allocation process. 
+
+## Step 4: Assign Manually 
+
+The task **Assign Manually** is a Manual Task. 
+
+If the automated allocation cannot be completed, the responsible person manually selects another possible Family Coach using available information and professional judgement. 
+
+This is a fallback step. It ensures that the case allocation process can continue even if the automated service task fails. 
+
+The purpose of this step is to provide a fallback path for exceptional situations. It ensures that the process remains operational even when the automated matching step fails. 
+
+## Step 5: Extract Assignments
 
 The task **Extract assignments** retrieves the calculated assignment suggestions from the `assignments` table and sends them back to Camunda.
 
@@ -525,7 +550,7 @@ After the data has been returned to Camunda, the assignment row can be marked as
 
 ---
 
-## Step 4: Review Assignments
+## Step 6: Review Assignments
 
 The task **Review assignments** is a user task.
 
@@ -533,6 +558,54 @@ At this stage, the system has already calculated possible coach assignments. The
 
 The purpose of this step is not to fully automate the final decision. Instead, the automatic scoring provides decision support. A human user can still apply professional judgement before continuing with the final allocation.
 
+
+## Step 7: Evaluate soft factors 
+
+The task **Evaluate soft factors** is a Business Rule Task. 
+
+At this stage, the system evaluates qualitative suitability criteria that are not fully covered by the previous hard-factor calculation. While the earlier automated step focuses on measurable criteria such as distance, language compatibility, and scoring, this step considers more contextual and qualitative aspects of the coach-case match. The soft factors include case complexity, coach experience, and coach type. 
+
+This task is implemented in Camunda using DMN-based decision logic. The DMN table receives the relevant input values and returns a recommendation outcome indicating whether the proposed Family Coach is suitable for the client case. 
+
+The purpose of this step is to provide structured and transparent decision support for more qualitative criteria. It improves consistency in the evaluation process while still leaving the final judgment to the responsible Case Coach. 
+
+## Step 8: Review Family Coach Profile 
+
+The task **Review Family Coach profile** is modeled as a User Task. 
+
+At this stage, the Case Coach reviews the proposed Family Coach in greater detail. This review includes the coach profile, the automated recommendation, and the result of the soft-factor evaluation. 
+
+The Case Coach assesses whether the proposed coach is appropriate for the specific client case. This may include reviewing the coach’s professional experience, employment type, practical suitability for the case, and whether the match is sensible in the real operational context. 
+
+The purpose of this step is to ensure that the final allocation decision is not made solely by the system. Instead, the recommendation is validated by a human expert, which preserves professional judgment and reflects the actual practice of coach allocation in the organisation. 
+
+## Step 9: Recommended? 
+
+The element **Recommended?** is an Exclusive Gateway. 
+
+At this point, the process checks whether the Reviewed Family Coach is recommended for the client case. 
+
+If the coach is suitable, the process continues to the next step, where the client is informed about the allocation. If the coach is not suitable, the process loops back to Evaluate soft factors, so that another coach option can be assessed. 
+
+The purpose of this gateway is to create a clear decision point in the process. It ensures that only suitable coach recommendations move forward to final communication with the client. 
+
+## Step 10: Inform Client 
+
+The task **Inform client** is a User Task. 
+
+At this stage, the client is informed about the allocation result, depending on the communication channel used by the organisation. 
+
+The responsible person informs the client that a Family Coach has been selected and communicates the relevant assignment outcome. 
+
+The purpose of this step is to ensure that the client receives clear confirmation about the allocation before the process ends. 
+
+## Step 11: Case Assigned 
+
+The event **Case assigned** is an End Event. 
+
+At this stage, the process is completed because the client case has been successfully allocated to a suitable Family Coach and the client has been informed. 
+
+The purpose of this event is to mark the successful completion of the TO-BE case allocation process. 
 ---
 
 ## 8. Scoring Logic
