@@ -20,6 +20,18 @@
 
 # Introduction
 
+This document describes the Case allocation process at Changekultur organization as part of the “Digitilaization of Businesss Processes” project at the University of applied Sciences and Arts North-Western Switzerland. The purpose of this process is to reduce manual effort, improve transparency, and support better decision-making during coach allocation. 
+
+# Description of the Use Case 
+
+In the digital age, manual and informal allocation processes can become time-consuming, inconsistent, and difficult to monitor. For our project, we are inspired by  ChangeKultur GmbH, a Zürich‑based social services organization, that provides family coaching, youth support, and integration programs across Switzerland. The company focuses on empowering families through structured coaching and multilingual support. 
+
+One of the processes that required attention was the case allocation process. When a new client case is received, the organisation needs to identify and assign the most suitable Family Coach within a short period of time. In the current situation, this decision is largely manual and depends on the Case Coach’s personal knowledge of available coaches. This makes the process time-intensive and increases the risk of subjective decisions, incomplete information, and delays. 
+
+Our digital solution aims to streamline and automate the case allocation process. Our solution uses Camunda to model and control the workflow and Make to support automation and system integration. This improves transparency, reduces manual effort, and ensures that the allocation decision is supported by structured data while still keeping human judgement in the final decision. This is important because family coach allocation should not only be based on system scores, but also on professional judgement and the specific needs of the family. 
+
+There is no automation in the current ChangeKultur case allocation process. Therefore, our group created a AS-IS BPMN process based on the information available, identified the main pain points, and designed a TO-BE process that introduces automation, scoring, review steps, and error handling for a more reliable and transparent case allocation process. 
+
 --> Here, we should descibe a general introduction and not a introduction for the to-be process.
 Questions:
 - wahts the topic about
