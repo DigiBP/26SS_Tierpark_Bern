@@ -574,6 +574,8 @@ The purpose of this step is to provide structured and transparent decision suppo
 
 <img width="684" height="350" alt="image" src="https://github.com/user-attachments/assets/f6b4663f-7967-4382-aa5e-880f47ed5ebc" />
 
+
+
 <img width="929" height="445" alt="image" src="https://github.com/user-attachments/assets/42838f82-da61-42f7-8c64-6856f65fdfbf" />
 
 
@@ -601,6 +603,8 @@ If the coach is suitable, the process continues to the next step, where the clie
 The purpose of this gateway is to create a clear decision point in the process. It ensures that only suitable coach recommendations move forward to final communication with the client. 
 
 <img width="512" height="542" alt="image" src="https://github.com/user-attachments/assets/7d572a88-fdce-4d85-9097-439ead3458ec" />
+
+
 
 <img width="851" height="538" alt="image" src="https://github.com/user-attachments/assets/b98a7610-c0e2-447d-90b7-507124967159" />
 
@@ -1108,8 +1112,7 @@ The process combines structured data capture, automated hard-factor matching, ex
 | 12 | <img width="128" height="113" alt="image" src="https://github.com/user-attachments/assets/79702a33-48d6-4b21-aec7-ae3d8907db5c" /> | The client is informed about the allocation result. | This is the final communication step before process completion. |
 | 13 | <img width="89" height="85" alt="image" src="https://github.com/user-attachments/assets/a857950a-bb2a-4294-9753-86d439eefff4" /> | The process ends once the case has been successfully allocated and the client has been informed. | This marks the successful completion of the TO-BE allocation process. |
 
-<img width="693" height="337" alt="image" src="https://github.com/user-attachments/assets/636f6469-4698-476e-af7e-1d9f5aaff42a" />
-<img width="925" height="439" alt="image" src="https://github.com/user-attachments/assets/fea9df63-b9ac-4d34-8bef-bbeb0b80d801" />
+
 
 
 # Value of the TO-BE Process
