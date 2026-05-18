@@ -110,9 +110,10 @@ The first four main tasks are:
 
 ---
 
-## 5. High-Level Architecture
+## 4. High-Level Architecture
 
-## High-Level Architecture
+<img width="1807" height="1114" alt="To-Be Process Export drawio" src="https://github.com/user-attachments/assets/1cc6fe29-a093-4bb6-8b89-07cfbbf6a0b5" />
+
 
 The high-level architecture shows how the To-Be Case Allocation process is supported by different technical components and automation tools.
 
@@ -123,13 +124,12 @@ The Flask API provides access to the Python scoring script, which calculates the
 Camunda coordinates the overall workflow. It triggers Make scenarios, manages user tasks such as claiming, completing and reviewing tasks, and supports the final decision-making process. The Camunda Cockpit is used to monitor and manage the process execution.
 
 
-![alt text](<To-Be Process Export.drawio.png>)
 
 ---
 
-## 6. Main Changes in the To-Be Process
+## 5. Main Changes in the To-Be Process
 
-### 6.1 Creation of a New Database Structure
+### 5.1 Creation of a New Database Structure
 
 A new database structure was created using Google Sheets. The database consists of three main tables:
 
@@ -145,7 +145,7 @@ Additional data fields were introduced so that the company has more information 
 
 ---
 
-### 6.2 Structured Data Collection Through an Onboarding Form
+### 5.2 Structured Data Collection Through an Onboarding Form
 
 An onboarding form was created to ensure that new case data is collected in a consistent and structured format.
 
@@ -155,7 +155,7 @@ This is important because automation requires readable and structured digital in
 
 ---
 
-### 6.3 Integration of the Google Maps API
+### 5.3 Integration of the Google Maps API
 
 The Google Maps API is used to automatically calculate the travel distance and estimated driving duration between the client address and the coach address.
 
@@ -172,7 +172,7 @@ This automation replaces manual distance checks and ensures that every possible 
 
 ---
 
-### 6.4 Flask API and Python Scoring Script
+### 5.4 Flask API and Python Scoring Script
 
 A Flask API was created to make the Python scoring logic accessible from Make.
 
@@ -197,9 +197,9 @@ The result is returned to Make and written back into the `assignments` table.
 
 ---
 
-## 7. Data Model
+## 6. Data Model
 
-### 7.1 Table: `unassigned_cases`
+### 6.1 Table: `unassigned_cases`
 
 The `unassigned_cases` table stores client cases that have not yet been fully allocated.
 
@@ -223,7 +223,7 @@ The `unassigned_cases` table stores client cases that have not yet been fully al
 
 ---
 
-### 7.2 Table: `coaches`
+### 6.2 Table: `coaches`
 
 The `coaches` table stores all available family coaches.
 
@@ -247,7 +247,7 @@ The `coaches` table stores all available family coaches.
 
 ---
 
-### 7.3 Table: `assignments`
+### 6.3 Table: `assignments`
 
 The `assignments` table stores one calculated row per case-coach combination.
 
@@ -289,9 +289,9 @@ The `assignments` table stores one calculated row per case-coach combination.
 
 ---
 
-## 8. Detailed Process Description
+## 7. Detailed Process Description
 
-## Step 1: Enter Client Data Forms
+### Step 1: Enter Client Data Forms
 
 The process starts with a user task where the administration enters the client and case data into a Google Form `Onboarding Details` [Link](https://docs.google.com/forms/d/e/1FAIpQLScMQjz-gnmlCsyXJdbgRhEz9PHKRcYQhKztVMIKHRDN2gxzEA/viewform). This includes personal data, address data, languages, urgency, case type, workload and case complexity.
 
@@ -302,7 +302,8 @@ The entered data can then be submitted and the data is directly stored in the `u
 ### Related Make Scenario: Get Onboarding Data
 
 The Make scenario **Get Onboarding Data** reads new cases from `unassigned_cases`.
-![alt text](image.png)
+<img width="748" height="294" alt="Make Get Onboarding Data" src="https://github.com/user-attachments/assets/fe4a38e4-f045-4015-9769-6225a276fe75" />
+
 
 The scenario filters for rows where `camunda_submitted` is still empty. It then sends the case information to the Camunda `submit-form` endpoint for the process `CaseAllocation66`.
 
@@ -333,7 +334,7 @@ camunda_submitted = TRUE
 
 ---
 
-## Step 2: Calculate Distances and Score
+### Step 2: Calculate Distances and Score
 
 The task **Calculate Distances and Score** is an automated service task.
 
@@ -342,6 +343,9 @@ Its purpose is to generate possible coach assignments for an unassigned case. Fo
 The output of this step is a set of assignment rows in the `assignments` table.
 
 ### Related Make Scenario: Calculate Distances and Score
+
+<img width="1490" height="287" alt="Make Calculate Distances and Score" src="https://github.com/user-attachments/assets/9e5ec88b-8255-4ca7-a6df-89692cff43d2" />
+
 
 This scenario is triggered by a Make webhook from Camunda. It performs the following logic:
 ![alt text](image-1.png)
@@ -461,6 +465,9 @@ The task **Extract assignments** retrieves the calculated assignment suggestions
 This step is necessary because the calculated assignments are stored externally in Google Sheets. Camunda therefore needs a service step to fetch the prepared assignment data before a human user can review it.
 
 ### Related Make Scenario: Extract Assignments
+
+<img width="1526" height="438" alt="Make Extract assignments" src="https://github.com/user-attachments/assets/d57e33c6-a02b-4b39-9bc7-bd2aa3e2a394" />
+
 
 The Make scenario **Extract Assignments** is triggered by a webhook.
 
