@@ -73,11 +73,9 @@ There is no way to identify a suitable coach for a given case. Suitability decis
 
 
 
-# Description of the TO-BE Process Elements
+## Description of the TO-BE Process Elements
 
-## Overview
-This document describes the main BPMN elements of the TO-BE case allocation process for the Changekultur project.  
-The process combines structured data capture, automated hard-factor matching, exception handling, human review, and decision automation.
+
 
 | Row | BPMN Element | Description | Comment |
 |---|---|---|---|
