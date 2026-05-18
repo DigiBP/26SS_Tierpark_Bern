@@ -49,7 +49,7 @@ This to-be process combines automation, data-based scoring, and human review. Th
 
 # AS-IS Pain Points
 
-
+![image alt](https://github.com/DigiBP/26SS_Tierpark_Bern/blob/fa090c2cb78dc9208c1435b1a22478b10402501f/Case%20allocation%20AS-IS%20Process.png)
 1. Manual case handling 
 The responsible person must manually collect and compare all information needed for the assignment. 
 
