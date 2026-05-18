@@ -99,8 +99,9 @@ The following criteria were used to assess the automation potential of process t
 | Risk | Which process risks require manual work or human validation? | Low, if incorrect automation could create significant operational risks. |
 | Probability of Upgrades | Will the underlying system be maintained or replaced shortly? | Low, if the system landscape is unstable or temporary. |
 
-The Case Allocation process was considered suitable for automation because several activities are repetitive, data-driven, rule-based and based on structured input data.
+Source: FHNW Course BPM Slides 2025
 
+The Case Allocation process was considered suitable for automation because several activities are repetitive, data-driven, rule-based and based on structured input data.
 
 
 ## 3. Process Overview
