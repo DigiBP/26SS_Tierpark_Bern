@@ -1010,6 +1010,7 @@ The process combines structured data capture, automated hard-factor matching, ex
 | 13 | **End Event – Case assigned** | The process ends once the case has been successfully allocated and the client has been informed. | This marks the successful completion of the TO-BE allocation process. |
 
 <img width="693" height="337" alt="image" src="https://github.com/user-attachments/assets/636f6469-4698-476e-af7e-1d9f5aaff42a" />
+<img width="925" height="439" alt="image" src="https://github.com/user-attachments/assets/fea9df63-b9ac-4d34-8bef-bbeb0b80d801" />
 
 
 # Value of the TO-BE Process
