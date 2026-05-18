@@ -23,6 +23,8 @@ The TO-BE process describes an automated case allocation process for assigning a
 This to-be process combines automation, data-based scoring, and human review. This is important because coach allocation should not depend solely on technical matching criteria, such as distance or workload, but also on human judgement, soft factors, and the client's specific needs.
 
 
+
+
 # Description of TO-BE Process
 Automated Case Allocation
 The use case focuses on allocating a client case to the most suitable Family Coach. The process begins when the admin enters the client data through a form. This information is saved in the unassigned cases table in the database. After the client data is submitted, the system automatically calculates the distance and score for potential Family Coaches based on factors such as coach profile, hard factors (workload information, language requirements, location).
@@ -61,6 +63,908 @@ If the coach is recommended and accepted, the client is informed about the alloc
 7. **Client communication delay**  
    The client is informed only after the internal decision is completed, which can lead to delays if responsibilities are unclear.
 
+# To-Be Process: Case Allocation
+
+## 1. Purpose
+
+The To-Be process represents a significant step towards a more digitalized and automated **Case Allocation** process.
+
+The goal of the project team was to automate time-consuming, frequently occurring and rule-based tasks that address the main pain points of the company. The collected pain points and the visualized As-Is process formed the foundation for designing the To-Be process.
+
+Compared to the As-Is process, the To-Be process contains fewer manual tasks and introduces several automated system tasks. This improves efficiency, reduces manual coordination effort and creates a more structured basis for decision-making.
+
+---
+
+## 2. Criteria for Task Automation
+
+Before designing the To-Be process, the project team evaluated which tasks were suitable for automation. The goal was not to automate the entire process blindly, but to identify tasks where automation creates real business value.
+
+The following criteria were used to assess the automation potential of process tasks:
+
+| Criterion | Evaluation Question | Automation Potential |
+|---|---|---|
+| Standardization | Is the degree of standardization high enough? Are the inputs and outputs fixed? | High, if the task follows a stable and repeatable structure. |
+| Rule-based Logic | Is the process rule-based, or does it require human judgement? | High, if clear business rules can be defined. |
+| Digital Input | Are the required inputs available in a readable digital format? | High, if data is already structured and digitally available. |
+| Volume and Manual Effort | How time-consuming is the process? How high is the transaction volume? | High, if the task is repetitive and manually intensive. |
+| Dependencies and Limitations | Are there dependencies or technical limitations that prevent automation? | Low, if many external dependencies or unclear data structures exist. |
+| Risk | Which process risks require manual work or human validation? | Low, if incorrect automation could create significant operational risks. |
+| Probability of Upgrades | Will the underlying system be maintained or replaced shortly? | Low, if the system landscape is unstable or temporary. |
+
+The Case Allocation process was considered suitable for automation because several activities are repetitive, data-driven, rule-based and based on structured input data.
+
+
+
+## 3. Process Overview
+
+The To-Be process is called **Case Allocation**. It starts when new client data is entered and continues with the automated calculation of potential coach assignments.
+
+The first four main tasks are:
+
+| Step | Task | Type | Purpose |
+|---:|---|---|---|
+| 1 | Enter client data (Forms) | User Task | Capture the client and case information |
+| 2 | Calculate Distances and Score | Service Task | Calculate distance, duration and suitability score for possible coach assignments |
+| 3 | Extract assignments | Service Task | Retrieve calculated assignment suggestions and return them to Camunda |
+| 4 | Review assignments | User Task | Allow a human user to review the proposed assignments |
+
+---
+
+## 5. High-Level Architecture
+
+## High-Level Architecture
+
+The high-level architecture shows how the To-Be Case Allocation process is supported by different technical components and automation tools.
+
+The process starts with the submission of client data through a Google Form. The data is stored in the `unassigned_cases` table and then processed through Make scenarios. Make acts as the central integration layer between Google Sheets, Camunda, Google Maps, the Flask API and the Python scoring logic.
+
+The Flask API provides access to the Python scoring script, which calculates the suitability score for each case-coach combination. The Google Maps API is used to calculate travel distance and driving duration. The results are stored in the `assignments` table.
+
+Camunda coordinates the overall workflow. It triggers Make scenarios, manages user tasks such as claiming, completing and reviewing tasks, and supports the final decision-making process. The Camunda Cockpit is used to monitor and manage the process execution.
+
+
+![alt text](<To-Be Process Export.drawio.png>)
+
+---
+
+## 6. Main Changes in the To-Be Process
+
+### 6.1 Creation of a New Database Structure
+
+A new database structure was created using Google Sheets. The database consists of three main tables:
+
+| Table | Purpose |
+|---|---|
+| `unassigned_cases` | Stores newly entered client cases that still need to be allocated. |
+| `coaches` | Stores all relevant coach information, including languages, skills and capacity. |
+| `assignments` | Stores calculated case-coach combinations, including distance, duration, eligibility and scoring results. |
+
+This structure allows the process to store and process all relevant information in a structured way.
+
+Additional data fields were introduced so that the company has more information available for automated decision support. These fields include languages, case type, workload, coach skills, coach capacity, case complexity and travel duration.
+
+---
+
+### 6.2 Structured Data Collection Through an Onboarding Form
+
+An onboarding form was created to ensure that new case data is collected in a consistent and structured format.
+
+The form helps to standardize the input data and reduces the risk of missing or inconsistent information. Once submitted, the data is stored in the `unassigned_cases` table and can be used by the automated workflow.
+
+This is important because automation requires readable and structured digital input. Without standardized input data, the later calculation of distances, eligibility and scores would not be reliable.
+
+---
+
+### 6.3 Integration of the Google Maps API
+
+The Google Maps API is used to automatically calculate the travel distance and estimated driving duration between the client address and the coach address.
+
+The calculated values are stored in the `assignments` table.
+
+| Field | Description |
+|---|---|
+| `distance_text` | Human-readable distance, for example `49.6 km`. |
+| `distance_value` | Distance in meters. |
+| `duration_text` | Human-readable driving duration, for example `45 mins`. |
+| `duration_value` | Driving duration in seconds. |
+
+This automation replaces manual distance checks and ensures that every possible case-coach combination is evaluated consistently.
+
+---
+
+### 6.4 Flask API and Python Scoring Script
+
+A Flask API was created to make the Python scoring logic accessible from Make.
+
+The Flask API exposes the following endpoint:
+
+```http
+POST /score-assignment
+```
+
+Make sends one case-coach combination to this endpoint. The Python script then calculates the eligibility and score for the assignment.
+
+The scoring logic considers the following criteria:
+
+| Scoring Area | Description |
+|---|---|
+| Language Match | Checks whether the client and coach have compatible languages. |
+| Capacity | Checks whether the coach has enough remaining capacity. |
+| Travel Duration | Checks whether the travel duration is acceptable. |
+| Skill Match | Checks whether the coach has the required skills for the case type. |
+
+The result is returned to Make and written back into the `assignments` table.
+
+---
+
+## 7. Data Model
+
+### 7.1 Table: `unassigned_cases`
+
+The `unassigned_cases` table stores client cases that have not yet been fully allocated.
+
+| Field | Description |
+|---|---|
+| `case_id` | Unique case identifier |
+| `First Name` | Client first name |
+| `Last Name` | Client last name |
+| `Address` | Client street address |
+| `City` | Client city |
+| `Postal Code` | Client postal code |
+| `Main Language` | Client main language |
+| `Other Language` | Additional client language |
+| `Urgency` | Urgency of the case |
+| `Type` | Case type |
+| `Workload` | Expected workload or case size |
+| `Zeitstempel` | Timestamp of the case entry |
+| `Case Complexity` | Complexity of the case |
+| `camunda_submitted` | Indicates whether the case was already submitted to Camunda |
+| `assigned` | Indicates whether assignment calculation was already triggered |
+
+---
+
+### 7.2 Table: `coaches`
+
+The `coaches` table stores all available family coaches.
+
+| Field | Description |
+|---|---|
+| `coach_id` | Unique coach identifier |
+| `first_name` | Coach first name |
+| `last_name` | Coach last name |
+| `address` | Coach street address |
+| `postal_code` | Coach postal code |
+| `city` | Coach city |
+| `main_language` | Coach main language |
+| `other_language` | Additional coach language |
+| `skills` | Coach skills |
+| `active` | Indicates whether the coach is active |
+| `workload` | Current workload |
+| `capacity_max_in_prozent` | Maximum capacity |
+| `remaining_capacity` | Remaining available capacity |
+| `coach_experience` | Experience level |
+| `coach_type` | Coach employment type |
+
+---
+
+### 7.3 Table: `assignments`
+
+The `assignments` table stores one calculated row per case-coach combination.
+
+| Field | Description |
+|---|---|
+| `assignment_id` | Unique assignment ID composed of case ID and coach ID |
+| `case_id` | Linked case |
+| `coach_id` | Linked coach |
+| `coach_first_name` | Coach first name |
+| `coach_last_name` | Coach last name |
+| `coach_main_languages` | Coach main languages |
+| `coach_other_languages` | Coach other languages |
+| `coach_skills` | Coach skills |
+| `coach_remaining_capacity` | Remaining coach capacity |
+| `coach_city` | Coach city |
+| `case_first_name` | Client first name |
+| `case_last_name` | Client last name |
+| `case_size_in_procent` | Case workload or size |
+| `case_urgency` | Case urgency |
+| `case_main_languages` | Case main languages |
+| `case_other_languages` | Case other languages |
+| `case_type` | Type of case |
+| `case_city` | Case city |
+| `distance_text` | Human-readable distance |
+| `distance_value` | Distance in meters |
+| `duration_text` | Human-readable travel duration |
+| `duration_value` | Duration in seconds |
+| `status` | Processing status |
+| `created_at` | Timestamp of assignment creation |
+| `eligible` | Indicates whether the coach is eligible |
+| `exclusion_reason` | Reason if the coach is not eligible |
+| `language_score` | Score for language match |
+| `duration_score` | Score for travel duration |
+| `skill_score` | Score for skill match |
+| `total_score` | Total calculated score |
+| `coach_experience` | Coach experience level |
+| `case_complexity` | Complexity of the case |
+| `coach_type` | Coach type |
+
+---
+
+## 8. Detailed Process Description
+
+## Step 1: Enter Client Data Forms
+
+The process starts with a user task where the administration enters the client and case data into a Google Form `Onboarding Details` [Link](https://docs.google.com/forms/d/e/1FAIpQLScMQjz-gnmlCsyXJdbgRhEz9PHKRcYQhKztVMIKHRDN2gxzEA/viewform). This includes personal data, address data, languages, urgency, case type, workload and case complexity.
+
+The entered data can then be submitted and the data is directly stored in the `unassigned_cases` Google Sheet from the Google-Doc `Data Base Client`
+
+
+
+### Related Make Scenario: Get Onboarding Data
+
+The Make scenario **Get Onboarding Data** reads new cases from `unassigned_cases`.
+![alt text](image.png)
+
+The scenario filters for rows where `camunda_submitted` is still empty. It then sends the case information to the Camunda `submit-form` endpoint for the process `CaseAllocation66`.
+
+The JSON sent to Camunda includes variables such as:
+
+```json
+{
+  "caseId": "...",
+  "firstName": "...",
+  "lastName": "...",
+  "address": "...",
+  "city": "...",
+  "postalCode": "...",
+  "mainLanguage": "...",
+  "otherLanguage": "...",
+  "urgency": "...",
+  "caseType": "...",
+  "workload": "...",
+  "case_complexity": "..."
+}
+```
+
+After successful submission, the case is marked as submitted in Google Sheets by setting:
+
+```text
+camunda_submitted = TRUE
+```
+
+---
+
+## Step 2: Calculate Distances and Score
+
+The task **Calculate Distances and Score** is an automated service task.
+
+Its purpose is to generate possible coach assignments for an unassigned case. For each available coach, the process calculates the travel distance and travel duration from the coach address to the client address. Afterwards, the system evaluates whether the coach is suitable for the case.
+
+The output of this step is a set of assignment rows in the `assignments` table.
+
+### Related Make Scenario: Calculate Distances and Score
+
+This scenario is triggered by a Make webhook from Camunda. It performs the following logic:
+![alt text](image-1.png)
+
+1. Receive trigger from Camunda.
+2. Search for unassigned cases in `unassigned_cases`.
+3. Mark the case in the `unassigned_cases`in the field `assigned` = `TRUE` 
+4. Read available coaches from the `coaches` table.
+5. Calculate distance and duration with Google Maps.
+6. Add one row per case-coach combination to the `assignments` table.
+7. Call the Flask API endpoint `/score-assignment`.
+8. Write the returned scoring result back to the assignment row.
+9. Return a response to Camunda.
+
+### Google Maps Calculation
+
+For each coach, Google Maps calculates:
+
+| Output | Description |
+|---|---|
+| `distance.text` | Human-readable distance, for example `49.6 km` |
+| `distance.value` | Distance in meters |
+| `duration.text` | Human-readable duration, for example `45 mins` |
+| `duration.value` | Duration in seconds |
+| `status` | Google Maps result status |
+
+These values are stored in the `assignments` table.
+
+### Assignment Row Creation
+
+The scenario creates one assignment row per case-coach combination.
+
+The `Add a Row` module writes values such as:
+
+```text
+assignment_id = case_id + "-" + coach_id
+case_id
+coach_id
+coach_first_name
+coach_last_name
+coach_main_languages
+coach_other_languages
+coach_skills
+coach_remaining_capacity
+coach_city
+case_first_name
+case_last_name
+case_size_in_procent
+case_urgency
+case_main_languages
+case_other_languages
+case_type
+case_city
+distance_text
+distance_value
+duration_text
+duration_value
+status
+created_at
+coach_experience
+case_complexity
+coach_type
+```
+
+### Flask API Scoring
+
+After the assignment row has been created, Make calls the Flask API:
+
+```http
+POST /score-assignment
+Content-Type: application/json
+```
+
+Example payload:
+
+```json
+{
+  "assignment_id": "CASE-0002-COACH001",
+  "case_id": "CASE-0002",
+  "coach_id": "COACH001",
+  "case_main_language": "German",
+  "case_other_language": "French",
+  "coach_main_language": "German",
+  "coach_other_language": "French",
+  "case_type": "Medium",
+  "coach_skills": "Kinderbetreuung,Familienbegleitung",
+  "case_size_in_percent": 20,
+  "coach_remaining_capacity": 80,
+  "duration_value": 2703
+}
+```
+
+Example response:
+
+```json
+{
+  "assignment_id": "CASE-0002-COACH001",
+  "case_id": "CASE-0002",
+  "coach_id": "COACH001",
+  "eligible": true,
+  "exclusion_reason": "",
+  "language_score": 30,
+  "duration_score": 25,
+  "skill_score": 0,
+  "total_score": 55
+}
+```
+
+The returned values are written back into the score columns of the same assignment row.
+
+---
+
+## Step 3: Extract Assignments
+
+The task **Extract assignments** retrieves the calculated assignment suggestions from the `assignments` table and sends them back to Camunda.
+
+This step is necessary because the calculated assignments are stored externally in Google Sheets. Camunda therefore needs a service step to fetch the prepared assignment data before a human user can review it.
+
+### Related Make Scenario: Extract Assignments
+
+The Make scenario **Extract Assignments** is triggered by a webhook.
+
+The scenario searches the `assignments` table for rows where:
+
+```text
+status = OK
+```
+
+After finding an assignment row, Make sends the relevant assignment fields back to Camunda through the Camunda `submit-form` endpoint.
+
+The returned variables include for example:
+
+```text
+case_id
+assignment_id
+coach_first_name
+coach_last_name
+exclusion_reason
+language_score
+duration_score
+skill_score
+total_score
+coach_skills
+case_first_name
+case_last_name
+case_size_in_procent
+case_main_languages
+case_other_languages
+case_type
+distance_text
+duration_text
+eligible
+```
+
+After the data has been returned to Camunda, the assignment row can be marked as processed.
+
+---
+
+## Step 4: Review Assignments
+
+The task **Review assignments** is a user task.
+
+At this stage, the system has already calculated possible coach assignments. The human user can now review the suggested coach, the case data, the travel distance, duration, eligibility and scores.
+
+The purpose of this step is not to fully automate the final decision. Instead, the automatic scoring provides decision support. A human user can still apply professional judgement before continuing with the final allocation.
+
+---
+
+## 9. Scoring Logic
+
+The Python scoring script evaluates each possible case-coach combination. The goal of the scoring logic is to identify whether a coach is eligible for a case and, if eligible, how suitable the coach is based on predefined business rules.
+
+The scoring model consists of two parts:
+
+1. **Hard Criteria**  
+   These criteria must be fulfilled. If one hard criterion is violated, the coach is not eligible and the total score is set to `0`.
+
+2. **Weighted Score Components**  
+   If all hard criteria are fulfilled, the system calculates a score based on language match, travel duration and skill match.
+
+---
+
+### 9.1 Hard Criteria
+
+A coach is not eligible if at least one hard criterion is violated.
+
+| No. | Criterion | Rule | Data Type | Description | Consequence |
+|---:|---|---|---|---|---|
+| H1 | Language Match | `case_main_language != coach_main_language` AND `case_main_language != coach_other_language` AND `case_other_language != coach_main_language` | String comparison | There is no sufficient language overlap between case and coach. | `eligible = false`, `total_score = 0` |
+| H2 | Capacity | `coach_remaining_capacity * 1.2 < case_size_in_percent` | Numeric | The coach does not have enough remaining capacity, including a safety factor of 20%. | `eligible = false`, `total_score = 0` |
+| H3 | Travel Duration | `duration_value > 10800` | Integer | The travel duration is longer than 3 hours. | `eligible = false`, `total_score = 0` |
+
+If a hard criterion is violated, the scoring result is:
+
+```text
+eligible = false
+total_score = 0
+exclusion_reason = reason for exclusion
+```
+
+Example:
+
+```json
+{
+  "eligible": false,
+  "exclusion_reason": "No valid language match",
+  "language_score": 0,
+  "duration_score": 0,
+  "skill_score": 0,
+  "total_score": 0
+}
+```
+
+---
+
+### 9.2 Scoring Model
+
+If all hard criteria are fulfilled, the total score is calculated based on three score components.
+
+| Score Component | Maximum Points | Description |
+|---|---:|---|
+| Language Score | 30 | Evaluates the language fit between case and coach. |
+| Duration Score | 30 | Evaluates the travel duration between coach and client. |
+| Skill Score | 40 | Evaluates whether the coach has the required skill for the case type. |
+| Total Score | 100 | Sum of all score components. |
+
+The total score is calculated as follows:
+
+```text
+total_score = language_score + duration_score + skill_score
+```
+
+---
+
+### 9.3 Language Score
+
+The language score evaluates whether the case languages match the coach languages. A main language match receives the highest score. Matches involving secondary languages receive fewer points.
+
+| No. | Rule | Points | Data Type | Meaning |
+|---:|---|---:|---|---|
+| L1 | `case_main_language = coach_main_language` | 30 | String | Perfect main language match |
+| L2 | `case_main_language = coach_other_language` | 15 | String | Case main language matches coach secondary language |
+| L3 | `case_other_language = coach_main_language` | 15 | String | Case secondary language matches coach main language |
+| L4 | No language match | 0 | String | No language score |
+
+If multiple language rules match, the highest applicable score is used.
+
+Example:
+
+```text
+case_main_language = German
+coach_main_language = German
+
+language_score = 30
+```
+
+---
+
+### 9.4 Duration Score
+
+The duration score evaluates the travel duration between the coach address and the client address. The value `duration_value` is provided by the Google Maps API in seconds.
+
+| No. | Rule | Points | Data Type |
+|---:|---|---:|---|
+| D1 | `0 < duration_value <= 1800` | 30 | Integer |
+| D2 | `1800 < duration_value <= 3600` | 25 | Integer |
+| D3 | `3600 < duration_value <= 5400` | 20 | Integer |
+| D4 | `5400 < duration_value <= 7200` | 15 | Integer |
+| D5 | `7200 < duration_value <= 9000` | 10 | Integer |
+| D6 | `9000 < duration_value <= 10800` | 5 | Integer |
+| D7 | `duration_value > 10800` | 0 | Integer, but handled as hard criterion |
+
+The shorter the travel duration, the higher the duration score.
+
+Example:
+
+```text
+duration_value = 2703
+
+duration_score = 25
+```
+
+---
+
+### 9.5 Skill Score
+
+The skill score evaluates whether the case type matches the skills of the coach.
+
+| No. | Rule | Points | Data Type | Meaning |
+|---:|---|---:|---|---|
+| S1 | `case_type = coach_skills` OR `case_type in coach_skills` | 40 | String | Coach has the required skill for the case |
+| S2 | No skill match | 0 | String | Coach does not have the required skill |
+
+The skill comparison supports cases where the coach has multiple skills stored in one field.
+
+Example:
+
+```text
+case_type = Kinderbetreuung
+coach_skills = Kinderbetreuung, Familienbegleitung
+
+skill_score = 40
+```
+
+---
+
+### 9.6 Example Calculation
+
+Example input:
+
+```json
+{
+  "assignment_id": "CASE-0002-COACH001",
+  "case_id": "CASE-0002",
+  "coach_id": "COACH001",
+  "case_main_language": "German",
+  "case_other_language": "French",
+  "coach_main_language": "German",
+  "coach_other_language": "French",
+  "case_type": "Kinderbetreuung",
+  "coach_skills": "Kinderbetreuung,Familienbegleitung",
+  "case_size_in_percent": 20,
+  "coach_remaining_capacity": 80,
+  "duration_value": 2703
+}
+```
+
+Calculation:
+
+```text
+Language Score:
+case_main_language = coach_main_language
+German = German
+=> 30 points
+
+Duration Score:
+duration_value = 2703
+1800 < 2703 <= 3600
+=> 25 points
+
+Skill Score:
+case_type is included in coach_skills
+Kinderbetreuung is included in Kinderbetreuung,Familienbegleitung
+=> 40 points
+
+Total Score:
+30 + 25 + 40 = 95
+```
+
+Example output:
+
+```json
+{
+  "assignment_id": "CASE-0002-COACH001",
+  "case_id": "CASE-0002",
+  "coach_id": "COACH001",
+  "eligible": true,
+  "exclusion_reason": "",
+  "language_score": 30,
+  "duration_score": 25,
+  "skill_score": 40,
+  "total_score": 95
+}
+```
+
+---
+
+### 9.7 Summary of the Scoring Logic
+
+The scoring model ensures that unsuitable coaches are excluded before a score is calculated. This is done through hard criteria for language match, capacity and travel duration.
+
+Only if all hard criteria are fulfilled, the system calculates a weighted score. The total score supports the decision-making process by making coach suitability transparent and comparable.
+
+The final decision is still made by a human user in the review step. The scoring model provides decision support, but it does not fully replace professional judgement.
+
+---
+
+## 10. Make Scenarios
+
+### 10.1 Get Onboarding Data
+
+Purpose:
+
+```text
+Read new cases from unassigned_cases and submit them to Camunda.
+```
+
+Main modules:
+
+| Module | Purpose |
+|---|---|
+| Google Sheets Search Rows | Find cases where `camunda_submitted` is empty |
+| HTTP Make Request | Submit case variables to Camunda |
+| Google Sheets Update Row | Mark case as submitted |
+
+---
+
+### 10.2 Calculate Distances and Score
+
+Purpose:
+
+```text
+Create and score all case-coach assignment combinations.
+```
+
+Main modules:
+
+| Module | Purpose |
+|---|---|
+| Webhook | Receive trigger from Camunda |
+| Google Sheets Search Rows | Read unassigned cases |
+| Google Sheets Update Row | Mark case as assigned or in processing |
+| Google Sheets Search Rows | Read coaches |
+| Google Maps Distance Matrix | Calculate travel distance and duration |
+| Google Sheets Add Row | Create assignment row |
+| HTTP Make Request | Call Flask scoring API |
+| Google Sheets Update Row | Write score result into assignment row |
+| Webhook Response | Return status to Camunda |
+
+---
+
+### 10.3 Extract Assignments
+
+Purpose:
+
+```text
+Read calculated assignment suggestions and return them to Camunda.
+```
+
+Main modules:
+
+| Module | Purpose |
+|---|---|
+| Webhook | Receive trigger from Camunda |
+| Google Sheets Search Rows | Read assignment rows with `status = OK` |
+| HTTP Make Request | Submit assignment variables to Camunda |
+| Google Sheets Update Row | Mark assignment row as processed |
+
+---
+
+## 11. Important Mapping Rules
+
+The following mappings are important for the process to work correctly.
+
+### Case Fields from `unassigned_cases`
+
+```text
+case_id = {{2.`0`}}
+First Name = {{2.`1`}}
+Last Name = {{2.`2`}}
+Address = {{2.`3`}}
+City = {{2.`4`}}
+Postal Code = {{2.`5`}}
+Main Language = {{2.`6`}}
+Other Language = {{2.`7`}}
+Urgency = {{2.`8`}}
+Type = {{2.`9`}}
+Workload = {{2.`10`}}
+Case Complexity = {{2.`12`}}
+camunda_submitted = {{2.`13`}}
+assigned = {{2.`14`}}
+```
+
+### Coach Fields from `coaches`
+
+```text
+coach_id = {{5.`0`}}
+first_name = {{5.`1`}}
+last_name = {{5.`2`}}
+address = {{5.`3`}}
+postal_code = {{5.`4`}}
+city = {{5.`5`}}
+main_language = {{5.`6`}}
+other_language = {{5.`7`}}
+skills = {{5.`8`}}
+active = {{5.`9`}}
+workload = {{5.`10`}}
+capacity_max_in_prozent = {{5.`11`}}
+remaining_capacity = {{5.`12`}}
+coach_experience = {{5.`13`}}
+coach_type = {{5.`14`}}
+```
+
+---
+
+
+## 12. Flask API Endpoint
+
+The Flask API exposes the scoring function.
+
+### 12.1 Healthcheck
+
+```http
+GET /
+```
+
+Expected response:
+
+```json
+{
+  "status": "ok",
+  "message": "Scoring API is running"
+}
+```
+
+---
+
+### 12.2 Score Assignment
+
+```http
+POST /score-assignment
+Content-Type: application/json
+```
+
+The endpoint receives one assignment candidate and returns the calculated eligibility and scores.
+
+---
+
+## 13. Testing
+
+### 13.1 Test Flask API Locally
+
+Start Flask:
+
+```bash
+python app.py
+```
+
+Test healthcheck:
+
+```bash
+curl http://127.0.0.1:5000/
+```
+
+Test scoring endpoint:
+
+```bash
+curl -X POST http://127.0.0.1:5000/score-assignment \
+  -H "Content-Type: application/json" \
+  -d '{
+    "assignment_id": "CASE001-COACH001",
+    "case_id": "CASE001",
+    "coach_id": "COACH001",
+    "case_main_language": "German",
+    "case_other_language": "French",
+    "coach_main_language": "German",
+    "coach_other_language": "Italian",
+    "case_type": "Kinderbetreuung",
+    "coach_skills": "Kinderbetreuung,Familienbegleitung",
+    "case_size_in_percent": 30,
+    "coach_remaining_capacity": 50,
+    "duration_value": 4147
+  }'
+```
+
+---
+
+### 13.2 Test with Postman
+
+Use the following configuration:
+
+```text
+Method: POST
+URL: https://<public-flask-url>/score-assignment
+Header: Content-Type = application/json
+Body: raw JSON
+```
+
+---
+
+### 13.3 Test Make Scenario
+
+Recommended test sequence:
+
+1. Test `Get Onboarding Data`.
+2. Check that `camunda_submitted = TRUE` is written.
+3. Trigger `Calculate Distances and Score`.
+4. Check that one assignment row is created per coach.
+5. Check that scores are written to `assignments`.
+6. Trigger `Extract Assignments`.
+7. Check that assignment variables arrive in Camunda.
+
+---
+
+## 14. Resulting Benefits
+
+The To-Be process provides several improvements compared to the As-Is process.
+
+| Benefit | Description |
+|---|---|
+| Less manual effort | Repetitive tasks such as distance checks and scoring are automated. |
+| Higher transparency | Assignment decisions are based on visible criteria and scores. |
+| Better data quality | Structured forms and database tables reduce inconsistent input. |
+| Faster processing | Possible coach assignments are calculated automatically. |
+| More objective decision support | Each case-coach combination is evaluated using the same scoring logic. |
+| Human control remains | Final review is still performed by a person before the allocation is completed. |
+
+---
+
+## 16. Known Limitations
+
+This implementation is a prototype and uses Google Sheets as a lightweight database. For a production-ready solution, a relational database should be considered.
+
+The Flask API is currently hosted through a development environment. For stable productive usage, the API should be deployed on a permanent hosting service.
+
+The scoring model is rule-based. Future versions could include more sophisticated ranking logic, weighting configuration or manual override rules.
+
+---
+
+
+## 17. Summary
+
+The To-Be Case Allocation process combines structured data collection, automated distance calculation, rule-based scoring and human review.
+
+The process does not fully replace human decision-making. Instead, it supports the responsible person by providing transparent and pre-calculated assignment suggestions.
+
+This approach ensures that automation is applied where it creates value, while human judgement remains part of the final allocation decision.
+
+
+
+
+
+#Archiv
 # TO-BE Process
 
 
