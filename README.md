@@ -19,21 +19,15 @@
 2. Devid Montecchiari
 
 # Introduction
-The TO-BE process describes an automated case allocation process for assigning a suitable Family Coach to a new case. The purpose of this process is to reduce manual effort, improve transparency, and support better decision-making during coach allocation.
-This to-be process combines automation, data-based scoring, and human review. This is important because coach allocation should not depend solely on technical matching criteria, such as distance or workload, but also on human judgement, soft factors, and the client's specific needs.
 
-
-
-
-# Description of TO-BE Process
-Automated Case Allocation
-The use case focuses on allocating a client case to the most suitable Family Coach. The process begins when the admin enters the client data through a form. This information is saved in the unassigned cases table in the database. After the client data is submitted, the system automatically calculates the distance and score for potential Family Coaches based on factors such as coach profile, hard factors (workload information, language requirements, location).
-
-The calculated results are then stored in the assignments table for individual cases. The Admin reviews the generated assignments before the process moves to the Case Coach. Once an assignment is available, the Case Coach evaluates the soft factors. These soft factors include case complexity, coach experience, and coach type. After this evaluation, the Case Coach reviews the Family Coach profile and decides whether the recommended coach is appropriate.
-If there is an error in the automated calculation or assignment generation, the process is routed to a manual step, where the Case Coach reviews the error and manually selects an alternative coach, and for that coach, the soft factors are evaluated again, and the process continues.
-
-If the coach is recommended and accepted, the client is informed about the allocation, and the case is marked as assigned. If the coach is not recommended, the process returns to the soft factor evaluation step so that another assignment can be reviewed.
-
+--> Here, we should descibe a general introduction and not a introduction for the to-be process.
+Questions:
+- wahts the topic about
+- how do we got the this topic
+- why we have choosen this topic
+  
+(The TO-BE process describes an automated case allocation process for assigning a suitable Family Coach to a new case. The purpose of this process is to reduce manual effort, improve transparency, and support better decision-making during coach allocation.
+This to-be process combines automation, data-based scoring, and human review. This is important because coach allocation should not depend solely on technical matching criteria, such as distance or workload, but also on human judgement, soft factors, and the client's specific needs.)
 
 
 # Current Situation
@@ -65,13 +59,19 @@ If the coach is recommended and accepted, the client is informed about the alloc
 
 # To-Be Process: Case Allocation
 
-## 1. Purpose
+## Description 
 
-The To-Be process represents a significant step towards a more digitalized and automated **Case Allocation** process.
+The To-Be process represents a significant step towards a more digitalized and automated **Case Allocation** process. The goal of the project team was to automate time-consuming, frequently occurring and rule-based tasks that directly address the main pain points of the company. The collected pain points and the visualized As-Is process formed the foundation for designing the To-Be process.
 
-The goal of the project team was to automate time-consuming, frequently occurring and rule-based tasks that address the main pain points of the company. The collected pain points and the visualized As-Is process formed the foundation for designing the To-Be process.
+The use case focuses on allocating a client case to the most suitable Family Coach. The process begins when the admin enters the client data through a structured form. This information is stored in the `unassigned_cases` table in the database. After the client data has been submitted, the system automatically calculates distance and scoring information for potential Family Coaches. The calculation is based on hard factors such as workload, language requirements, location and coach profile information.
 
-Compared to the As-Is process, the To-Be process contains fewer manual tasks and introduces several automated system tasks. This improves efficiency, reduces manual coordination effort and creates a more structured basis for decision-making.
+The calculated results are stored in the `assignments` table for each individual case-coach combination. The Admin then reviews the generated assignments before the process moves to the Case Coach. Once an assignment is available, the Case Coach evaluates additional soft factors, such as case complexity, coach experience and coach type. After this evaluation, the Case Coach reviews the Family Coach profile and decides whether the recommended coach is appropriate.
+
+If an error occurs during the automated calculation or assignment generation, the process is routed to a manual step. In this exception path, the Case Coach reviews the error and manually selects an alternative coach. For this manually selected coach, the soft factors are evaluated again before the process continues.
+
+If the coach is recommended and accepted, the client is informed about the allocation and the case is marked as assigned. If the coach is not recommended, the process returns to the soft factor evaluation step so that another assignment can be reviewed.
+
+Compared to the As-Is process, the To-Be process contains fewer manual tasks and introduces several automated system tasks. This improves efficiency, reduces manual coordination effort and creates a more structured and transparent basis for decision-making. At the same time, human judgement remains part of the process, especially when reviewing assignment suggestions and evaluating soft factors.
 
 ---
 
