@@ -48,26 +48,21 @@ This to-be process combines automation, data-based scoring, and human review. Th
 
 # AS-IS Pain Points
 
-1. **Manual case handling**  
-   The responsible person must manually collect and compare all information needed for the assignment.
 
-2. **Time-consuming coach selection**  
-   Finding a suitable family coach can take time, especially if several coaches need to be checked.
+1. Manual case handling 
+The responsible person must manually collect and compare all information needed for the assignment. 
 
-3. **Limited transparency**  
-   It is difficult to clearly track why a specific coach was selected or rejected.
+2. Time-consuming coach selection 
+Finding a suitable family coach can take time, especially if several coaches need to be checked. 
 
-4. **No automated distance calculation**  
-   Distance or travel time between the client and possible family coaches is not automatically calculated.
+3. Limited transparency 
+It is difficult to clearly track why a specific coach was selected or rejected. 
 
-5. **No structured scoring**  
-   Suitability decisions may depend on personal judgment without a standard scoring logic.
+4. No automated distance calculation 
+Distance or travel time between the client and possible family coaches is not automatically calculated. 
 
-6. **Weak error handling**  
-   If information is missing or automatic checks fail, the process needs a clear exception path.
-
-7. **Client communication delay**  
-   The client is informed only after the internal decision is completed, which can lead to delays if responsibilities are unclear.
+5. No structured scoring  
+There is no way to identify a suitable coach for a given case. Suitability decisions depend on personal judgment.  
 
 # To-Be Process: Case Allocation
 
