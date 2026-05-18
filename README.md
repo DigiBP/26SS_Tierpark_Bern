@@ -67,6 +67,10 @@ There is no way to identify a suitable coach for a given case. Suitability decis
 
 # To-Be Process: Case Allocation
 
+## BPMN To-Be Process
+<img width="6219" height="2472" alt="To-Be_Case_Allocation_66_Backup_final" src="https://github.com/user-attachments/assets/5dcdec43-46ad-418b-8c16-bb58956b5932" />
+
+
 ## Description 
 
 The To-Be process represents a significant step towards a more digitalized and automated **Case Allocation** process. The goal of the project team was to automate time-consuming, frequently occurring and rule-based tasks that directly address the main pain points of the company. The collected pain points and the visualized As-Is process formed the foundation for designing the To-Be process.
