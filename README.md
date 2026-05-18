@@ -12,7 +12,7 @@
 | Pallavi Gowda| pallavi.gowda@students.fhnw.ch |
 | Shakunthala Reddy Patlolla|shakunthalareddy.patlolla@students.fhnw.ch  |
 
-# Team Coach
+# Supervisors
 
 1. Charuta Pande
 2. Andreas Martin
