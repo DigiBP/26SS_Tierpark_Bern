@@ -32,6 +32,7 @@ Our digital solution aims to streamline and automate the case allocation process
 
 There is no automation in the current ChangeKultur case allocation process. Therefore, our group created a AS-IS BPMN process based on the information available, identified the main pain points, and designed a TO-BE process that introduces automation, scoring, review steps, and error handling for a more reliable and transparent case allocation process. 
 
+-------------------------------------------------------------------------------------------------------------------------------------------
 --> Here, we should descibe a general introduction and not a introduction for the to-be process.
 Questions:
 - wahts the topic about
