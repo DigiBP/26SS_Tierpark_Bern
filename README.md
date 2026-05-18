@@ -1084,10 +1084,7 @@ This approach ensures that automation is applied where it creates value, while h
 
 
 #Archiv
-# TO-BE Process
 
-
-![image alt](https://github.com/DigiBP/26SS_Tierpark_Bern/blob/053719d3e69841d64c0b4f05bb7848ce25a40b72/Case%20Allocation%20ToBe%20Process.png)
 
 
 # Description of the TO-BE Process Elements
