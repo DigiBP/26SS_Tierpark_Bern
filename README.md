@@ -1138,4 +1138,5 @@ Overall, this TO-BE process supports faster, more transparent, and more reliable
 
 # Acknowledgements
 
-We would like to thank the course coaches, Andreas Martin, Charuta Pande and Devid Montecchiari and project stakeholders for their guidance and feedback during the Digitalization of Business Processes project.Their expertise and dedication have been the driving force behind our success, and we are deeply thankful for their invaluable contributions.
+We would like to thank the course coaches, Andreas Martin, Charuta Pande, and Devid Montecchiari, as well as the project stakeholders, for their guidance and valuable feedback throughout the Digitalization of Business Processes project. Their expertise and support greatly enhanced this work and played an important role in its successful completion.
+
