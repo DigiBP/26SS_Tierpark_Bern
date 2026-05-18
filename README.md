@@ -24,6 +24,7 @@ This document describes the Case allocation process at Changekultur organization
 
 # Description of the Use Case 
 
+
 In the digital age, manual and informal allocation processes can become time-consuming, inconsistent, and difficult to monitor. For our project, we are inspired by  ChangeKultur GmbH, a Zürich‑based social services organization, that provides family coaching, youth support, and integration programs across Switzerland. The company focuses on empowering families through structured coaching and multilingual support. 
 
 One of the processes that required attention was the case allocation process. When a new client case is received, the organisation needs to identify and assign the most suitable Family Coach within a short period of time. In the current situation, this decision is largely manual and depends on the Case Coach’s personal knowledge of available coaches. This makes the process time-intensive and increases the risk of subjective decisions, incomplete information, and delays. 
@@ -49,7 +50,10 @@ This to-be process combines automation, data-based scoring, and human review. Th
 
 # AS-IS Pain Points
 
+
 ![image alt](https://github.com/DigiBP/26SS_Tierpark_Bern/blob/fa090c2cb78dc9208c1435b1a22478b10402501f/Case%20allocation%20AS-IS%20Process.png)
+
+
 1. Manual case handling 
 The responsible person must manually collect and compare all information needed for the assignment. 
 
@@ -67,7 +71,9 @@ There is no way to identify a suitable coach for a given case. Suitability decis
 
 # TO-BE Process: Case Allocation
 
+
 ## BPMN TO-BE Process
+
 
 <img width="1562" height="591" alt="image" src="https://github.com/user-attachments/assets/542ad31d-094e-4e19-9e8f-166ea6cb818a" />
 
@@ -96,6 +102,7 @@ There is no way to identify a suitable coach for a given case. Suitability decis
 
 
 ## 1. Description 
+
 
 The To-Be process represents a significant step towards a more digitalized and automated **Case Allocation** process. The goal of the project team was to automate time-consuming, frequently occurring and rule-based tasks that directly address the main pain points of the company. The collected pain points and the visualized As-Is process formed the foundation for designing the To-Be process.
 
@@ -147,7 +154,7 @@ The first four main tasks are:
 
 ---
 
-## 4. Overview involved systems: Make, Camnunda, Google Form, Google Sheet, Flask API
+## 4. Overview involved systems: Make, Camunda, Google Form, Google Sheet, Flask API
 
 <img width="1807" height="1114" alt="To-Be Process Export drawio" src="https://github.com/user-attachments/assets/1cc6fe29-a093-4bb6-8b89-07cfbbf6a0b5" />
 
@@ -1109,20 +1116,6 @@ This approach ensures that automation is applied where it creates value, while h
 
 
 
-
-
-
-# Value of the TO-BE Process
-
-•	Reduces manual searching and informal decision-making.
-
-•	Improves transparency by using scoring and stored assignment data.
-
-•	Keeps human judgement in the process through Case Coach review.
-
-•	Provides an error-handling path if automation does not work correctly.
-
-•	Makes the final allocation process more reliable, structured, and auditable
 
 
 # Conclusion
