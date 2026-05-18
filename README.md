@@ -75,11 +75,18 @@ There is no way to identify a suitable coach for a given case. Suitability decis
 ## BPMN TO-BE Process
 
 
+
 <img width="1562" height="591" alt="image" src="https://github.com/user-attachments/assets/542ad31d-094e-4e19-9e8f-166ea6cb818a" />
 
 
 
+
+
+
 ## Description of the TO-BE Process Elements
+
+
+
 
 
 
