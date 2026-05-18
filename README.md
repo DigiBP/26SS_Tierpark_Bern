@@ -606,6 +606,7 @@ The event **Case assigned** is an End Event.
 At this stage, the process is completed because the client case has been successfully allocated to a suitable Family Coach and the client has been informed. 
 
 The purpose of this event is to mark the successful completion of the TO-BE case allocation process. 
+
 ---
 
 ## 8. Scoring Logic
