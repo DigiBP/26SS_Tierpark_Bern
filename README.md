@@ -65,9 +65,9 @@ Distance or travel time between the client and possible family coaches is not au
 5. No structured scoring  
 There is no way to identify a suitable coach for a given case. Suitability decisions depend on personal judgment.  
 
-# To-Be Process: Case Allocation
+# TO-BE Process: Case Allocation
 
-## BPMN To-Be Process
+## BPMN TO-BE Process
 
 <img width="1562" height="591" alt="image" src="https://github.com/user-attachments/assets/542ad31d-094e-4e19-9e8f-166ea6cb818a" />
 
@@ -95,7 +95,7 @@ There is no way to identify a suitable coach for a given case. Suitability decis
 
 
 
-## Description 
+## 1. Description 
 
 The To-Be process represents a significant step towards a more digitalized and automated **Case Allocation** process. The goal of the project team was to automate time-consuming, frequently occurring and rule-based tasks that directly address the main pain points of the company. The collected pain points and the visualized As-Is process formed the foundation for designing the To-Be process.
 
