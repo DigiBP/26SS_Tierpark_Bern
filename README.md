@@ -519,11 +519,11 @@ The task **Review error** is a User Task.
 
 It is triggered when the automated allocation step fails, for example because of: 
 
-missing or inconsistent data,  
+1. missing or inconsistent data,  
 
-an API or integration problem (Google Maps API failure, Google Sheets access or data issue, Make scenario execution failure, HTTP/API request errors) 
+2. an API or integration problem (Google Maps API failure, Google Sheets access or data issue, Make scenario execution failure, HTTP/API request errors) 
 
-or an unsuccessful system calculation.  
+3. or an unsuccessful system calculation.  
 
 At this stage, the responsible person reviews the problem and identifies why the automated allocation could not be completed successfully. The person then decides how to proceed so that the case can continue in the process. 
 
