@@ -633,15 +633,21 @@ The element **Recommended?** is an Exclusive Gateway.
 
 At this point, the process checks whether the Reviewed Family Coach is recommended for the client case. 
 
-If the coach is suitable, the process continues to the next step, where the client is informed about the allocation. If the coach is not suitable, the process loops back to Evaluate soft factors, so that another coach option can be assessed. 
+If the coach is suitable, the process continues to the next step, where the client is informed about the allocation. 
 
-The purpose of this gateway is to create a clear decision point in the process. It ensures that only suitable coach recommendations move forward to final communication with the client. 
+
+
 
 <img width="512" height="542" alt="image" src="https://github.com/user-attachments/assets/7d572a88-fdce-4d85-9097-439ead3458ec" />
 
 
+If the coach is not suitable, the process loops back to Evaluate soft factors, so that another coach option can be assessed. 
+
 
 <img width="851" height="538" alt="image" src="https://github.com/user-attachments/assets/b98a7610-c0e2-447d-90b7-507124967159" />
+
+
+The purpose of this gateway is to create a clear decision point in the process. It ensures that only suitable coach recommendations move forward to final communication with the client. 
 
 
 ## Step 10: Inform Client 
@@ -653,6 +659,11 @@ At this stage, the client is informed about the allocation result, depending on 
 The responsible person informs the client that a Family Coach has been selected and communicates the relevant assignment outcome. 
 
 The purpose of this step is to ensure that the client receives clear confirmation about the allocation before the process ends. 
+
+
+<img width="1309" height="786" alt="image" src="https://github.com/user-attachments/assets/3c56dbda-93d6-477e-af46-3e68cdc6c57d" />
+
+
 
 ## Step 11: Case Assigned 
 
