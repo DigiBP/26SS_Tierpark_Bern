@@ -1,0 +1,1700 @@
+{
+    "name": "Extract assignments",
+    "flow": [
+        {
+            "id": 1,
+            "module": "gateway:CustomWebHook",
+            "version": 1,
+            "parameters": {
+                "hook": 3004035,
+                "maxResults": 1
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "hook": {
+                            "data": {
+                                "editable": "true"
+                            },
+                            "label": "read_assignment_table"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "hook",
+                        "type": "hook:gateway-webhook",
+                        "label": "Webhook",
+                        "required": true
+                    },
+                    {
+                        "name": "maxResults",
+                        "type": "number",
+                        "label": "Maximum number of results"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 3,
+            "module": "google-sheets:filterRows",
+            "version": 2,
+            "parameters": {
+                "__IMTCONN__": 5671315
+            },
+            "mapper": {
+                "from": "drive",
+                "filter": [
+                    [
+                        {
+                            "a": "W",
+                            "b": "OK",
+                            "o": "text:equal"
+                        }
+                    ]
+                ],
+                "orderBy": "A",
+                "sheetId": "assignments",
+                "fieldType": "string",
+                "sortOrder": "asc",
+                "spreadsheetId": "1wtEg8CzwnzGQjX8aDpIscO8urUH8aX7tE8-TYz_ERgA",
+                "tableFirstRow": "A1:CZ1",
+                "includesHeaders": true,
+                "valueRenderOption": "FORMATTED_VALUE",
+                "dateTimeRenderOption": "FORMATTED_STRING"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                },
+                "restore": {
+                    "expect": {
+                        "from": {
+                            "label": "Select from My Drive"
+                        },
+                        "orderBy": {
+                            "mode": "chose",
+                            "label": "assignment_id (A)"
+                        },
+                        "sheetId": {
+                            "mode": "chose",
+                            "label": "assignments"
+                        },
+                        "fieldType": {
+                            "mode": "chose",
+                            "label": "String"
+                        },
+                        "sortOrder": {
+                            "mode": "chose",
+                            "label": "Ascending"
+                        },
+                        "spreadsheetId": {
+                            "mode": "chose",
+                            "label": "Data Base Client"
+                        },
+                        "tableFirstRow": {
+                            "label": "A-CZ"
+                        },
+                        "includesHeaders": {
+                            "mode": "chose",
+                            "label": "Yes"
+                        },
+                        "valueRenderOption": {
+                            "mode": "chose",
+                            "label": "Formatted value"
+                        },
+                        "dateTimeRenderOption": {
+                            "mode": "chose",
+                            "label": "Formatted string"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "google"
+                            },
+                            "label": "My Google connection (cedric.iseli95@gmail.com)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:google",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "from",
+                        "type": "select",
+                        "label": "Search Method",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "drive",
+                                "share"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "valueRenderOption",
+                        "type": "select",
+                        "label": "Value render option",
+                        "validate": {
+                            "enum": [
+                                "FORMATTED_VALUE",
+                                "UNFORMATTED_VALUE",
+                                "FORMULA"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "dateTimeRenderOption",
+                        "type": "select",
+                        "label": "Date and time render option",
+                        "validate": {
+                            "enum": [
+                                "SERIAL_NUMBER",
+                                "FORMATTED_STRING"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "type": "uinteger",
+                        "label": "Limit"
+                    },
+                    {
+                        "name": "spreadsheetId",
+                        "type": "select",
+                        "label": "Spreadsheet Name",
+                        "required": true
+                    },
+                    {
+                        "name": "sheetId",
+                        "type": "select",
+                        "label": "Sheet Name",
+                        "required": true
+                    },
+                    {
+                        "name": "includesHeaders",
+                        "type": "select",
+                        "label": "Table contains headers",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                true,
+                                false
+                            ]
+                        }
+                    },
+                    {
+                        "name": "tableFirstRow",
+                        "type": "select",
+                        "label": "Column range",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "A1:Z1",
+                                "A1:BZ1",
+                                "A1:CZ1",
+                                "A1:DZ1",
+                                "A1:MZ1",
+                                "A1:ZZ1",
+                                "A1:AZZ1",
+                                "A1:BZZ1",
+                                "A1:CZZ1",
+                                "A1:DZZ1",
+                                "A1:MZZ1",
+                                "A1:ZZZ1"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "type": "filter",
+                        "label": "Filter",
+                        "options": "rpc://google-sheets/2/rpcGetFilterKeys?includesHeaders=true"
+                    },
+                    {
+                        "name": "orderBy",
+                        "type": "select",
+                        "label": "Order by"
+                    },
+                    {
+                        "name": "sortOrder",
+                        "type": "select",
+                        "label": "Sort order",
+                        "validate": {
+                            "enum": [
+                                "asc",
+                                "desc"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "fieldType",
+                        "type": "select",
+                        "label": "Field Type",
+                        "validate": {
+                            "enum": [
+                                "string",
+                                "number",
+                                "date"
+                            ]
+                        }
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "__IMTLENGTH__",
+                        "type": "uinteger",
+                        "label": "Total number of bundles"
+                    },
+                    {
+                        "name": "__IMTINDEX__",
+                        "type": "uinteger",
+                        "label": "Bundle order position"
+                    },
+                    {
+                        "name": "__ROW_NUMBER__",
+                        "type": "number",
+                        "label": "Row number"
+                    },
+                    {
+                        "name": "__SPREADSHEET_ID__",
+                        "type": "text",
+                        "label": "Spreadsheet ID"
+                    },
+                    {
+                        "name": "__SHEET__",
+                        "type": "text",
+                        "label": "Sheet"
+                    },
+                    {
+                        "name": "0",
+                        "type": "text",
+                        "label": "assignment_id (A)"
+                    },
+                    {
+                        "name": "1",
+                        "type": "text",
+                        "label": "case_id (B)"
+                    },
+                    {
+                        "name": "2",
+                        "type": "text",
+                        "label": "coach_id (C)"
+                    },
+                    {
+                        "name": "3",
+                        "type": "text",
+                        "label": "coach_first_name (D)"
+                    },
+                    {
+                        "name": "4",
+                        "type": "text",
+                        "label": "coach_last_name (E)"
+                    },
+                    {
+                        "name": "5",
+                        "type": "text",
+                        "label": "coach_main_languages (F)"
+                    },
+                    {
+                        "name": "6",
+                        "type": "text",
+                        "label": "coach_other_languages (G)"
+                    },
+                    {
+                        "name": "7",
+                        "type": "text",
+                        "label": "coach_skills (H)"
+                    },
+                    {
+                        "name": "8",
+                        "type": "text",
+                        "label": "coach_remaining_capacity (I)"
+                    },
+                    {
+                        "name": "9",
+                        "type": "text",
+                        "label": "coach_city (J)"
+                    },
+                    {
+                        "name": "10",
+                        "type": "text",
+                        "label": "case_first_name (K)"
+                    },
+                    {
+                        "name": "11",
+                        "type": "text",
+                        "label": "case_last_name (L)"
+                    },
+                    {
+                        "name": "12",
+                        "type": "text",
+                        "label": "case_size_in_procent (M)"
+                    },
+                    {
+                        "name": "13",
+                        "type": "text",
+                        "label": "case_urgency (N)"
+                    },
+                    {
+                        "name": "14",
+                        "type": "text",
+                        "label": "case_main_languages (O)"
+                    },
+                    {
+                        "name": "15",
+                        "type": "text",
+                        "label": "case_other_languages (P)"
+                    },
+                    {
+                        "name": "16",
+                        "type": "text",
+                        "label": "case_type (Q)"
+                    },
+                    {
+                        "name": "17",
+                        "type": "text",
+                        "label": "case_city (R)"
+                    },
+                    {
+                        "name": "18",
+                        "type": "text",
+                        "label": "distance_text (S)"
+                    },
+                    {
+                        "name": "19",
+                        "type": "text",
+                        "label": "distance_value (T)"
+                    },
+                    {
+                        "name": "20",
+                        "type": "text",
+                        "label": "duration_text (U)"
+                    },
+                    {
+                        "name": "21",
+                        "type": "text",
+                        "label": "duration_value (V)"
+                    },
+                    {
+                        "name": "22",
+                        "type": "text",
+                        "label": "status (W)"
+                    },
+                    {
+                        "name": "23",
+                        "type": "text",
+                        "label": "created_at (X)"
+                    },
+                    {
+                        "name": "24",
+                        "type": "text",
+                        "label": "eligible (Y)"
+                    },
+                    {
+                        "name": "25",
+                        "type": "text",
+                        "label": "exclusion_reason (Z)"
+                    },
+                    {
+                        "name": "26",
+                        "type": "text",
+                        "label": "language_score (AA)"
+                    },
+                    {
+                        "name": "27",
+                        "type": "text",
+                        "label": "duration_score (AB)"
+                    },
+                    {
+                        "name": "28",
+                        "type": "text",
+                        "label": "skill_score (AC)"
+                    },
+                    {
+                        "name": "29",
+                        "type": "text",
+                        "label": "total_score (AD)"
+                    },
+                    {
+                        "name": "30",
+                        "type": "text",
+                        "label": "coach_experience (AE)"
+                    },
+                    {
+                        "name": "31",
+                        "type": "text",
+                        "label": "case_complexity (AF)"
+                    },
+                    {
+                        "name": "32",
+                        "type": "text",
+                        "label": "coach_type (AG)"
+                    },
+                    {
+                        "name": "33",
+                        "type": "text",
+                        "label": "(AH)"
+                    },
+                    {
+                        "name": "34",
+                        "type": "text",
+                        "label": "(AI)"
+                    },
+                    {
+                        "name": "35",
+                        "type": "text",
+                        "label": "(AJ)"
+                    },
+                    {
+                        "name": "36",
+                        "type": "text",
+                        "label": "(AK)"
+                    },
+                    {
+                        "name": "37",
+                        "type": "text",
+                        "label": "(AL)"
+                    },
+                    {
+                        "name": "38",
+                        "type": "text",
+                        "label": "(AM)"
+                    },
+                    {
+                        "name": "39",
+                        "type": "text",
+                        "label": "(AN)"
+                    },
+                    {
+                        "name": "40",
+                        "type": "text",
+                        "label": "(AO)"
+                    },
+                    {
+                        "name": "41",
+                        "type": "text",
+                        "label": "(AP)"
+                    },
+                    {
+                        "name": "42",
+                        "type": "text",
+                        "label": "(AQ)"
+                    },
+                    {
+                        "name": "43",
+                        "type": "text",
+                        "label": "(AR)"
+                    },
+                    {
+                        "name": "44",
+                        "type": "text",
+                        "label": "(AS)"
+                    },
+                    {
+                        "name": "45",
+                        "type": "text",
+                        "label": "(AT)"
+                    },
+                    {
+                        "name": "46",
+                        "type": "text",
+                        "label": "(AU)"
+                    },
+                    {
+                        "name": "47",
+                        "type": "text",
+                        "label": "(AV)"
+                    },
+                    {
+                        "name": "48",
+                        "type": "text",
+                        "label": "(AW)"
+                    },
+                    {
+                        "name": "49",
+                        "type": "text",
+                        "label": "(AX)"
+                    },
+                    {
+                        "name": "50",
+                        "type": "text",
+                        "label": "(AY)"
+                    },
+                    {
+                        "name": "51",
+                        "type": "text",
+                        "label": "(AZ)"
+                    },
+                    {
+                        "name": "52",
+                        "type": "text",
+                        "label": "(BA)"
+                    },
+                    {
+                        "name": "53",
+                        "type": "text",
+                        "label": "(BB)"
+                    },
+                    {
+                        "name": "54",
+                        "type": "text",
+                        "label": "(BC)"
+                    },
+                    {
+                        "name": "55",
+                        "type": "text",
+                        "label": "(BD)"
+                    },
+                    {
+                        "name": "56",
+                        "type": "text",
+                        "label": "(BE)"
+                    },
+                    {
+                        "name": "57",
+                        "type": "text",
+                        "label": "(BF)"
+                    },
+                    {
+                        "name": "58",
+                        "type": "text",
+                        "label": "(BG)"
+                    },
+                    {
+                        "name": "59",
+                        "type": "text",
+                        "label": "(BH)"
+                    },
+                    {
+                        "name": "60",
+                        "type": "text",
+                        "label": "(BI)"
+                    },
+                    {
+                        "name": "61",
+                        "type": "text",
+                        "label": "(BJ)"
+                    },
+                    {
+                        "name": "62",
+                        "type": "text",
+                        "label": "(BK)"
+                    },
+                    {
+                        "name": "63",
+                        "type": "text",
+                        "label": "(BL)"
+                    },
+                    {
+                        "name": "64",
+                        "type": "text",
+                        "label": "(BM)"
+                    },
+                    {
+                        "name": "65",
+                        "type": "text",
+                        "label": "(BN)"
+                    },
+                    {
+                        "name": "66",
+                        "type": "text",
+                        "label": "(BO)"
+                    },
+                    {
+                        "name": "67",
+                        "type": "text",
+                        "label": "(BP)"
+                    },
+                    {
+                        "name": "68",
+                        "type": "text",
+                        "label": "(BQ)"
+                    },
+                    {
+                        "name": "69",
+                        "type": "text",
+                        "label": "(BR)"
+                    },
+                    {
+                        "name": "70",
+                        "type": "text",
+                        "label": "(BS)"
+                    },
+                    {
+                        "name": "71",
+                        "type": "text",
+                        "label": "(BT)"
+                    },
+                    {
+                        "name": "72",
+                        "type": "text",
+                        "label": "(BU)"
+                    },
+                    {
+                        "name": "73",
+                        "type": "text",
+                        "label": "(BV)"
+                    },
+                    {
+                        "name": "74",
+                        "type": "text",
+                        "label": "(BW)"
+                    },
+                    {
+                        "name": "75",
+                        "type": "text",
+                        "label": "(BX)"
+                    },
+                    {
+                        "name": "76",
+                        "type": "text",
+                        "label": "(BY)"
+                    },
+                    {
+                        "name": "77",
+                        "type": "text",
+                        "label": "(BZ)"
+                    },
+                    {
+                        "name": "78",
+                        "type": "text",
+                        "label": "(CA)"
+                    },
+                    {
+                        "name": "79",
+                        "type": "text",
+                        "label": "(CB)"
+                    },
+                    {
+                        "name": "80",
+                        "type": "text",
+                        "label": "(CC)"
+                    },
+                    {
+                        "name": "81",
+                        "type": "text",
+                        "label": "(CD)"
+                    },
+                    {
+                        "name": "82",
+                        "type": "text",
+                        "label": "(CE)"
+                    },
+                    {
+                        "name": "83",
+                        "type": "text",
+                        "label": "(CF)"
+                    },
+                    {
+                        "name": "84",
+                        "type": "text",
+                        "label": "(CG)"
+                    },
+                    {
+                        "name": "85",
+                        "type": "text",
+                        "label": "(CH)"
+                    },
+                    {
+                        "name": "86",
+                        "type": "text",
+                        "label": "(CI)"
+                    },
+                    {
+                        "name": "87",
+                        "type": "text",
+                        "label": "(CJ)"
+                    },
+                    {
+                        "name": "88",
+                        "type": "text",
+                        "label": "(CK)"
+                    },
+                    {
+                        "name": "89",
+                        "type": "text",
+                        "label": "(CL)"
+                    },
+                    {
+                        "name": "90",
+                        "type": "text",
+                        "label": "(CM)"
+                    },
+                    {
+                        "name": "91",
+                        "type": "text",
+                        "label": "(CN)"
+                    },
+                    {
+                        "name": "92",
+                        "type": "text",
+                        "label": "(CO)"
+                    },
+                    {
+                        "name": "93",
+                        "type": "text",
+                        "label": "(CP)"
+                    },
+                    {
+                        "name": "94",
+                        "type": "text",
+                        "label": "(CQ)"
+                    },
+                    {
+                        "name": "95",
+                        "type": "text",
+                        "label": "(CR)"
+                    },
+                    {
+                        "name": "96",
+                        "type": "text",
+                        "label": "(CS)"
+                    },
+                    {
+                        "name": "97",
+                        "type": "text",
+                        "label": "(CT)"
+                    },
+                    {
+                        "name": "98",
+                        "type": "text",
+                        "label": "(CU)"
+                    },
+                    {
+                        "name": "99",
+                        "type": "text",
+                        "label": "(CV)"
+                    },
+                    {
+                        "name": "100",
+                        "type": "text",
+                        "label": "(CW)"
+                    },
+                    {
+                        "name": "101",
+                        "type": "text",
+                        "label": "(CX)"
+                    },
+                    {
+                        "name": "102",
+                        "type": "text",
+                        "label": "(CY)"
+                    },
+                    {
+                        "name": "103",
+                        "type": "text",
+                        "label": "(CZ)"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 4,
+            "module": "http:MakeRequest",
+            "version": 4,
+            "parameters": {
+                "tlsType": "",
+                "proxyKeychain": "",
+                "authenticationType": "noAuth"
+            },
+            "mapper": {
+                "url": "https://digibp.engine.martinlab.science/engine-rest/process-definition/key/CaseAllocation66/tenant-id/26DIGIBP13/submit-form",
+                "method": "post",
+                "headers": [
+                    {
+                        "name": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "contentType": "json",
+                "inputMethod": "jsonString",
+                "shareCookies": false,
+                "parseResponse": true,
+                "allowRedirects": true,
+                "stopOnHttpError": true,
+                "jsonStringBodyContent": "{\r\n  \"variables\": {\r\n    \"case_id\": {\r\n      \"value\": \"{{3.`1`}}\",\r\n      \"type\": \"String\"\r\n    },\r\n    \"assignment_id\": {\r\n      \"value\": \"{{3.`0`}}\",\r\n      \"type\": \"String\"\r\n    },\r\n    \"coach_first_name\": {\r\n      \"value\": \"{{3.`3`}}\",\r\n      \"type\": \"String\"\r\n    },\r\n    \"coach_last_name\": {\r\n      \"value\": \"{{3.`4`}}\",\r\n      \"type\": \"String\"\r\n    },\r\n    \"exclusion_reason\": {\r\n      \"value\": \"{{3.`25`}}\",\r\n      \"type\": \"String\"\r\n    },\r\n    \"language_score\": {\r\n      \"value\": \"{{3.`26`}}\",\r\n      \"type\": \"String\"\r\n    },\r\n    \"duration_score\": {\r\n      \"value\": \"{{3.`27`}}\",\r\n      \"type\": \"String\"\r\n    },\r\n    \"skill_score\": {\r\n      \"value\": \"{{3.`28`}}\",\r\n      \"type\": \"String\"\r\n    },\r\n    \"total_score\": {\r\n      \"value\": \"{{3.`29`}}\",\r\n      \"type\": \"String\"\r\n    },\r\n    \"coach_skills\": {\r\n      \"value\": \"{{3.`7`}}\",\r\n      \"type\": \"String\"\r\n    },\r\n    \"case_first_name\": {\r\n      \"value\": \"{{3.`10`}}\",\r\n      \"type\": \"String\"\r\n    },\r\n    \"case_last_name\": {\r\n      \"value\": \"{{3.`11`}}\",\r\n      \"type\": \"String\"\r\n    },\r\n    \"case_size_in_procent\": {\r\n      \"value\": \"{{3.`12`}}\",\r\n      \"type\": \"String\"\r\n    },\r\n    \"case_main_languages\": {\r\n      \"value\": \"{{3.`14`}}\",\r\n      \"type\": \"String\"\r\n    },\r\n    \"case_other_languages\": {\r\n      \"value\": \"{{3.`15`}}\",\r\n      \"type\": \"String\"\r\n    },\r\n    \"case_type\": {\r\n      \"value\": \"{{3.`16`}}\",\r\n      \"type\": \"String\"\r\n    },\r\n    \"distance_text\": {\r\n      \"value\": \"{{3.`18`}}\",\r\n      \"type\": \"String\"\r\n    },\r\n    \"duration_text\": {\r\n      \"value\": \"{{3.`20`}}\",\r\n      \"type\": \"String\"\r\n    },\r\n    \"eligible\": {\r\n      \"value\": \"{{3.`24`}}\",\n      \"type\": \"String\"\n    },\n    \"coach_remaining_capacity\": {\n      \"value\": \"{{3.`8`}}\",\n      \"type\": \"String\"\n    },\n    \"coach_main_languages\": {\n      \"value\": \"{{3.`5`}}\",\n      \"type\": \"String\"\n    },\n    \"coach_other_languages\": {\n      \"value\": \"{{3.`6`}}\",\n      \"type\": \"String\"\n    },\n\"coach_type\": {\n\"value\": \"{{3.`32`}}\",\n\"type\": \"String\"\n  },\n\"coach_experience\": {\n\"value\": \"{{3.`30`}}\",\n\"type\": \"String\"\n  },\n\"case_complexity\": {\n\"value\": \"{{3.`31`}}\",\n\"type\": \"String\"\n  }\n }\n}",
+                "requestCompressedContent": true
+            },
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 0
+                },
+                "restore": {
+                    "expect": {
+                        "method": {
+                            "mode": "chose",
+                            "label": "POST"
+                        },
+                        "headers": {
+                            "mode": "chose",
+                            "items": [
+                                null
+                            ]
+                        },
+                        "contentType": {
+                            "label": "application/jsonEnter data in the JSON format, as a string or using a data structure."
+                        },
+                        "inputMethod": {
+                            "label": "JSON stringEnter the JSON body as a raw text string. If values contain JSON reserved characters, you must escape them manually."
+                        },
+                        "shareCookies": {
+                            "mode": "chose"
+                        },
+                        "parseResponse": {
+                            "mode": "chose"
+                        },
+                        "allowRedirects": {
+                            "mode": "chose"
+                        },
+                        "paginationType": {
+                            "label": "Empty"
+                        },
+                        "queryParameters": {
+                            "mode": "chose"
+                        },
+                        "stopOnHttpError": {
+                            "mode": "chose"
+                        },
+                        "requestCompressedContent": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "tlsType": {
+                            "label": "Empty"
+                        },
+                        "proxyKeychain": {
+                            "label": "Choose a key"
+                        },
+                        "authenticationType": {
+                            "label": "No authenticationUse when no credentials are required for the request."
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "authenticationType",
+                        "type": "select",
+                        "label": "Authentication type",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "noAuth",
+                                "apiKey",
+                                "basicAuth",
+                                "oAuth"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "tlsType",
+                        "type": "select",
+                        "label": "Transport layer security (TLS)",
+                        "validate": {
+                            "enum": [
+                                "mTls",
+                                "tls"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "proxyKeychain",
+                        "type": "keychain:proxy",
+                        "label": "Proxy"
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "url",
+                        "type": "url",
+                        "label": "URL",
+                        "required": true
+                    },
+                    {
+                        "name": "method",
+                        "type": "select",
+                        "label": "Method",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "get",
+                                "head",
+                                "post",
+                                "put",
+                                "patch",
+                                "delete",
+                                "options"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "headers",
+                        "spec": {
+                            "name": "value",
+                            "spec": [
+                                {
+                                    "name": "name",
+                                    "type": "text",
+                                    "label": "Name",
+                                    "required": true,
+                                    "validate": {
+                                        "pattern": "^[-!#$%&'*+.^_`|~0-9A-Za-z]+$"
+                                    }
+                                },
+                                {
+                                    "name": "value",
+                                    "type": "text",
+                                    "label": "Value"
+                                }
+                            ],
+                            "type": "collection",
+                            "label": "Header"
+                        },
+                        "type": "array",
+                        "label": "Headers"
+                    },
+                    {
+                        "name": "queryParameters",
+                        "spec": {
+                            "name": "value",
+                            "spec": [
+                                {
+                                    "name": "name",
+                                    "type": "text",
+                                    "label": "Name",
+                                    "required": true
+                                },
+                                {
+                                    "name": "value",
+                                    "type": "text",
+                                    "label": "Value"
+                                }
+                            ],
+                            "type": "collection",
+                            "label": "Parameter"
+                        },
+                        "type": "array",
+                        "label": "Query parameters"
+                    },
+                    {
+                        "name": "contentType",
+                        "type": "select",
+                        "label": "Body content type",
+                        "validate": {
+                            "enum": [
+                                "json",
+                                "multipart",
+                                "urlEncoded",
+                                "custom"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "parseResponse",
+                        "type": "boolean",
+                        "label": "Parse response",
+                        "required": true
+                    },
+                    {
+                        "name": "stopOnHttpError",
+                        "type": "boolean",
+                        "label": "Return error if HTTP request fails",
+                        "required": true
+                    },
+                    {
+                        "name": "timeout",
+                        "type": "uinteger",
+                        "label": "Timeout",
+                        "validate": {
+                            "max": 300,
+                            "min": 1
+                        }
+                    },
+                    {
+                        "name": "allowRedirects",
+                        "type": "boolean",
+                        "label": "Allow redirects",
+                        "required": true
+                    },
+                    {
+                        "name": "shareCookies",
+                        "type": "boolean",
+                        "label": "Share cookies with other HTTP modules",
+                        "required": true
+                    },
+                    {
+                        "name": "requestCompressedContent",
+                        "type": "boolean",
+                        "label": "Request compressed content",
+                        "required": true
+                    },
+                    {
+                        "name": "inputMethod",
+                        "type": "select",
+                        "label": "Body input method",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "dataStructure",
+                                "jsonString"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "jsonStringBodyContent",
+                        "type": "text",
+                        "label": "Body content",
+                        "required": true
+                    },
+                    {
+                        "name": "paginationType",
+                        "type": "select",
+                        "label": "Pagination type",
+                        "validate": {
+                            "enum": [
+                                "offsetBased",
+                                "pageBased",
+                                "urlBased",
+                                "tokenBased"
+                            ]
+                        }
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "data",
+                        "type": "any",
+                        "label": "Data"
+                    },
+                    {
+                        "name": "statusCode",
+                        "type": "number",
+                        "label": "Status Code"
+                    },
+                    {
+                        "name": "headers",
+                        "spec": [
+                            {
+                                "name": "content-length",
+                                "type": "text",
+                                "label": "Content-Length"
+                            },
+                            {
+                                "name": "content-encoding",
+                                "type": "text",
+                                "label": "Content-Encoding"
+                            },
+                            {
+                                "name": "content-type",
+                                "type": "text",
+                                "label": "Content-Type"
+                            },
+                            {
+                                "name": "server",
+                                "type": "text",
+                                "label": "Server"
+                            },
+                            {
+                                "name": "cache-control",
+                                "type": "text",
+                                "label": "Cache-Control"
+                            },
+                            {
+                                "name": "set-cookie",
+                                "spec": {
+                                    "type": "text"
+                                },
+                                "type": "array",
+                                "label": "Set-Cookie"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Headers"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 5,
+            "module": "google-sheets:updateRow",
+            "version": 2,
+            "parameters": {
+                "__IMTCONN__": 5671315
+            },
+            "mapper": {
+                "from": "drive",
+                "mode": "select",
+                "values": {
+                    "status": "assigned"
+                },
+                "sheetId": "assignments",
+                "rowNumber": "{{3.`__ROW_NUMBER__`}}",
+                "spreadsheetId": "/1Qnfb2saOZFv_RYXmjrWVlTmfx10bkmyf/1Vkhgphy79B1sJN8i10kJS6aG-MKKJ-kM/12E-AcRkjwD7vah_jQPZgq7UJc9gHtsF1/1MpQw5P3KEhA1BXYSIpWCayBLZ9ew9JfO/1wtEg8CzwnzGQjX8aDpIscO8urUH8aX7tE8-TYz_ERgA",
+                "includesHeaders": true,
+                "useColumnHeaders": true,
+                "valueInputOption": "USER_ENTERED"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 900,
+                    "y": 0
+                },
+                "restore": {
+                    "expect": {
+                        "from": {
+                            "label": "My Drive"
+                        },
+                        "mode": {
+                            "label": "Search by path"
+                        },
+                        "sheetId": {
+                            "label": "assignments"
+                        },
+                        "spreadsheetId": {
+                            "path": [
+                                "Bildung",
+                                "BIS Master",
+                                "Digitalization of Business Processes",
+                                "Assignment",
+                                "Data Base Client"
+                            ]
+                        },
+                        "includesHeaders": {
+                            "label": "Yes"
+                        },
+                        "useColumnHeaders": {
+                            "label": "Yes",
+                            "nested": [
+                                {
+                                    "name": "values",
+                                    "spec": [
+                                        {
+                                            "name": "assignment_id",
+                                            "type": "text",
+                                            "label": "assignment_id (A)"
+                                        },
+                                        {
+                                            "name": "case_id",
+                                            "type": "text",
+                                            "label": "case_id (B)"
+                                        },
+                                        {
+                                            "name": "coach_id",
+                                            "type": "text",
+                                            "label": "coach_id (C)"
+                                        },
+                                        {
+                                            "name": "coach_first_name",
+                                            "type": "text",
+                                            "label": "coach_first_name (D)"
+                                        },
+                                        {
+                                            "name": "coach_last_name",
+                                            "type": "text",
+                                            "label": "coach_last_name (E)"
+                                        },
+                                        {
+                                            "name": "coach_main_languages",
+                                            "type": "text",
+                                            "label": "coach_main_languages (F)"
+                                        },
+                                        {
+                                            "name": "coach_other_languages",
+                                            "type": "text",
+                                            "label": "coach_other_languages (G)"
+                                        },
+                                        {
+                                            "name": "coach_skills",
+                                            "type": "text",
+                                            "label": "coach_skills (H)"
+                                        },
+                                        {
+                                            "name": "coach_remaining_capacity",
+                                            "type": "text",
+                                            "label": "coach_remaining_capacity (I)"
+                                        },
+                                        {
+                                            "name": "coach_city",
+                                            "type": "text",
+                                            "label": "coach_city (J)"
+                                        },
+                                        {
+                                            "name": "case_first_name",
+                                            "type": "text",
+                                            "label": "case_first_name (K)"
+                                        },
+                                        {
+                                            "name": "case_last_name",
+                                            "type": "text",
+                                            "label": "case_last_name (L)"
+                                        },
+                                        {
+                                            "name": "case_size_in_procent",
+                                            "type": "text",
+                                            "label": "case_size_in_procent (M)"
+                                        },
+                                        {
+                                            "name": "case_urgency",
+                                            "type": "text",
+                                            "label": "case_urgency (N)"
+                                        },
+                                        {
+                                            "name": "case_main_languages",
+                                            "type": "text",
+                                            "label": "case_main_languages (O)"
+                                        },
+                                        {
+                                            "name": "case_other_languages",
+                                            "type": "text",
+                                            "label": "case_other_languages (P)"
+                                        },
+                                        {
+                                            "name": "case_type",
+                                            "type": "text",
+                                            "label": "case_type (Q)"
+                                        },
+                                        {
+                                            "name": "case_city",
+                                            "type": "text",
+                                            "label": "case_city (R)"
+                                        },
+                                        {
+                                            "name": "distance_text",
+                                            "type": "text",
+                                            "label": "distance_text (S)"
+                                        },
+                                        {
+                                            "name": "distance_value",
+                                            "type": "text",
+                                            "label": "distance_value (T)"
+                                        },
+                                        {
+                                            "name": "duration_text",
+                                            "type": "text",
+                                            "label": "duration_text (U)"
+                                        },
+                                        {
+                                            "name": "duration_value",
+                                            "type": "text",
+                                            "label": "duration_value (V)"
+                                        },
+                                        {
+                                            "name": "status",
+                                            "type": "text",
+                                            "label": "status (W)"
+                                        },
+                                        {
+                                            "name": "created_at",
+                                            "type": "text",
+                                            "label": "created_at (X)"
+                                        },
+                                        {
+                                            "name": "eligible",
+                                            "type": "text",
+                                            "label": "eligible (Y)"
+                                        },
+                                        {
+                                            "name": "exclusion_reason",
+                                            "type": "text",
+                                            "label": "exclusion_reason (Z)"
+                                        },
+                                        {
+                                            "name": "language_score",
+                                            "type": "text",
+                                            "label": "language_score (AA)"
+                                        },
+                                        {
+                                            "name": "duration_score",
+                                            "type": "text",
+                                            "label": "duration_score (AB)"
+                                        },
+                                        {
+                                            "name": "skill_score",
+                                            "type": "text",
+                                            "label": "skill_score (AC)"
+                                        },
+                                        {
+                                            "name": "total_score",
+                                            "type": "text",
+                                            "label": "total_score (AD)"
+                                        }
+                                    ],
+                                    "type": "collection",
+                                    "label": "Values in columns",
+                                    "metadata": [
+                                        [
+                                            [
+                                                "assignment_id",
+                                                "case_id",
+                                                "coach_id",
+                                                "coach_first_name",
+                                                "coach_last_name",
+                                                "coach_main_languages",
+                                                "coach_other_languages",
+                                                "coach_skills",
+                                                "coach_remaining_capacity",
+                                                "coach_city",
+                                                "case_first_name",
+                                                "case_last_name",
+                                                "case_size_in_procent",
+                                                "case_urgency",
+                                                "case_main_languages",
+                                                "case_other_languages",
+                                                "case_type",
+                                                "case_city",
+                                                "distance_text",
+                                                "distance_value",
+                                                "duration_text",
+                                                "duration_value",
+                                                "status",
+                                                "created_at",
+                                                "eligible",
+                                                "exclusion_reason",
+                                                "language_score",
+                                                "duration_score",
+                                                "skill_score",
+                                                "total_score"
+                                            ]
+                                        ]
+                                    ]
+                                }
+                            ]
+                        },
+                        "valueInputOption": {
+                            "mode": "chose",
+                            "label": "User entered"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "google"
+                            },
+                            "label": "My Google connection (cedric.iseli95@gmail.com)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:google",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "mode",
+                        "type": "select",
+                        "label": "Search Method",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "select",
+                                "fromAll",
+                                "map"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "valueInputOption",
+                        "type": "select",
+                        "label": "Value input option",
+                        "validate": {
+                            "enum": [
+                                "USER_ENTERED",
+                                "RAW"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "from",
+                        "type": "select",
+                        "label": "Drive",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "drive",
+                                "share",
+                                "team"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spreadsheetId",
+                        "type": "file",
+                        "label": "Spreadsheet Name",
+                        "required": true
+                    },
+                    {
+                        "name": "sheetId",
+                        "type": "select",
+                        "label": "Sheet Name",
+                        "required": true
+                    },
+                    {
+                        "name": "rowNumber",
+                        "type": "uinteger",
+                        "label": "Row number",
+                        "required": true
+                    },
+                    {
+                        "name": "includesHeaders",
+                        "type": "select",
+                        "label": "Table contains headers",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                true,
+                                false
+                            ]
+                        }
+                    },
+                    {
+                        "name": "useColumnHeaders",
+                        "type": "select",
+                        "label": "Use column headers as IDs of the columns",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                true,
+                                false
+                            ]
+                        }
+                    },
+                    {
+                        "name": "values",
+                        "spec": [
+                            {
+                                "name": "assignment_id",
+                                "type": "text",
+                                "label": "assignment_id (A)"
+                            },
+                            {
+                                "name": "case_id",
+                                "type": "text",
+                                "label": "case_id (B)"
+                            },
+                            {
+                                "name": "coach_id",
+                                "type": "text",
+                                "label": "coach_id (C)"
+                            },
+                            {
+                                "name": "coach_first_name",
+                                "type": "text",
+                                "label": "coach_first_name (D)"
+                            },
+                            {
+                                "name": "coach_last_name",
+                                "type": "text",
+                                "label": "coach_last_name (E)"
+                            },
+                            {
+                                "name": "coach_main_languages",
+                                "type": "text",
+                                "label": "coach_main_languages (F)"
+                            },
+                            {
+                                "name": "coach_other_languages",
+                                "type": "text",
+                                "label": "coach_other_languages (G)"
+                            },
+                            {
+                                "name": "coach_skills",
+                                "type": "text",
+                                "label": "coach_skills (H)"
+                            },
+                            {
+                                "name": "coach_remaining_capacity",
+                                "type": "text",
+                                "label": "coach_remaining_capacity (I)"
+                            },
+                            {
+                                "name": "coach_city",
+                                "type": "text",
+                                "label": "coach_city (J)"
+                            },
+                            {
+                                "name": "case_first_name",
+                                "type": "text",
+                                "label": "case_first_name (K)"
+                            },
+                            {
+                                "name": "case_last_name",
+                                "type": "text",
+                                "label": "case_last_name (L)"
+                            },
+                            {
+                                "name": "case_size_in_procent",
+                                "type": "text",
+                                "label": "case_size_in_procent (M)"
+                            },
+                            {
+                                "name": "case_urgency",
+                                "type": "text",
+                                "label": "case_urgency (N)"
+                            },
+                            {
+                                "name": "case_main_languages",
+                                "type": "text",
+                                "label": "case_main_languages (O)"
+                            },
+                            {
+                                "name": "case_other_languages",
+                                "type": "text",
+                                "label": "case_other_languages (P)"
+                            },
+                            {
+                                "name": "case_type",
+                                "type": "text",
+                                "label": "case_type (Q)"
+                            },
+                            {
+                                "name": "case_city",
+                                "type": "text",
+                                "label": "case_city (R)"
+                            },
+                            {
+                                "name": "distance_text",
+                                "type": "text",
+                                "label": "distance_text (S)"
+                            },
+                            {
+                                "name": "distance_value",
+                                "type": "text",
+                                "label": "distance_value (T)"
+                            },
+                            {
+                                "name": "duration_text",
+                                "type": "text",
+                                "label": "duration_text (U)"
+                            },
+                            {
+                                "name": "duration_value",
+                                "type": "text",
+                                "label": "duration_value (V)"
+                            },
+                            {
+                                "name": "status",
+                                "type": "text",
+                                "label": "status (W)"
+                            },
+                            {
+                                "name": "created_at",
+                                "type": "text",
+                                "label": "created_at (X)"
+                            },
+                            {
+                                "name": "eligible",
+                                "type": "text",
+                                "label": "eligible (Y)"
+                            },
+                            {
+                                "name": "exclusion_reason",
+                                "type": "text",
+                                "label": "exclusion_reason (Z)"
+                            },
+                            {
+                                "name": "language_score",
+                                "type": "text",
+                                "label": "language_score (AA)"
+                            },
+                            {
+                                "name": "duration_score",
+                                "type": "text",
+                                "label": "duration_score (AB)"
+                            },
+                            {
+                                "name": "skill_score",
+                                "type": "text",
+                                "label": "skill_score (AC)"
+                            },
+                            {
+                                "name": "total_score",
+                                "type": "text",
+                                "label": "total_score (AD)"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Values in columns",
+                        "metadata": [
+                            [
+                                [
+                                    "assignment_id",
+                                    "case_id",
+                                    "coach_id",
+                                    "coach_first_name",
+                                    "coach_last_name",
+                                    "coach_main_languages",
+                                    "coach_other_languages",
+                                    "coach_skills",
+                                    "coach_remaining_capacity",
+                                    "coach_city",
+                                    "case_first_name",
+                                    "case_last_name",
+                                    "case_size_in_procent",
+                                    "case_urgency",
+                                    "case_main_languages",
+                                    "case_other_languages",
+                                    "case_type",
+                                    "case_city",
+                                    "distance_text",
+                                    "distance_value",
+                                    "duration_text",
+                                    "duration_value",
+                                    "status",
+                                    "created_at",
+                                    "eligible",
+                                    "exclusion_reason",
+                                    "language_score",
+                                    "duration_score",
+                                    "skill_score",
+                                    "total_score"
+                                ]
+                            ]
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu1.make.com",
+        "notes": []
+    }
+}
