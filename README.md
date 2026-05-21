@@ -70,7 +70,7 @@ There is no way to identify a suitable coach for a given case. Suitability decis
 
 
 
-<img width="6219" height="2418" alt="To-Be_Case_Allocation_66_Backup_final_v4" src="https://github.com/user-attachments/assets/7e0261a2-4fdc-4b49-9f8a-bdae2972e5ff" />
+<img width="6219" height="2418" alt="To-Be_Case_Allocation_66_Backup_final_v5" src="https://github.com/user-attachments/assets/3d069711-03ef-4a38-a324-e15fe3d33a3b" />
 
 
 
