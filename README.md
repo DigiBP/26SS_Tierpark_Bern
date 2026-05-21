@@ -609,7 +609,7 @@ The returned values are written back into the score columns of the same assignme
 
 ## Step 3: Boundary Error Event
 
-The Boundary Error Event captures technical, integration, and data-related exceptions that may occur during the automated service task. Possible errors include failures in Google Maps distance calculation, Google Sheets data retrieval, Make scenario execution, HTTP/API requests, authentication, missing or invalid input data, webhook communication, timeouts, and unsuccessful system calculations. When such an error occurs, the process is redirected to a fallback path instead of stopping completely. This allows the Case Coach to review the issue and continue the case allocation manually, ensuring process continuity and human oversight when automated execution is not possible.
+The Boundary Error Event captures technical, integration, and data-related exceptions that may occur during the automated service task. Possible errors include failures in Google Maps distance calculation, Google Sheets data retrieval, Make scenario execution, HTTP/API requests, authentication, missing or invalid input data, webhook communication, timeouts, and unsuccessful system calculations. When such an error occurs, the process is redirected to a fallback path instead of stopping completely. This allows the Case Coach to review the case and continue the case allocation manually, ensuring process continuity and human oversight when automated execution is not possible.
 
 
 ## Step 4: Assign Manually 
