@@ -253,7 +253,7 @@ The Case Allocation process was considered suitable for automation because sever
 
 
 
-## 4. Overview involved systems: Make, Camunda, Google Form, Google Sheet, Flask API
+## 3. Overview involved systems: Make, Camunda, Google Form, Google Sheet, Flask API
 
 <img width="1807" height="1114" alt="To-Be Process Export drawio" src="https://github.com/user-attachments/assets/1cc6fe29-a093-4bb6-8b89-07cfbbf6a0b5" />
 
@@ -270,9 +270,9 @@ Camunda coordinates the overall workflow. It triggers Make scenarios, manages us
 
 ---
 
-## 5. Main Changes in the To-Be Process
+## 4. Main Changes in the To-Be Process
 
-### 5.1 Creation of a New Database Structure
+### 4.1 Creation of a New Database Structure
 
 A new database structure was created using Google Sheets. The database consists of three main tables:
 
@@ -288,7 +288,7 @@ Additional data fields were introduced so that the company has more information 
 
 ---
 
-### 5.2 Structured Data Collection Through an Onboarding Form
+### 4.2 Structured Data Collection Through an Onboarding Form
 
 An onboarding form was created to ensure that new case data is collected in a consistent and structured format.
 
@@ -298,7 +298,7 @@ This is important because automation requires readable and structured digital in
 
 ---
 
-### 5.3 Integration of the Google Maps API
+### 4.3 Integration of the Google Maps API
 
 The Google Maps API is used to automatically calculate the travel distance and estimated driving duration between the client address and the coach address.
 
@@ -315,7 +315,7 @@ This automation replaces manual distance checks and ensures that every possible 
 
 ---
 
-### 5.4 Flask API and Python Scoring Script
+### 4.4 Flask API and Python Scoring Script
 
 A Flask API was created to make the Python scoring logic accessible from Make.
 
@@ -340,14 +340,14 @@ The result is returned to Make and written back into the `assignments` table.
 
 ---
 
-## 6. Data Model
+## 5. Data Model
 
 ### Entity Relationship Diagramm / ERD
 <img width="801" height="1031" alt="Datenmodel DigiBP drawio" src="https://github.com/user-attachments/assets/65f22ec8-8f28-44b2-bc57-9a1939c744f2" />
 
 Since the prototype uses Google Sheets as a lightweight database, some case and coach attributes are stored redundantly in the `assignments` table. In a fully normalized relational database, these attributes would normally be retrieved through the foreign keys `case_id` and `coach_id`. However, for the Google Sheets and Make-based prototype, storing these values as snapshot data makes the assignment results easier to review, export and process in subsequent automation steps.
 
-### 6.1 Table: `unassigned_cases`
+### 5.1 Table: `unassigned_cases`
 
 The `unassigned_cases` table stores client cases that have not yet been fully allocated.
 
@@ -371,7 +371,7 @@ The `unassigned_cases` table stores client cases that have not yet been fully al
 
 ---
 
-### 6.2 Table: `coaches`
+### 5.2 Table: `coaches`
 
 The `coaches` table stores all available family coaches.
 
@@ -395,7 +395,7 @@ The `coaches` table stores all available family coaches.
 
 ---
 
-### 6.3 Table: `assignments`
+### 5.3 Table: `assignments`
 
 The `assignments` table stores one calculated row per case-coach combination.
 
@@ -437,7 +437,7 @@ The `assignments` table stores one calculated row per case-coach combination.
 
 ---
 
-## 7. Detailed Process Description
+## 6. Detailed Process Description
 
 ### Step 1: Enter Client Data Forms
 
@@ -772,7 +772,7 @@ The purpose of this event is to mark the successful completion of the TO-BE case
 
 ---
 
-## 8. Scoring Logic
+## 7. Scoring Logic
 
 The Python scoring script evaluates each possible case-coach combination. The goal of the scoring logic is to identify whether a coach is eligible for a case and, if eligible, how suitable the coach is based on predefined business rules.
 
@@ -786,7 +786,7 @@ The scoring model consists of two parts:
 
 ---
 
-### 8.1 Hard Criteria
+### 7.1 Hard Criteria
 
 A coach is not eligible if at least one hard criterion is violated.
 
@@ -819,7 +819,7 @@ Example:
 
 ---
 
-### 8.2 Scoring Model
+### 7.2 Scoring Model
 
 If all hard criteria are fulfilled, the total score is calculated based on three score components.
 
@@ -838,7 +838,7 @@ total_score = language_score + duration_score + skill_score
 
 ---
 
-### 8.3 Language Score
+### 7.3 Language Score
 
 The language score evaluates whether the case languages match the coach languages. A main language match receives the highest score. Matches involving secondary languages receive fewer points.
 
@@ -862,7 +862,7 @@ language_score = 30
 
 ---
 
-### 8.4 Duration Score
+### 7.4 Duration Score
 
 The duration score evaluates the travel duration between the coach address and the client address. The value `duration_value` is provided by the Google Maps API in seconds.
 
@@ -888,7 +888,7 @@ duration_score = 25
 
 ---
 
-### 8.5 Skill Score
+### 7.5 Skill Score
 
 The skill score evaluates whether the case type matches the skills of the coach.
 
@@ -910,7 +910,7 @@ skill_score = 40
 
 ---
 
-### 8.6 Example Calculation
+### 7.6 Example Calculation
 
 Example input:
 
@@ -971,7 +971,7 @@ Example output:
 
 ---
 
-### 8.7 Summary of the Scoring Logic
+### 7.7 Summary of the Scoring Logic
 
 The scoring model ensures that unsuitable coaches are excluded before a score is calculated. This is done through hard criteria for language match, capacity and travel duration.
 
@@ -981,9 +981,9 @@ The final decision is still made by a human user in the review step. The scoring
 
 ---
 
-## 9. Make Scenarios
+## 8. Make Scenarios
 
-### 9.1 Get Onboarding Data
+### 8.1 Get Onboarding Data
 
 Purpose:
 
@@ -1001,7 +1001,7 @@ Main modules:
 
 ---
 
-### 9.2 Calculate Distances and Score
+### 8.2 Calculate Distances and Score
 
 Purpose:
 
@@ -1025,7 +1025,7 @@ Main modules:
 
 ---
 
-### 9.3 Extract Assignments
+### 8.3 Extract Assignments
 
 Purpose:
 
@@ -1044,7 +1044,7 @@ Main modules:
 
 ---
 
-## 10. Important Mapping Rules
+## 9. Important Mapping Rules
 
 The following mappings are important for the process to work correctly.
 
@@ -1090,11 +1090,11 @@ coach_type = {{5.`14`}}
 ---
 
 
-## 11. Flask API Endpoint
+## 10. Flask API Endpoint
 
 The Flask API exposes the scoring function.
 
-### 11.1 Healthcheck
+### 10.1 Healthcheck
 
 ```http
 GET /
@@ -1111,7 +1111,7 @@ Expected response:
 
 ---
 
-### 11.2 Score Assignment
+### 10.2 Score Assignment
 
 ```http
 POST /score-assignment
@@ -1122,9 +1122,9 @@ The endpoint receives one assignment candidate and returns the calculated eligib
 
 ---
 
-## 12. Testing
+## 11. Testing
 
-### 12.1 Test Flask API Locally
+### 11.1 Test Flask API Locally
 
 Start Flask:
 
@@ -1161,7 +1161,7 @@ curl -X POST http://127.0.0.1:5000/score-assignment \
 
 ---
 
-### 12.2 Test with Postman
+### 11.2 Test with Postman
 
 Use the following configuration:
 
@@ -1174,7 +1174,7 @@ Body: raw JSON
 
 ---
 
-### 12.3 Test Make Scenario
+### 11.3 Test Make Scenario
 
 Recommended test sequence:
 
@@ -1188,7 +1188,7 @@ Recommended test sequence:
 
 ---
 
-## 13. Resulting Benefits
+## 12. Resulting Benefits
 
 The To-Be process provides several improvements compared to the As-Is process.
 
@@ -1203,7 +1203,7 @@ The To-Be process provides several improvements compared to the As-Is process.
 
 ---
 
-## 14. Known Limitations
+## 13. Known Limitations
 
 This implementation is a prototype and uses Google Sheets as a lightweight database. For a production-ready solution, a relational database should be considered.
 
@@ -1214,32 +1214,18 @@ The scoring model is rule-based. Future versions could include more sophisticate
 ---
 
 
-## 15. Summary
-
-The To-Be Case Allocation process combines structured data collection, automated distance calculation, rule-based scoring and human review.
-
-The process does not fully replace human decision-making. Instead, it supports the responsible person by providing transparent and pre-calculated assignment suggestions.
-
-This approach ensures that automation is applied where it creates value, while human judgement remains part of the final allocation decision.
-
-
-
-
-
-#Archiv
-
-
-
-
-
-
-# Conclusion
+## 14. Conclusion
 
 The TO-BE BPMN Camunda model improves the Case allocation process by combining automation with human decision-making. Automated service tasks reduce manual effort by calculating distance, scoring coaches, and extracting assignment suggestions. User tasks ensure that important decisions, such as reviewing assignments and family coach profiles, remain controlled by responsible staff.
 
 The model also includes a clear error handling path, which makes the process more robust when technical problems or missing data occur. The recommendation loop allows the responsible person to reject unsuitable coaches and evaluate alternatives.
 
 Overall, this TO-BE process supports faster, more transparent, and more reliable case allocation. It is suitable for further implementation in Camunda and can be integrated with tools such as Make, Google Sheets, Google Maps, and email services.
+
+
+
+#Archiv
+
 
 # Acknowledgements
 
