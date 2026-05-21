@@ -39,7 +39,7 @@ There is no automation in the current ChangeKultur case allocation process. Ther
 
 
 ## BPMN TO-BE Process
-![Case Allocation As-Is Process](Case allocation As-Is Process.png)
+![Case Allocation As-Is Process](Case Allocation As-Is Process.png)
 
 # Current Situation
 
