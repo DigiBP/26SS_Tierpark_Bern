@@ -70,7 +70,7 @@ There is no way to identify a suitable coach for a given case. Suitability decis
 
 
 
-<img width="1530" height="697" alt="image" src="https://github.com/user-attachments/assets/0e32a7aa-d2f3-461d-b865-e6b26e734bf0" />
+<img width="6219" height="2418" alt="To-Be_Case_Allocation_66_Backup_final_v4" src="https://github.com/user-attachments/assets/7e0261a2-4fdc-4b49-9f8a-bdae2972e5ff" />
 
 
 
@@ -141,20 +141,6 @@ Source: FHNW Course BPM Slides 2025
 The Case Allocation process was considered suitable for automation because several activities are repetitive, data-driven, rule-based and based on structured input data.
 
 
-## 3. Process Overview
-
-The To-Be process is called **Case Allocation**. It starts when new client data is entered and continues with the automated calculation of potential coach assignments.
-
-The first four main tasks are:
-
-| Step | Task | Type | Purpose |
-|---:|---|---|---|
-| 1 | Enter client data (Forms) | User Task | Capture the client and case information |
-| 2 | Calculate Distances and Score | Service Task | Calculate distance, duration and suitability score for possible coach assignments |
-| 3 | Extract assignments | Service Task | Retrieve calculated assignment suggestions and return them to Camunda |
-| 4 | Review assignments | User Task | Allow a human user to review the proposed assignments |
-
----
 
 ## 4. Overview involved systems: Make, Camunda, Google Form, Google Sheet, Flask API
 
