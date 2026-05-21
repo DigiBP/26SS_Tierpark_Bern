@@ -38,10 +38,10 @@ There is no automation in the current ChangeKultur case allocation process. Ther
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
-# As-Is Process: Case Allocation
+# AS-IS Process: Case Allocation
 
 
-## BPMN As-Is Process
+## BPMN AS-IS Process
 <img width="1945" height="657" alt="image" src="https://github.com/user-attachments/assets/9e110d55-5a47-45c9-b5b5-c9ce13664917" />
 
 
@@ -71,7 +71,6 @@ It is difficult to clearly track why a specific coach was selected or rejected.
 Distance or travel time between the client and possible family coaches is not automatically calculated. 
 
 **No suitability criteria**
-
 there is no way to identify a suitable coach for a given case. Suitability decisions depend on personal judgment. 
 
 **Inconsistent decision-making**
