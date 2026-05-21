@@ -35,33 +35,48 @@ There is no automation in the current ChangeKultur case allocation process. Ther
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
+# TO-BE Process: Case Allocation
 
+
+## BPMN TO-BE Process
+![Case Allocation As-Is Process](Case allocation As-Is Process.png)
 
 # Current Situation
 
 
-
 # AS-IS Pain Points
 
-<img width="1882" height="662" alt="image" src="https://github.com/user-attachments/assets/06375150-baf0-42cd-8131-00aca8a97069" />
-
-![image alt](https://github.com/DigiBP/26SS_Tierpark_Bern/blob/fa090c2cb78dc9208c1435b1a22478b10402501f/Case%20allocation%20AS-IS%20Process.png)
-
-
-1. Manual case handling 
-The responsible person must manually collect and compare all information needed for the assignment. 
-
-2. Time-consuming coach selection 
-Finding a suitable family coach can take time, especially if several coaches need to be checked. 
-
-3. Limited transparency 
-It is difficult to clearly track why a specific coach was selected or rejected. 
-
-4. No automated distance calculation 
-Distance or travel time between the client and possible family coaches is not automatically calculated. 
-
-5. No structured scoring  
-There is no way to identify a suitable coach for a given case. Suitability decisions depend on personal judgment.  
+**Process & Decision-Making**
+	• strong reliance on personal intuition and experience 
+	• lack of standardized decision criteria 
+	• no weighting or scoring system
+  
+**Data & Transparency**
+	• limited visibility of real workload 
+	• no structured overview of capacities
+	• No KPI overview
+	• no real-time capacity dashboard or tool
+  
+**Technology & Automation**
+	• no automated matching mechanism 
+	• no routing or geographic optimization system
+  
+**Communication**
+	• Informal coordination via phone calls and messages 
+	• Manual rewriting and summarization of case requirements in Microsoft Teams when communicating cases to Case Coaches 
+	• Delayed feedback and responses from part-time Family Coaches 
+	• Communication spread across multiple channels, leading to inconsistent information sharing 
+	• Limited transparency regarding response status and coordination progress
+  
+**Cost**
+	• Cost and hourly rates are not considered during allocation decisions 
+	• Inefficient routing and manual coordination increase operational costs 
+	• Delays in case allocation reduce process efficiency and resource utilization
+  
+**Governance**
+	• unclear role standardization 
+	• inconsistent decision logic
+  • unclear role standardization
 
 # TO-BE Process: Case Allocation
 
