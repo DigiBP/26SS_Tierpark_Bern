@@ -605,7 +605,14 @@ Example response:
 The returned values are written back into the score columns of the same assignment row.
 
 ---
-## Step 3: Assign Manually 
+
+
+## Step 3: Boundary Error Event
+
+The Boundary Error Event captures technical, integration, and data-related exceptions that may occur during the automated service task. Possible errors include failures in Google Maps distance calculation, Google Sheets data retrieval, Make scenario execution, HTTP/API requests, authentication, missing or invalid input data, webhook communication, timeouts, and unsuccessful system calculations. When such an error occurs, the process is redirected to a fallback path instead of stopping completely. This allows the Case Coach to review the issue and continue the case allocation manually, ensuring process continuity and human oversight when automated execution is not possible.
+
+
+## Step 4: Assign Manually 
 
 Assign Manually is a User Task that is performed when the automated allocation cannot be completed successfully. This may happen because of missing or inconsistent data, technical or integration issues. 
 
@@ -623,7 +630,7 @@ This User Task therefore ensures process continuity, human oversight, and operat
 
 
 
-## Step 4: Extract Assignments
+## Step 5: Extract Assignments
 
 The task **Extract assignments** retrieves the calculated assignment suggestions from the `assignments` table and sends them back to Camunda.
 
@@ -672,7 +679,7 @@ After the data has been returned to Camunda, the assignment row can be marked as
 
 ---
 
-## Step 5: Review Assignments
+## Step 6: Review Assignments
 
 The task **Review assignments** is a user task.
 
@@ -681,7 +688,7 @@ At this stage, the system has already calculated possible coach assignments and 
 The purpose of this step is not to fully automate the final decision. Instead, the automatic scoring provides decision support. A human user can still apply professional judgement before continuing with the final allocation.
 
 
-## Step 6: Evaluate soft factors 
+## Step 7: Evaluate soft factors 
 
 The task **Evaluate soft factors** is a Business Rule Task. 
 
@@ -698,7 +705,7 @@ The purpose of this step is to provide structured and transparent decision suppo
 <img width="929" height="445" alt="image" src="https://github.com/user-attachments/assets/42838f82-da61-42f7-8c64-6856f65fdfbf" />
 
 
-## Step 7: Review Family Coach Profile 
+## Step 8: Review Family Coach Profile 
 
 The task **Review Family Coach profile** is modeled as a User Task. 
 
@@ -711,7 +718,7 @@ The purpose of this step is to ensure that the final allocation decision is not 
 <img width="268" height="647" alt="image" src="https://github.com/user-attachments/assets/c0bcfb08-9f92-4df1-8b0a-630ca9ac1c99" />
 
 
-## Step 8: Recommended? 
+## Step 9: Recommended? 
 
 The element **Recommended?** is an Exclusive Gateway. 
 
@@ -734,30 +741,34 @@ If the coach is not suitable then we inform the client of non-allocation of case
 The purpose of this gateway is to create a clear decision point in the process. It ensures that only suitable coach recommendations move forward to final communication with the client. 
 
 
-## Step 9: Inform Client 
+## Step 10: Inform Client 
 
 The task **Inform client** is a User Task. 
 
 At this stage, the client is informed about the allocation result, depending on the communication channel used by the organisation. 
 
-The responsible person informs the client that a Family Coach has been selected and communicates the relevant assignment outcome. 
+The Case Coach informs the client that a Family Coach has been selected and informs the relevant assignment outcome through communication channel. 
 
 The purpose of this step is to ensure that the client receives clear confirmation about the allocation before the process ends. 
-
-
-## Step 10: Inform Client 
-
-
 
 
 
 ## Step 11: Case Assigned 
 
-The event **Case assigned** is an End Event. 
 
-At this stage, the process is completed because the client case has been successfully allocated to a suitable Family Coach and the client has been informed. 
+The event Case assigned is an End Event that marks the completion of the process after the case has been allocated successfully and the client has been informed of the assignment.
 
-The purpose of this event is to mark the successful completion of the TO-BE case allocation process. 
+
+## Step 12: Inform Client 
+
+
+## Step 11: Case not assigned 
+
+
+The event Case not assigned is an End Event that marks the completion of the process when no suitable Family Coach could be allocated and the client has been informed of the non-assignment.
+
+
+
 
 ---
 
