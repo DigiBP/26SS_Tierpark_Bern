@@ -607,19 +607,13 @@ The returned values are written back into the score columns of the same assignme
 ---
 ## Step 3: Assign Manually 
 
-The task **Assign Manually** is a User Task. 
+Assign Manually is a User Task that is performed when the automated allocation cannot be completed successfully. This may happen because of missing or inconsistent data, technical or integration issues. 
 
-It is triggered when the automated allocation step fails, for example because of: 
+In this step, the Case Coach takes over the process manually and reviews the case, identifies the issue that prevented the automated allocation, and decides how to proceed. Based on the available case information, workload data, and professional judgment, the Case Coach manually selects a suitable Family Coach. 
 
-1. missing or inconsistent data,  
+The purpose of this task is twofold. First, it provides human error handling by ensuring that technical, data-related, or system-related problems are reviewed instead of blocking the process. Second, it serves as a manual fallback that allows the case allocation process to continue even when automation fails. 
 
-2. an API or integration problem (Google Maps API failure, Google Sheets access or data issue, Make scenario execution failure, HTTP/API request errors) 
-
-3. or an unsuccessful system calculation.  
-
-At this stage, the responsible person reviews the problem and identifies why the automated allocation could not be completed successfully. The person then decides how to proceed so that the case can continue in the process. 
-
-The purpose of this step is to make sure that technical or data-related problems are not ignored. A human user can understand the issue and decide how to continue the case allocation process. 
+This User Task therefore ensures process continuity, human oversight, and operational reliability, as the case can still be assigned appropriately without depending entirely on the automated matching service. 
 
 
 
@@ -627,17 +621,9 @@ The purpose of this step is to make sure that technical or data-related problems
 
 
 
-## Step 4: Assign Manually 
 
-The task **Assign Manually** is a Manual Task. 
 
-If the automated allocation cannot be completed, the responsible person manually selects another possible Family Coach using available information and professional judgement. 
-
-This is a fallback step. It ensures that the case allocation process can continue even if the automated service task fails. 
-
-The purpose of this step is to provide a fallback path for exceptional situations. It ensures that the process remains operational even when the automated matching step fails. 
-
-## Step 5: Extract Assignments
+## Step 4: Extract Assignments
 
 The task **Extract assignments** retrieves the calculated assignment suggestions from the `assignments` table and sends them back to Camunda.
 
@@ -686,7 +672,7 @@ After the data has been returned to Camunda, the assignment row can be marked as
 
 ---
 
-## Step 6: Review Assignments
+## Step 5: Review Assignments
 
 The task **Review assignments** is a user task.
 
@@ -695,7 +681,7 @@ At this stage, the system has already calculated possible coach assignments and 
 The purpose of this step is not to fully automate the final decision. Instead, the automatic scoring provides decision support. A human user can still apply professional judgement before continuing with the final allocation.
 
 
-## Step 7: Evaluate soft factors 
+## Step 6: Evaluate soft factors 
 
 The task **Evaluate soft factors** is a Business Rule Task. 
 
@@ -712,7 +698,7 @@ The purpose of this step is to provide structured and transparent decision suppo
 <img width="929" height="445" alt="image" src="https://github.com/user-attachments/assets/42838f82-da61-42f7-8c64-6856f65fdfbf" />
 
 
-## Step 8: Review Family Coach Profile 
+## Step 7: Review Family Coach Profile 
 
 The task **Review Family Coach profile** is modeled as a User Task. 
 
@@ -725,7 +711,7 @@ The purpose of this step is to ensure that the final allocation decision is not 
 <img width="268" height="647" alt="image" src="https://github.com/user-attachments/assets/c0bcfb08-9f92-4df1-8b0a-630ca9ac1c99" />
 
 
-## Step 9: Recommended? 
+## Step 8: Recommended? 
 
 The element **Recommended?** is an Exclusive Gateway. 
 
@@ -739,7 +725,7 @@ If the coach is suitable, the process continues to the next step, where the clie
 <img width="512" height="542" alt="image" src="https://github.com/user-attachments/assets/7d572a88-fdce-4d85-9097-439ead3458ec" />
 
 
-If the coach is not suitable, the process loops back to Evaluate soft factors, so that another coach option can be assessed. 
+If the coach is not suitable then we inform the client of non-allocation of case. 
 
 
 
@@ -748,7 +734,7 @@ If the coach is not suitable, the process loops back to Evaluate soft factors, s
 The purpose of this gateway is to create a clear decision point in the process. It ensures that only suitable coach recommendations move forward to final communication with the client. 
 
 
-## Step 10: Inform Client 
+## Step 9: Inform Client 
 
 The task **Inform client** is a User Task. 
 
@@ -757,6 +743,9 @@ At this stage, the client is informed about the allocation result, depending on 
 The responsible person informs the client that a Family Coach has been selected and communicates the relevant assignment outcome. 
 
 The purpose of this step is to ensure that the client receives clear confirmation about the allocation before the process ends. 
+
+
+## Step 10: Inform Client 
 
 
 
