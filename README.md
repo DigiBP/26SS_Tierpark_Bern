@@ -591,7 +591,7 @@ After the data has been returned to Camunda, the assignment row can be marked as
 
 The task **Review assignments** is a user task.
 
-At this stage, the system has already calculated possible coach assignments. The human user can now review the suggested coach, the case data, the travel distance, duration, eligibility and scores.
+At this stage, the system has already calculated possible coach assignments and gives 2 coaches in the decending order. The coach with the highest score is evaluated in the DMN. The human user can now review the suggested coach, the case data, the travel distance, duration, eligibility and scores.
 
 The purpose of this step is not to fully automate the final decision. Instead, the automatic scoring provides decision support. A human user can still apply professional judgement before continuing with the final allocation.
 
