@@ -57,37 +57,26 @@ If a suitable and available Family Coach is confirmed, the Case Coach selects th
 
 # AS-IS Pain Points
 
-**Process & Decision-Making**
-	• strong reliance on personal intuition and experience 
-	• lack of standardized decision criteria 
-	• no weighting or scoring system
-  
-**Data & Transparency**
-	• limited visibility of real workload 
-	• no structured overview of capacities
-	• No KPI overview
-	• no real-time capacity dashboard or tool
-  
-**Technology & Automation**
-	• no automated matching mechanism 
-	• no routing or geographic optimization system
-  
-**Communication**
-	• Informal coordination via phone calls and messages 
-	• Manual rewriting and summarization of case requirements in Microsoft Teams when communicating cases to Case Coaches 
-	• Delayed feedback and responses from part-time Family Coaches 
-	• Communication spread across multiple channels, leading to inconsistent information sharing 
-	• Limited transparency regarding response status and coordination progress
-  
-**Cost**
-	• Cost and hourly rates are not considered during allocation decisions 
-	• Inefficient routing and manual coordination increase operational costs 
-	• Delays in case allocation reduce process efficiency and resource utilization
-  
-**Governance**
-	• unclear role standardization 
-	• inconsistent decision logic
-  • unclear role standardization
+
+**Manual case handling** 
+The responsible person must manually collect and compare all information needed for the assignment. 
+
+**Time-consuming coach selection** 
+Finding a suitable family coach can take time, especially if several coaches need to be checked. 
+
+**Limited transparency**
+It is difficult to clearly track why a specific coach was selected or rejected. 
+
+**No automated distance calculation**
+Distance or travel time between the client and possible family coaches is not automatically calculated. 
+
+**No suitability criteria**
+
+there is no way to identify a suitable coach for a given case. Suitability decisions depend on personal judgment. 
+
+**Inconsistent decision-making**
+Since there are no standardized criteria or scoring logic, similar cases may be allocated differently by different Case Coaches. 
+
 
 # TO-BE Process: Case Allocation
 
