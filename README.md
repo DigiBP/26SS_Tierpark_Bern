@@ -43,6 +43,7 @@ There is no automation in the current ChangeKultur case allocation process. Ther
 
 # AS-IS Pain Points
 
+<img width="1882" height="662" alt="image" src="https://github.com/user-attachments/assets/06375150-baf0-42cd-8131-00aca8a97069" />
 
 ![image alt](https://github.com/DigiBP/26SS_Tierpark_Bern/blob/fa090c2cb78dc9208c1435b1a22478b10402501f/Case%20allocation%20AS-IS%20Process.png)
 
