@@ -605,9 +605,9 @@ Example response:
 The returned values are written back into the score columns of the same assignment row.
 
 ---
-## Step 3: Review Error 
+## Step 3: Assign Manually 
 
-The task **Review error** is a User Task. 
+The task **Assign Manually** is a User Task. 
 
 It is triggered when the automated allocation step fails, for example because of: 
 
