@@ -488,7 +488,7 @@ The task **Calculate Distances and Score** is an automated service task.
 
 Its purpose is to generate possible coach assignments for an unassigned case. For each available coach, the process calculates the travel distance and travel duration from the coach address to the client address. Afterwards, the system evaluates whether the coach is suitable for the case.
 
-The output of this step is a set of assignment rows in the `assignments` table. [Link](https://docs.google.com/spreadsheets/d/1wtEg8CzwnzGQjX8aDpIscO8urUH8aX7tE8-TYz_ERgA/edit?gid=425397286#gid=425397286)
+The output of this step is a set of assignment rows in the `assignments` table [Link](https://docs.google.com/spreadsheets/d/1wtEg8CzwnzGQjX8aDpIscO8urUH8aX7tE8-TYz_ERgA/edit?gid=425397286#gid=425397286).
 
 #### Related Make Scenario: Calculate Distances and Score
 
