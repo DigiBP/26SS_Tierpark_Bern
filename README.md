@@ -69,7 +69,9 @@ There is no way to identify a suitable coach for a given case. Suitability decis
 
 
 
-<img width="1562" height="591" alt="image" src="https://github.com/user-attachments/assets/542ad31d-094e-4e19-9e8f-166ea6cb818a" />
+
+<img width="1530" height="697" alt="image" src="https://github.com/user-attachments/assets/0e32a7aa-d2f3-461d-b865-e6b26e734bf0" />
+
 
 
 
@@ -643,7 +645,7 @@ If the coach is suitable, the process continues to the next step, where the clie
 If the coach is not suitable, the process loops back to Evaluate soft factors, so that another coach option can be assessed. 
 
 
-<img width="851" height="538" alt="image" src="https://github.com/user-attachments/assets/b98a7610-c0e2-447d-90b7-507124967159" />
+
 
 
 The purpose of this gateway is to create a clear decision point in the process. It ensures that only suitable coach recommendations move forward to final communication with the client. 
@@ -660,7 +662,6 @@ The responsible person informs the client that a Family Coach has been selected 
 The purpose of this step is to ensure that the client receives clear confirmation about the allocation before the process ends. 
 
 
-<img width="1309" height="786" alt="image" src="https://github.com/user-attachments/assets/3c56dbda-93d6-477e-af46-3e68cdc6c57d" />
 
 
 
