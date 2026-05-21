@@ -44,103 +44,16 @@ There is no automation in the current ChangeKultur case allocation process. Ther
 ## BPMN As-Is Process
 <img width="1945" height="657" alt="image" src="https://github.com/user-attachments/assets/9e110d55-5a47-45c9-b5b5-c9ce13664917" />
 
+
 # Current Situation
-1. Process Phase
-The Internal Case Review & Allocation phase follows the initial inquiry process and focuses on assigning a suitable family coach to a client which then the case can be accepted if there is a suitable family coach.
 
-The objective of this phase is to:
-	• evaluate available family coaches, 
-	• assess real workload and availability, 
-	• and assign the most suitable coach to the case.
-	• At the end because of this the case can be accepted
+The AS-IS Case Allocation process begins once a case is accepted from the Enquiry phase and is ready for further handling. The Case Coach first reviews the case requirements, including the client’s needs, support intensity, language requirements, geographic location, and any specific experience or specialization needed. Based on this assessment, the Case Coach identifies potentially suitable Family Coaches using available case information and personal knowledge of the team. 
 
-2. Actors / Stakeholders
-Internal Actors
-Case Coach (Fallcoach)
-Responsible for:
-	• reviewing case requirements 
-	• identifying suitable family coaches 
-	• coordinating availability checks 
-	• making the final allocation decision
-Family Coach
-Provide approval if he is okay with it, if he gives the thunbs up!
+The Case Coach then evaluates the suitability of the identified Family Coaches and informally checks their actual availability. This step is carried out through direct communication and relies heavily on experience, tacit knowledge, and practical understanding of each coach’s current workload, willingness, and personal situation. Since no centralized allocation system exists, the process depends on fragmented information from Microsoft Dynamics, Teams, email, phone communication, and informal notes, making the assessment largely manual and judgment-based. 
 
-3. Process Trigger
-The process is triggered when: 
-	• The Case Allocation Process is triggered when the Inquiry Process has been completed and the case is accepted for further processing. In BPMN, this is modeled with a Message Start Event called “Inquiry completed / Case ready for allocation.”
+If a suitable and available Family Coach is confirmed, the Case Coach selects the most appropriate candidate, informs the Family Coach, and proceeds with assigning the case. The client is then informed, and the process ends with the case allocated. If no suitable coach is available, the process ends without allocation. Overall, the AS-IS process is flexible but highly dependent on manual coordination and individual expertise, which results in limited transparency, inconsistent decision-making, and reduced scalability. 
 
-4. Inputs
-Typical inputs include:
-	• case information from Microsoft Dynamics and Teams Post
-	• client needs and case description 
-	• informal knowledge about team capacity 
-	• Case Coaches’ Social-Psychological Expertise
-	• feedback from family coaches 
-	• communication via email, phone, or Teams
 
-5. Activities (AS-IS Process)
-Step 1 — Initial Case Assessment
-The case coach reviews the case requirements, including:
-	• intensity of support (e.g., sessions per week) 
-	• language requirements 
-	• geographic location 
-	• required experience or specialization/skills
-This assessment is based on available documentation and prior knowledge.
-
-Step 2 — Informal Availability Check
-The case coach informally contacts potential family coaches to assess:
-	• willingness to take the case 
-	• current availability 
-Even coaches who appear fully allocated may be contacted, as availability can change dynamically.
-
-Step 3 — Evaluation of Real Workload
-The case coach evaluates the actual capacity of potential coaches beyond formal allocation data.
-This includes:
-	• real workload and stress level 
-	• employment type (hourly vs. permanent) 
-	• personal situation 
-	• complexity of existing cases 
-This assessment is primarily based on:
-experience and personal knowledge of the team
-
-Step 4 — Final Allocation Decision
-If multiple candidates are available, the case coach selects the most suitable coach.
-Decision criteria include:
-	• professional fit with the case 
-	• available capacity 
-	• current workload 
-	• geographic feasibility (travel time) 
-In some cases:
-	• allocation decisions may need to be revised 
-	• cases may be reassigned due to changing availability
-
-6. Artifacts / Systems
-The allocation process involves:
-	• Microsoft Dynamics (case information) 
-	• Microsoft Teams (communication) 
-	• Email and phone communication 
-	• Informal notes and personal knowledge 
-Due to the lack of a centralized allocation system, information is fragmented across multiple channels.
-
-7. Outputs
-The process results in:
-	• assignment of a family coach to the case 
-	• confirmation of resource availability 
-	• preparation for case execution
-
-8. Business Rules / Constraints
-	• Travel time is not compensated, but influences allocation decisions 
-	• Most cases are handled within a regional radius 
-	• Work outside the canton is generally avoided (exceptions apply) 
-Cost and hourly rates are not considered in allocation decisions
-
-10. Governance Observation
-The allocation process relies heavily on tacit knowledge and informal coordination, leading to:
-	• limited transparency 
-	• inconsistent decision-making 
-	• lack of auditability 
-	• scalability challenges
-This represents a critical governance weakness, particularly as the organization grows.
 
 # AS-IS Pain Points
 
