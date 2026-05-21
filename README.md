@@ -529,6 +529,12 @@ At this stage, the responsible person reviews the problem and identifies why the
 
 The purpose of this step is to make sure that technical or data-related problems are not ignored. A human user can understand the issue and decide how to continue the case allocation process. 
 
+
+
+<img width="1223" height="504" alt="image" src="https://github.com/user-attachments/assets/ab50f2b8-4c57-425c-bce0-e16e2da0fab9" />
+
+
+
 ## Step 4: Assign Manually 
 
 The task **Assign Manually** is a Manual Task. 
