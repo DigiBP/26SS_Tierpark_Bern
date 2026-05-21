@@ -31,7 +31,10 @@ One of the processes that required attention was the case allocation process. Wh
 
 Our digital solution aims to streamline and automate the case allocation process. Our solution uses Camunda to model and control the workflow and Make to support automation and system integration. This improves transparency, reduces manual effort, and ensures that the allocation decision is supported by structured data while still keeping human judgement in the final decision. This is important because family coach allocation should not only be based on system scores, but also on professional judgement and the specific needs of the family. 
 
-There is no automation in the current ChangeKultur case allocation process. Therefore, our group created a AS-IS BPMN process based on the information available, identified the main pain points, and designed a TO-BE process that introduces automation, scoring, review steps, and error handling for a more reliable and transparent case allocation process. 
+There is no automation in the current ChangeKultur case allocation process. Therefore, our group created a AS-IS BPMN process based on the information available, identified the main pain points, and designed a TO-BE process that introduces automation, scoring, review steps, and error handling for a more reliable and transparent case allocation process.
+
+**Out of scope**: This project does not include a full production system, real integration with company databases, live availability checking of Family Coaches, a mobile app, advanced AI matching, or full client communication. The project is only a prototype to support case allocation, and the final decision will still be made by the Case Coach.
+
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
