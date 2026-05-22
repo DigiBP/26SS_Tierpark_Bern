@@ -121,7 +121,7 @@ Since there are no standardized criteria or scoring logic, similar cases may be 
 ## 1. Description 
 
 
-The To-Be process represents a significant step towards a more digitalized and automated **Case Allocation** process. The goal of the project team was to automate time-consuming, frequently occurring and rule-based tasks that directly address the main pain points of the company. The collected pain points and the visualized As-Is process formed the foundation for designing the To-Be process.
+The TO-BE process represents a significant step towards a more digitalized and automated **Case Allocation** process. The goal of the project team was to automate time-consuming, frequently occurring and rule-based tasks that directly address the main pain points of the company. The collected pain points and the visualized As-Is process formed the foundation for designing the To-Be process.
 
 The use case focuses on allocating a client case to the most suitable Family Coach. The process begins when the admin enters the client data through a structured form. This information is stored in the `unassigned_cases` table in the database. After the client data has been submitted, the system automatically calculates distance and scoring information for potential Family Coaches. The calculation is based on hard factors such as workload, language requirements, location and coach profile information.
 
@@ -131,13 +131,13 @@ If an error occurs during the automated calculation or assignment generation, th
 
 If the coach is recommended and accepted, the client is informed about the allocation and the case is marked as assigned. If the coach is not recommended, the process returns to the soft factor evaluation step so that another assignment can be reviewed.
 
-Compared to the As-Is process, the To-Be process contains fewer manual tasks and introduces several automated system tasks. This improves efficiency, reduces manual coordination effort and creates a more structured and transparent basis for decision-making. At the same time, human judgement remains part of the process, especially when reviewing assignment suggestions and evaluating soft factors.
+Compared to the AS-IS process, the TO-BE process contains fewer manual tasks and introduces several automated system tasks. This improves efficiency, reduces manual coordination effort and creates a more structured and transparent basis for decision-making. At the same time, human judgement remains part of the process, especially when reviewing assignment suggestions and evaluating soft factors.
 
 ---
 
 ## 2. Criteria for Task Automation
 
-Before designing the To-Be process, the project team evaluated which tasks were suitable for automation. The goal was not to automate the entire process blindly, but to identify tasks where automation creates real business value.
+Before designing the TO-BE process, the project team evaluated which tasks were suitable for automation. The goal was not to automate the entire process blindly, but to identify tasks where automation creates real business value.
 
 The following criteria were used to assess the automation potential of process tasks:
 
@@ -162,7 +162,7 @@ The Case Allocation process was considered suitable for automation because sever
 <img width="1807" height="1114" alt="To-Be Process Export drawio" src="https://github.com/user-attachments/assets/1cc6fe29-a093-4bb6-8b89-07cfbbf6a0b5" />
 
 
-The high-level architecture shows how the To-Be Case Allocation process is supported by different technical components and automation tools.
+The high-level architecture shows how the TO-BE Case Allocation process is supported by different technical components and automation tools.
 
 The process starts with the submission of client data through a Google Form. The data is stored in the `unassigned_cases` table and then processed through Make scenarios. Make acts as the central integration layer between Google Sheets, Camunda, Google Maps, the Flask API and the Python scoring logic.
 
@@ -174,7 +174,7 @@ Camunda coordinates the overall workflow. It triggers Make scenarios, manages us
 
 ---
 
-## 4. Main Changes in the To-Be Process
+## 4. Main Changes in the TO-BE Process
 
 ### 4.1 Creation of a New Database Structure
 
@@ -194,7 +194,7 @@ Additional data fields were introduced so that the company has more information 
 
 ### 4.2 Structured Data Collection Through an Onboarding Form
 
-An onboarding form was created to ensure that new case data is collected in a consistent and structured format.
+An Onboarding form was created to ensure that new case data is collected in a consistent and structured format.
 
 The form helps to standardize the input data and reduces the risk of missing or inconsistent information. Once submitted, the data is stored in the `unassigned_cases` table and can be used by the automated workflow.
 
@@ -1096,7 +1096,7 @@ Recommended test sequence:
 
 ## 12. Resulting Benefits
 
-The To-Be process provides several improvements compared to the As-Is process.
+The TO-BE process provides several improvements compared to the AS-IS process.
 
 | Benefit | Description |
 |---|---|
