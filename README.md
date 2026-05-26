@@ -609,6 +609,8 @@ The task **Review assignments** is a user task.
 At this stage, the system has already calculated possible coach assignments and gives 2 coaches in the decending order. The coach with the  highest total score is evaluated first in the DMN. The user can now review the suggested coach, the case data, the travel distance, duration, eligibility and scores.
 
 The purpose of this step is not to fully automate the final decision. Instead, the automatic scoring provides decision support. The user can still apply professional judgement before continuing with the final allocation.
+<img width="309" height="1041" alt="image" src="https://github.com/user-attachments/assets/db127198-dfff-4ab6-9b5e-30529eec6c46" />  <img width="217" height="619" alt="image" src="https://github.com/user-attachments/assets/45c9ba14-c790-415c-87e5-4bc6c946a915" />
+
 
 
 ### Step 7: Evaluate soft factors 
@@ -639,6 +641,8 @@ The Case Coach assesses whether the proposed coach is appropriate for the specif
 The purpose of this step is to ensure that the final allocation decision is not made solely by the system. Instead, the recommendation is validated by a human expert, which preserves professional judgment and reflects the actual practice of coach allocation in the organisation. 
 
 <img width="268" height="647" alt="image" src="https://github.com/user-attachments/assets/c0bcfb08-9f92-4df1-8b0a-630ca9ac1c99" />
+
+<img width="322" height="886" alt="image" src="https://github.com/user-attachments/assets/5c1a45fb-3f09-459e-b65e-148715e96721" />
 
 
 ### Step 9: Recommended? 
@@ -674,6 +678,7 @@ The Case Coach informs the client that a Family Coach has been selected and info
 
 The purpose of this step is to ensure that the client receives clear confirmation about the allocation before the process ends. 
 
+<img width="430" height="672" alt="image" src="https://github.com/user-attachments/assets/f7cc2943-4cbb-4f66-91cc-eaadd7f965c6" />
 
 
 ### Step 11: Case Assigned 
