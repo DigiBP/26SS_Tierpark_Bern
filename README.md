@@ -610,7 +610,8 @@ At this stage, the system has already calculated possible coach assignments and 
 
 The purpose of this step is not to fully automate the final decision. Instead, the automatic scoring provides decision support. The user can still apply professional judgement before continuing with the final allocation.
 
-<div style="display: flex; gap: 16px; align-items: flex-start;">
+Extract Camunda Cockpit
+<div style="display: flex; gap: 26px; align-items: flex-start;">
   <img style="height: 620px; width: auto;" alt="image" src="https://github.com/user-attachments/assets/db127198-dfff-4ab6-9b5e-30529eec6c46" />
   
   <img style="height: 620px; width: auto;" alt="image" src="https://github.com/user-attachments/assets/45c9ba14-c790-415c-87e5-4bc6c946a915" />
@@ -644,9 +645,14 @@ The Case Coach assesses whether the proposed coach is appropriate for the specif
 
 The purpose of this step is to ensure that the final allocation decision is not made solely by the system. Instead, the recommendation is validated by a human expert, which preserves professional judgment and reflects the actual practice of coach allocation in the organisation. 
 
-<img width="268" height="647" alt="image" src="https://github.com/user-attachments/assets/c0bcfb08-9f92-4df1-8b0a-630ca9ac1c99" />
 
-<img width="322" height="886" alt="image" src="https://github.com/user-attachments/assets/5c1a45fb-3f09-459e-b65e-148715e96721" />
+<u> Configuration Camunda <u>
+
+<img width="268" height="647" alt="Configuration Camunda" src="https://github.com/user-attachments/assets/c0bcfb08-9f92-4df1-8b0a-630ca9ac1c99" />
+
+<u> Extract Camunda Cockpit <u>
+
+<img width="322" height="886" alt="Extract Camunda Cockpit" src="https://github.com/user-attachments/assets/5c1a45fb-3f09-459e-b65e-148715e96721" />
 
 
 ### Step 9: Recommended? 
