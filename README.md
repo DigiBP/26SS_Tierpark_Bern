@@ -609,8 +609,12 @@ The task **Review assignments** is a user task.
 At this stage, the system has already calculated possible coach assignments and gives 2 coaches in the decending order. The coach with the  highest total score is evaluated first in the DMN. The user can now review the suggested coach, the case data, the travel distance, duration, eligibility and scores.
 
 The purpose of this step is not to fully automate the final decision. Instead, the automatic scoring provides decision support. The user can still apply professional judgement before continuing with the final allocation.
-<img width="309" height="1041" alt="image" src="https://github.com/user-attachments/assets/db127198-dfff-4ab6-9b5e-30529eec6c46" />  <img width="217" height="619" alt="image" src="https://github.com/user-attachments/assets/45c9ba14-c790-415c-87e5-4bc6c946a915" />
 
+<div style="display: flex; gap: 16px; align-items: flex-start;">
+  <img style="height: 620px; width: auto;" alt="image" src="https://github.com/user-attachments/assets/db127198-dfff-4ab6-9b5e-30529eec6c46" />
+  
+  <img style="height: 620px; width: auto;" alt="image" src="https://github.com/user-attachments/assets/45c9ba14-c790-415c-87e5-4bc6c946a915" />
+</div>
 
 
 ### Step 7: Evaluate soft factors 
