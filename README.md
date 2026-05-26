@@ -84,8 +84,8 @@ Since there are no standardized criteria or scoring logic, similar cases may be 
 
 
 
+<img width="6219" height="2418" alt="To-Be_Case_Allocation_66_Backup_final_v6" src="https://github.com/user-attachments/assets/03293e3d-c688-4532-8544-c40e77615669" />
 
-<img width="6219" height="2418" alt="To-Be_Case_Allocation_66_Backup_final_v5" src="https://github.com/user-attachments/assets/3d069711-03ef-4a38-a324-e15fe3d33a3b" />
 
 
 
@@ -159,7 +159,8 @@ The Case Allocation process was considered suitable for automation because sever
 
 ## 3. Overview involved systems: Make, Camunda, Google Form, Google Sheet, Flask API
 
-<img width="1807" height="1114" alt="To-Be Process Export drawio" src="https://github.com/user-attachments/assets/1cc6fe29-a093-4bb6-8b89-07cfbbf6a0b5" />
+<img width="1801" height="1142" alt="Systemkontext drawio" src="https://github.com/user-attachments/assets/021c7cab-2cbb-401c-80c2-89d569e8ad3f" />
+
 
 
 The high-level architecture shows how the TO-BE Case Allocation process is supported by different technical components and automation tools.
