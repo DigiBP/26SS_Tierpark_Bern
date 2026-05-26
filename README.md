@@ -512,12 +512,12 @@ The returned values are written back into the score columns of the same assignme
 ---
 
 
-## Step 3: Boundary Error Event
+### Step 3: Boundary Error Event
 
 The Boundary Error Event captures technical, integration, and data-related exceptions that may occur during the automated service task. Possible errors include failures in Google Maps distance calculation, Google Sheets data retrieval, Make scenario execution, HTTP/API requests, authentication, missing or invalid input data, webhook communication, timeouts, and unsuccessful system calculations. When such an error occurs, the process is redirected to a fallback path instead of stopping completely. This allows the Case Coach to review the case and continue the case allocation manually, ensuring process continuity and human oversight when automated execution is not possible.
 
 
-## Step 4: Assign Manually 
+### Step 4: Assign Manually 
 
 Assign Manually is a User Task that is performed when the automated allocation cannot be completed successfully. This may happen because of missing or inconsistent data, technical or integration issues. 
 
@@ -535,7 +535,7 @@ This User Task therefore ensures process continuity, human oversight, and operat
 
 
 
-## Step 5: Extract Assignments
+### Step 5: Extract Assignments
 
 The task **Extract assignments** retrieves the calculated assignment suggestions from the `assignments` table and sends them back to Camunda.
 
@@ -584,7 +584,7 @@ After the data has been returned to Camunda, the assignment row can be marked as
 
 ---
 
-## Step 6: Review Assignments
+### Step 6: Review Assignments
 
 The task **Review assignments** is a user task.
 
@@ -593,7 +593,7 @@ At this stage, the system has already calculated possible coach assignments and 
 The purpose of this step is not to fully automate the final decision. Instead, the automatic scoring provides decision support. The user can still apply professional judgement before continuing with the final allocation.
 
 
-## Step 7: Evaluate soft factors 
+### Step 7: Evaluate soft factors 
 
 The task **Evaluate soft factors** is a Business Rule Task. 
 
@@ -610,7 +610,7 @@ The purpose of this step is to provide structured and transparent decision suppo
 <img width="929" height="445" alt="image" src="https://github.com/user-attachments/assets/42838f82-da61-42f7-8c64-6856f65fdfbf" />
 
 
-## Step 8: Review Family Coach Profile 
+### Step 8: Review Family Coach Profile 
 
 The task **Review Family Coach profile** is modeled as a User Task. 
 
@@ -623,7 +623,7 @@ The purpose of this step is to ensure that the final allocation decision is not 
 <img width="268" height="647" alt="image" src="https://github.com/user-attachments/assets/c0bcfb08-9f92-4df1-8b0a-630ca9ac1c99" />
 
 
-## Step 9: Recommended? 
+### Step 9: Recommended? 
 
 The element **Recommended?** is an Exclusive Gateway. 
 
@@ -646,7 +646,7 @@ If the coach is not suitable then we inform the client of non-allocation of case
 The purpose of this gateway is to create a clear decision point in the process. It ensures that only suitable coach recommendations move forward to final communication with the client. 
 
 
-## Step 10: Notify assignment
+### Step 10: Notify assignment
 
 The task **Inform client** is a User Task. 
 
@@ -658,17 +658,17 @@ The purpose of this step is to ensure that the client receives clear confirmatio
 
 
 
-## Step 11: Case Assigned 
+### Step 11: Case Assigned 
 
 
 The event Case assigned is an End Event that marks the completion of the process after the case has been allocated successfully and the client has been informed of the assignment.
 
 
-## Step 12: Notify non-assignment
+### Step 12: Notify non-assignment
 
 
 
-## Step 13: Case not assigned 
+### Step 13: Case not assigned 
 
 
 
@@ -690,6 +690,16 @@ The scoring model consists of two parts:
 
 2. **Weighted Score Components**  
    If all hard criteria are fulfilled, the system calculates a score based on language match, travel duration and skill match.
+
+
+The Python script as well as the Flask API is stores into the Codespace "Fuzzy chainsaw"
+Dirctlink to Python Script (Scoring)
+[https://fuzzy-chainsaw-q7597pwv9q7434v5g.github.dev/ ](https://github.com/cedricsan13/26SS_Tierpark_Bern/blob/7bd46f0365b2c7f9cbf7b62b6b7333c9cf414bd9/score_assignment.py) 
+
+Dirctlink to Python Script (Flask API)
+https://github.com/cedricsan13/26SS_Tierpark_Bern/blob/7bd46f0365b2c7f9cbf7b62b6b7333c9cf414bd9/app.py
+
+<img width="431" height="431" alt="image" src="https://github.com/user-attachments/assets/740fc386-f06d-42af-95b8-a9b6126cf47f" />
 
 ---
 
