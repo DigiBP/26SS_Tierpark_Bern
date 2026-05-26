@@ -160,8 +160,6 @@ The Case Allocation process was considered suitable for automation because sever
 ## 3. Overview involved systems: Make, Camunda, Google Form, Google Sheet, Flask API
 
 <img width="1801" height="1152" alt="CaseAllocation Systemcontext drawio" src="https://github.com/user-attachments/assets/544adaed-5df3-4871-a283-cb45146250e1" />
-<img width="801" height="1031" alt="Datenmodel DigiBP drawio" src="https://github.com/user-attachments/assets/a2fec0a0-ba14-49e7-b68d-75e3fcffd224" />
-<img width="801" height="1031" alt="Datenmodel DigiBP drawio" src="https://github.com/user-attachments/assets/c4d1fa1f-5e9a-4ee9-ab1e-1a333526e037" />
 
 
 
@@ -250,6 +248,8 @@ The result is returned to Make and written back into the `assignments` table.
 ## 5. Data Model
 
 ### Entity Relationship Diagramm / ERD
+
+<img width="801" height="1031" alt="Datenmodel DigiBP drawio" src="https://github.com/user-attachments/assets/a2fec0a0-ba14-49e7-b68d-75e3fcffd224" />
 
 
 Since the prototype uses Google Sheets as a lightweight database, some case and coach attributes are stored redundantly in the `assignments` table. In a fully normalized relational database, these attributes would normally be retrieved through the foreign keys `case_id` and `coach_id`. However, for the Google Sheets and Make-based prototype, storing these values as snapshot data makes the assignment results easier to review, export and process in subsequent automation steps.
