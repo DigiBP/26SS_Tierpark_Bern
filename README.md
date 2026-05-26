@@ -417,17 +417,33 @@ This scenario is triggered by a Make webhook from Camunda. It performs the follo
 
 #### Google Maps Calculation
 
-For each coach, Google Maps calculates:
 
-| Output | Description |
-|---|---|
-| `distance.text` | Human-readable distance, for example `49.6 km` |
-| `distance.value` | Distance in meters |
-| `duration.text` | Human-readable duration, for example `45 mins` |
-| `duration.value` | Duration in seconds |
-| `status` | Google Maps result status |
+For each possible case-coach combination, the Make scenario calls the **Google Maps Distance Matrix API** through the Google Maps module. The API is used to calculate the travel distance and travel duration between the coach and the client.
 
-These values are stored in the `assignments` table.
+The scenario builds the API request based on address attributes from the `coaches` and `unassigned_cases` tables:
+
+| API Input   | Source Table       | Used Attributes                      |
+| ----------- | ------------------ | ------------------------------------ |
+| Origin      | `coaches`          | Coach address, postal code and city  |
+| Destination | `unassigned_cases` | Client address, postal code and city |
+| Travel mode | Fixed value        | Driving                              |
+| Units       | Fixed value        | Metric                               |
+
+The Google Maps API then returns the calculated route information. These returned values are written back into the newly created assignment row in the `assignments` table. This means that every generated assignment contains not only the case and coach data, but also the travel distance, travel duration and Google Maps status for this specific combination. This is consistent with the Make blueprint, where the Google Maps module uses the coach address as origin and the client address as destination, and the returned distance and duration values are stored in the `assignments` table. 
+
+For each coach, Google Maps returns:
+
+| Output           | Description                                    |
+| ---------------- | ---------------------------------------------- |
+| `distance.text`  | Human-readable distance, for example `49.6 km` |
+| `distance.value` | Distance in meters                             |
+| `duration.text`  | Human-readable duration, for example `45 mins` |
+| `duration.value` | Duration in seconds                            |
+| `status`         | Google Maps result status                      |
+
+These values are stored in the `assignments` table and are later used as input for the scoring logic. In particular, `duration.value` is passed to the Flask API endpoint `/score-assignment`, where it is used to evaluate whether the coach is suitable for the case and to calculate the duration score.
+
+
 
 #### Assignment Row Creation
 
