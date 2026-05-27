@@ -680,7 +680,7 @@ The purpose of this gateway is to create a clear decision point in the process. 
 
 ### Step 10: Notify assignment
 
-The task **Inform client** is a User Task. 
+The task **Notify Assignment** is a User Task. 
 
 At this stage, the client is informed about the allocation result, depending on the communication channel used by the organisation. 
 
@@ -697,15 +697,21 @@ The purpose of this step is to ensure that the client receives clear confirmatio
 The event Case assigned is an End Event that marks the completion of the process after the case has been allocated successfully and the client has been informed of the assignment.
 
 
-### Step 12: Notify non-assignment
+### Step 12: Notify Non-assignment
 
+The task **Notify Non-Assignment** is a User Task. 
 
+At this stage, the client is informed about the non-allocation result, depending on the communication channel used by the organisation. 
+
+The Case Coach informs the client that a Family Coach has not been selected and informs the relevant assignment outcome through communication channel. 
+
+The purpose of this step is to ensure that the client receives clear confirmation about the non-allocation before the process ends. 
 
 ### Step 13: Case not assigned 
 
 
 
-The event Case not assigned is an End Event that marks the completion of the process when no suitable Family Coach could be allocated and the client has been informed of the non-assignment.
+The event Case not assigned is an End Event that marks the completion of the process when no suitable Family Coach could not be allocated and the client has been informed of the non-assignment.
 
 
 
