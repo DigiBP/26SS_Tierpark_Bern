@@ -753,14 +753,12 @@ The scoring model consists of two parts:
    If all hard criteria are fulfilled, the system calculates a score based on language match, travel duration and skill match.
 
 
-The Python script as well as the Flask API is stores into the Codespace "Fuzzy chainsaw"
-Dirctlink to Python Script (Scoring)
-[https://fuzzy-chainsaw-q7597pwv9q7434v5g.github.dev/ ](https://github.com/cedricsan13/26SS_Tierpark_Bern/blob/7bd46f0365b2c7f9cbf7b62b6b7333c9cf414bd9/score_assignment.py) 
+The Pyhton Script for the Score Assignment is stored in the file `score_assignment.py`. The Python Script for the Flask-API is stored into the file `app.py`
 
-Dirctlink to Python Script (Flask API)
-https://github.com/cedricsan13/26SS_Tierpark_Bern/blob/7bd46f0365b2c7f9cbf7b62b6b7333c9cf414bd9/app.py
+<img width="1426" height="61" alt="image" src="https://github.com/user-attachments/assets/2df5f7c2-c948-41f7-9924-3f221d086e2b" />
 
-<img width="431" height="431" alt="image" src="https://github.com/user-attachments/assets/740fc386-f06d-42af-95b8-a9b6126cf47f" />
+Link to the Flask API Script: https://github.com/DigiBP/26SS_Tierpark_Bern/blob/main/TO%20BE%20Process/app.py
+Link to the Score Assignment Script: https://github.com/DigiBP/26SS_Tierpark_Bern/blob/main/TO%20BE%20Process/score_assignment.py
 
 ---
 
