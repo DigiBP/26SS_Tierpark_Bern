@@ -1042,7 +1042,8 @@ remaining_capacity = {{5.`12`}}
 coach_experience = {{5.`13`}}
 coach_type = {{5.`14`}}
 ```
-
+2 refers to unassigned_cases spreadsheets
+0,1,2,3,4,5,6,7,8,9,10,12,13,14 refers to the columns of the unassigned_cases spreadsheet
 ---
 
 
