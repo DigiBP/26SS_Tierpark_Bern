@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_soft_factor_assessment" name="Soft Factor Assessment DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.44.0">
+  <decision id="soft_factor_assessment" name="Evaluate soft factors">
+    <informationRequirement id="InformationRequirement_0aik669">
+      <requiredInput href="#InputData_0gzmle2" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1ej5m8u">
+      <requiredInput href="#InputData_19ochr9" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0oxdf5j">
+      <requiredInput href="#InputData_00mam17" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_SoftFactorAssessment" hitPolicy="FIRST">
+      <input id="Input_caseComplexity" label="Case Complexity">
+        <inputExpression id="InputExpression_caseComplexity" typeRef="string">
+          <text>case_complexity</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1bu15qv">
+          <text>"High","Medium","Low"</text>
+        </inputValues>
+      </input>
+      <input id="Input_coachExperience" label="Coach Experience" biodi:width="192">
+        <inputExpression id="InputExpression_coachExperience" typeRef="integer">
+          <text>coach_experience</text>
+        </inputExpression>
+      </input>
+      <input id="Input_coachType" label="Coach Type">
+        <inputExpression id="InputExpression_coachType" typeRef="string">
+          <text>coach_type</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0hzi1se">
+          <text>"Full Time","Part Time"</text>
+        </inputValues>
+      </input>
+      <output id="Output_softFactorDecision" label="Evaluate Soft Factors" name="soft_factor_decision" typeRef="string" biodi:width="286">
+        <outputValues id="UnaryTests_0bo5da6">
+          <text>"recommended","needs discussion","not recommended"</text>
+        </outputValues>
+      </output>
+      <rule id="Rule_highComplexitySenior">
+        <inputEntry id="Rule_highComplexitySenior_input1">
+          <text>"High"</text>
+        </inputEntry>
+        <inputEntry id="Rule_highComplexitySenior_input2">
+          <text>&gt;=5</text>
+        </inputEntry>
+        <inputEntry id="Rule_highComplexitySenior_input3">
+          <text>"Full Time"</text>
+        </inputEntry>
+        <outputEntry id="Rule_highComplexitySenior_output1">
+          <text>"recommended"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pcdese">
+        <inputEntry id="UnaryTests_0tvnpt3">
+          <text>"High"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08mbuz4">
+          <text>&lt;5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ymy2hy">
+          <text>"Full Time"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_088xrxc">
+          <text>"not recommended"</text>
+        </outputEntry>
+      </rule>
+      <rule id="Rule_highComplexityNotSenior">
+        <inputEntry id="Rule_highComplexityNotSenior_input1">
+          <text>"High"</text>
+        </inputEntry>
+        <inputEntry id="Rule_highComplexityNotSenior_input2">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="Rule_highComplexityNotSenior_input3">
+          <text>"Part Time"</text>
+        </inputEntry>
+        <outputEntry id="Rule_highComplexityNotSenior_output1">
+          <text>"not recommended"</text>
+        </outputEntry>
+      </rule>
+      <rule id="Rule_mediumComplexityJunior">
+        <inputEntry id="Rule_mediumComplexityJunior_input1">
+          <text>"Medium"</text>
+        </inputEntry>
+        <inputEntry id="Rule_mediumComplexityJunior_input2">
+          <text>&gt;=5</text>
+        </inputEntry>
+        <inputEntry id="Rule_mediumComplexityJunior_input3">
+          <text>"Full Time"</text>
+        </inputEntry>
+        <outputEntry id="Rule_mediumComplexityJunior_output1">
+          <text>"recommended"</text>
+        </outputEntry>
+      </rule>
+      <rule id="Rule_lowComplexityAnyCoach">
+        <inputEntry id="Rule_lowComplexityAnyCoach_input1">
+          <text>"Medium"</text>
+        </inputEntry>
+        <inputEntry id="Rule_lowComplexityAnyCoach_input2">
+          <text>&gt;=4</text>
+        </inputEntry>
+        <inputEntry id="Rule_lowComplexityAnyCoach_input3">
+          <text>"Part Time"</text>
+        </inputEntry>
+        <outputEntry id="Rule_lowComplexityAnyCoach_output1">
+          <text>"recommended"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0t6xp81">
+        <inputEntry id="UnaryTests_1s8d9mv">
+          <text>"Medium"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pspake">
+          <text>&lt;5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0a10jxh">
+          <text>"Full Time"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00ihqo5">
+          <text>"not recommended"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19mjbbo">
+        <inputEntry id="UnaryTests_0wybhi1">
+          <text>"Medium"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jkjq73">
+          <text>&lt;4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_151pa3s">
+          <text>"Part Time"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_076zvqt">
+          <text>"not recommended"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_13fkgza">
+        <inputEntry id="UnaryTests_0rr14hq">
+          <text>"Low"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vms2x9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0u2o0p6">
+          <text>"Full Time"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18ky1a4">
+          <text>"recommended"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rdm319">
+        <inputEntry id="UnaryTests_1hj5ifj">
+          <text>"Low"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zfuhbr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0py6p61">
+          <text>"Part Time"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0iz0dwl">
+          <text>"recommended"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0gzmle2" name="Coach Experience" />
+  <inputData id="InputData_19ochr9" name="Coach Type" />
+  <inputData id="InputData_00mam17" name="Case Complexity" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_SoftFactorAssessment" name="Soft Factor Assessment DRD">
+      <dmndi:DMNShape id="DMNShape_Decision_SoftFactorAssessment" dmnElementRef="soft_factor_assessment">
+        <dc:Bounds height="80" width="180" x="370" y="120" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1i2zagu" dmnElementRef="InputData_0gzmle2">
+        <dc:Bounds height="45" width="125" x="397" y="357" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0lqrykj" dmnElementRef="InformationRequirement_0aik669">
+        <di:waypoint x="460" y="357" />
+        <di:waypoint x="460" y="220" />
+        <di:waypoint x="460" y="200" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1b2jezo" dmnElementRef="InputData_19ochr9">
+        <dc:Bounds height="45" width="125" x="637" y="357" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0ork2pn" dmnElementRef="InformationRequirement_1ej5m8u">
+        <di:waypoint x="700" y="357" />
+        <di:waypoint x="505" y="220" />
+        <di:waypoint x="505" y="200" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_09cph0t" dmnElementRef="InputData_00mam17">
+        <dc:Bounds height="45" width="125" x="157" y="357" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_11m38az" dmnElementRef="InformationRequirement_0oxdf5j">
+        <di:waypoint x="220" y="357" />
+        <di:waypoint x="415" y="220" />
+        <di:waypoint x="415" y="200" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
