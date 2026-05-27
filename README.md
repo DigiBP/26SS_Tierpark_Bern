@@ -676,7 +676,11 @@ If the coach is suitable, the process continues to the next step, where the clie
 
 
 
+
+
 If the coach is not suitable then we inform the client of non-allocation of case. 
+
+
 
 
 
@@ -690,7 +694,11 @@ If the coach is not suitable then we inform the client of non-allocation of case
 
 
 
+
+
+
 The purpose of this gateway is to create a clear decision point in the process. It ensures that only suitable coach recommendations move forward to final communication with the client. 
+
 
 
 
