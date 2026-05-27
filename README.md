@@ -33,7 +33,7 @@ Our digital solution aims to streamline and automate the case allocation process
 
 There is no automation in the current ChangeKultur case allocation process. Therefore, our group created a AS-IS BPMN process based on the information available, identified the main pain points, and designed a TO-BE process that introduces automation, scoring, review steps, and error handling for a more reliable and transparent case allocation process.
 
-**Out of scope**: This project does not include a full production system, real integration with company databases, live availability checking of Family Coaches, a mobile app, advanced AI matching, or full client communication. The project is only a prototype to support case allocation, and the final decision will still be made by the Case Coach.
+**Out of scope**: This project does not include a full production system, real integration with company databases, live availability checking of Family Coaches, a mobile app, advanced AI matching, or full client communication. If no suitable Family Coach is available, the case is not processed further in this process. The project is only a prototype to support case allocation, and the final decision will still be made by the Case Coach.
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------
