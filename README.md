@@ -47,7 +47,7 @@ There is no automation in the current ChangeKultur case allocation process. Ther
 
 # Current Situation
 
-The AS-IS Case Allocation process begins once a case is accepted from the Enquiry phase and is ready for further handling. The Case Coach first reviews the case requirements, including the client’s needs, support intensity, language requirements, geographic location, and any specific experience or specialization needed. Based on this assessment, the Case Coach identifies potentially suitable Family Coaches using available case information and personal knowledge of the team. 
+The AS-IS Case Allocation process begins once a case is enquired and is ready for further handling. The Case Coach first reviews the case requirements, including the client’s needs, support intensity, language requirements, geographic location, and any specific experience or specialization needed. Based on this assessment, the Case Coach identifies potentially suitable Family Coaches using available case information and personal knowledge of the team. 
 
 The Case Coach then evaluates the suitability of the identified Family Coaches and informally checks their actual availability. This step is carried out through direct communication and relies heavily on experience, tacit knowledge, and practical understanding of each coach’s current workload, willingness, and personal situation. Since no centralized allocation system exists, the process depends on fragmented information from Microsoft Dynamics, Teams, email, phone communication, and informal notes, making the assessment largely manual and judgment-based. 
 
