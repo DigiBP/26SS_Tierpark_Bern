@@ -687,7 +687,7 @@ The task **Notify Assignment** is a User Task.
 
 At this stage, the client is informed about the allocation result, depending on the communication channel used by the organisation. 
 
-The Case Coach informs the client that a Family Coach has been selected and informs the relevant assignment outcome through communication channel. 
+The Case Coach informs the client that a Family Coach has been selected. 
 
 The purpose of this step is to ensure that the client receives clear confirmation about the allocation before the process ends. 
 
@@ -706,7 +706,7 @@ The task **Notify Non-Assignment** is a User Task.
 
 At this stage, the client is informed about the non-allocation result, depending on the communication channel used by the organisation. 
 
-The Case Coach informs the client that a Family Coach has not been selected and informs the relevant assignment outcome through communication channel. 
+The Case Coach informs the client that a Family Coach has not been selected. 
 
 The purpose of this step is to ensure that the client receives clear confirmation about the non-allocation before the process ends. 
 
