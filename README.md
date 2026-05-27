@@ -116,7 +116,7 @@ Since there are no standardized criteria or scoring logic, similar cases may be 
 | 12 | <img width="136" height="110" alt="image" src="https://github.com/user-attachments/assets/ebce77cc-4cb1-4680-95d5-f948e9f5298f" /> | The client is informed about the allocation result. | This is the final communication step before process completion. |
 | 13 | <img width="89" height="85" alt="image" src="https://github.com/user-attachments/assets/a857950a-bb2a-4294-9753-86d439eefff4" /> | The process ends once the case has been successfully allocated and the client has been informed. | This marks the successful completion of the TO-BE allocation process. |
 | 14 | <img width="133" height="107" alt="image" src="https://github.com/user-attachments/assets/3ae41774-4634-4485-92f4-616bd151bd73" /> | 
-| 15 | <img width="110" height="80" alt="image" src="https://github.com/user-attachments/assets/583ffd51-71fe-4343-be6f-b34d1c16a819" /> | The process ends once the case has been successfully allocated and the client has been informed. | This marks the successful completion of the TO-BE allocation process. |
+| 15 | <img width="110" height="80" alt="image" src="https://github.com/user-attachments/assets/583ffd51-71fe-4343-be6f-b34d1c16a819" /> | The process ends once the case has not been successfully allocated and the client has been informed. | This marks the successful completion of the TO-BE allocation process. |
 
 
 
