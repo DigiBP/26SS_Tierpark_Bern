@@ -668,10 +668,16 @@ If the coach is suitable, the process continues to the next step, where the clie
 
 
 
-<img width="512" height="542" alt="image" src="https://github.com/user-attachments/assets/7d572a88-fdce-4d85-9097-439ead3458ec" />
+<img width="591" height="258" alt="image" src="https://github.com/user-attachments/assets/0f76f170-8d46-432b-a720-889a9330e6bb" />
+
 
 
 If the coach is not suitable then we inform the client of non-allocation of case. 
+
+
+
+<img width="422" height="354" alt="image" src="https://github.com/user-attachments/assets/2646f16d-6322-4cb1-b8bc-16a91e1e4e27" />
+
 
 
 
