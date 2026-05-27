@@ -668,9 +668,9 @@ If the coach is suitable, the process continues to the next step, where the clie
 
 
 
-
-<img width="591" height="258" alt="image" src="https://github.com/user-attachments/assets/0f76f170-8d46-432b-a720-889a9330e6bb" />
-
+ <td style="border:1px solid #ccc; padding:8px;">
+      <img width="591" height="258" alt="image" src="https://github.com/user-attachments/assets/0f76f170-8d46-432b-a720-889a9330e6bb" />
+    </td>
 
 
 
