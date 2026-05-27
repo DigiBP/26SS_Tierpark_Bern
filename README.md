@@ -123,7 +123,7 @@ Since there are no standardized criteria or scoring logic, similar cases may be 
 ## 1. Description 
 
 
-The TO-BE process represents a significant step towards a more digitalized and automated **Case Allocation** process. The goal of the project team was to automate time-consuming, frequently occurring and rule-based tasks that directly address the main pain points of the company. The collected pain points and the visualized As-Is process formed the foundation for designing the To-Be process.
+The TO-BE process represents a significant step towards a more digitalized and automated **Case Allocation** process. The goal of the project team was to automate time-consuming, frequently occurring and rule-based tasks that directly address the main pain points of the company. The collected pain points and the visualized AS-IS process formed the foundation for designing the TO-BE process.
 
 The use case focuses on allocating a client case to the most suitable Family Coach. The process begins when the admin enters the client data through a structured form. This information is stored in the `unassigned_cases` table in the database. After the client data has been submitted, the system automatically calculates distance and scoring information for potential Family Coaches. The calculation is based on hard factors such as workload, language requirements, location and coach profile information.
 
