@@ -668,9 +668,9 @@ If the coach is suitable, the process continues to the next step, where the clie
 
 
 
- <td style="border:1px solid #ccc; padding:8px;">
-      <img width="591" height="258" alt="image" src="https://github.com/user-attachments/assets/0f76f170-8d46-432b-a720-889a9330e6bb" />
-    </td>
+
+<img width="591" height="258" alt="image" src="https://github.com/user-attachments/assets/0f76f170-8d46-432b-a720-889a9330e6bb" />
+   
 
 
 
@@ -723,6 +723,11 @@ At this stage, the client is informed about the non-allocation result, depending
 The Case Coach informs the client that a Family Coach has not been selected. 
 
 The purpose of this step is to ensure that the client receives clear confirmation about the non-allocation before the process ends. 
+
+
+<img width="476" height="346" alt="image" src="https://github.com/user-attachments/assets/1a76d0f9-9c31-4e83-895b-7d3fb1482159" />
+
+
 
 ### Step 13: Case not assigned 
 
