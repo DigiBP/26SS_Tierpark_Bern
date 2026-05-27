@@ -668,11 +668,17 @@ If the coach is suitable, the process continues to the next step, where the clie
 
 
 
+
+
 <img width="591" height="258" alt="image" src="https://github.com/user-attachments/assets/0f76f170-8d46-432b-a720-889a9330e6bb" />
 
 
 
+
+
 If the coach is not suitable then we inform the client of non-allocation of case. 
+
+
 
 
 
@@ -683,7 +689,9 @@ If the coach is not suitable then we inform the client of non-allocation of case
 
 
 
+
 The purpose of this gateway is to create a clear decision point in the process. It ensures that only suitable coach recommendations move forward to final communication with the client. 
+
 
 
 ### Step 10: Notify assignment
