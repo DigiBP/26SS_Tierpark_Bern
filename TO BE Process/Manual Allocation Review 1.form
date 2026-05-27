@@ -1,0 +1,64 @@
+{
+  "components": [
+    {
+      "label": "Case ID",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0klvkte",
+        "columns": null
+      },
+      "id": "Field_0vx4yrz",
+      "key": "case_id",
+      "readonly": true
+    },
+    {
+      "label": "Error Reason",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0f4t93n",
+        "columns": null
+      },
+      "id": "Field_02xt2sz",
+      "key": "error_reason"
+    },
+    {
+      "label": "Manual Selected Coach ID",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1rq93te",
+        "columns": null
+      },
+      "id": "Field_1cedgdn",
+      "key": "manual_selected_coach_id"
+    },
+    {
+      "label": "Manual Review Comment",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_04xwwq3",
+        "columns": null
+      },
+      "id": "Field_0pxj58e",
+      "key": "manual_review_comment"
+    },
+    {
+      "label": "Manual Allocation Completed",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_0280wfn",
+        "columns": null
+      },
+      "id": "Field_0317gs9",
+      "key": "manual_allocation_completed"
+    }
+  ],
+  "type": "default",
+  "id": "manual_allocation_review",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.45.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.24.0",
+  "schemaVersion": 19
+}
