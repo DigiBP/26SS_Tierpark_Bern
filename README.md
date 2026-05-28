@@ -88,6 +88,9 @@ Since there are no standardized criteria or scoring logic, similar cases may be 
 # TO-BE Process: Case Allocation
 
 
+## Workflow Demo 
+https://fhnw365-my.sharepoint.com/:v:/r/personal/cedric_iseli_students_fhnw_ch/Documents/Microsoft%20Teams-Chatdateien/Digi%20BP%20Presentation%20Final%20.mp4?csf=1&web=1&e=w87T9H
+
 ## BPMN TO-BE Process
 
 
