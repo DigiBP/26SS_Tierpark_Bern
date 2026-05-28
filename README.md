@@ -35,6 +35,8 @@ There is no automation in the current ChangeKultur case allocation process. Ther
 
 **Out of scope**: This project does not include a full production system, real integration with company databases, live availability checking of Family Coaches, a mobile app, advanced AI matching, or full client communication. If no suitable Family Coach is available, the case is not processed further in this process. The project is only a prototype to support case allocation, and the final decision will still be made by the Case Coach.
 
+**Assumptions**: This prototype assumes that two suitable coach options are generated and presented during the Review Assignment step. The final coach is selected by the Case Coach based on the system recommendation and professional judgement. The solution also assumes that the coach database is regularly maintained. Any changes in coach profile, such as newly learned languages, skills, workload, or availability, must be updated in the database to ensure accurate matching results.
+
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
