@@ -416,7 +416,7 @@ The output of this step is a set of assignment rows in the `assignments` table [
 
 
 This scenario is triggered by a Make webhook from Camunda. It performs the following logic:
-![alt text](image-1.png)
+
 
 1. Receive trigger from Camunda.
 2. Search for unassigned cases in `unassigned_cases`.
