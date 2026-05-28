@@ -33,9 +33,15 @@ Our digital solution aims to streamline and automate the case allocation process
 
 There is no automation in the current ChangeKultur case allocation process. Therefore, our group created a AS-IS BPMN process based on the information available, identified the main pain points, and designed a TO-BE process that introduces automation, scoring, review steps, and error handling for a more reliable and transparent case allocation process.
 
-**Out of scope**: This project does not include a full production system, real integration with company databases, live availability checking of Family Coaches, a mobile app, advanced AI matching, or full client communication. If no suitable Family Coach is available, the case is not processed further in this process. The project is only a prototype to support case allocation, and the final decision will still be made by the Case Coach.
+**Out of scope**: 
+1. This project does not include a full production system, real integration with company databases, live availability checking of Family Coaches, a mobile app, advanced AI matching, or full client communication. 
 
-**Assumptions**: This prototype assumes that two suitable coach options are generated and presented during the Review Assignment step. The final coach is selected by the Case Coach based on the system recommendation and professional judgement. The solution also assumes that the coach database is regularly maintained. Any changes in coach profile, such as newly learned languages, skills, workload, or availability, must be updated in the database to ensure accurate matching results.
+2. If no suitable Family Coach is available, the case is not processed further in this process. The project is only a prototype to support case allocation, and the final decision will still be made by the Case Coach.
+
+**Assumptions**: 
+1. This prototype assumes that two suitable coach options are generated and presented during the Review Assignment step. The final coach is selected by the Case Coach based on the system recommendation and professional judgement. 
+
+2. The solution assumes that the coach database is regularly maintained. Any changes in coach profile, such as newly learned languages, skills, workload, or availability, must be updated in the database to ensure accurate matching results.
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------
